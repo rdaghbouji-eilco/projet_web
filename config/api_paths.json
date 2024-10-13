@@ -1,0 +1,14 @@
+{
+    "get_countries": "/projet_web/api/country/get_countries.php",
+    "login": "/projet_web/api/auth/login.php",
+    "register": "/projet_web/api/auth/register.php",
+    "get_profile": "/projet_web/api/profile/get_profile_pro.php",
+    "update_profile": "/projet_web/api/profile/update_profile_pro.php",
+    "get_personal_info": "/projet_web/api/profile/get_personal_info.php",
+    "update_personal_info": "/projet_web/api/profile/update_personal_info.php",
+    "get_education_levels": "/projet_web/api/education_levels/get_education_levels.php",
+    "get_fields": "/projet_web/api/fields/get_fields.php",
+    "get_experience_levels": "/projet_web/api/experience_levels/get_experience_levels.php",
+    "get_current_degree": "/projet_web/api/current_degree/get_current_degree.php",
+    "get_expected_graduation_year": "/projet_web/api/expected_graduation_year/get_expected_graduation_year.php"
+}

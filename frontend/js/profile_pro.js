@@ -1,6 +1,6 @@
 console.log("JS chargé"); // Pour vérifier que le fichier JS est bien chargé
 
-// Fonction pour peupler les dropdowns avec des données de l'API
+// Function to populate the dropdowns with data from the API
 async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'Sélectionnez...') {
     try {
         const response = await fetch(apiUrl);
@@ -11,16 +11,16 @@ async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'S�
         const data = await response.json();
         const dropdown = document.getElementById(dropdownId);
 
-        // Vider le dropdown avant de le remplir
+        // Empty the dropdown before populating
         dropdown.innerHTML = '';
 
-        // Ajouter une option par défaut
+        // Add a default option
         const defaultOpt = document.createElement('option');
         defaultOpt.value = '';
         defaultOpt.textContent = defaultOption;
         dropdown.appendChild(defaultOpt);
 
-        // Peupler le dropdown avec les données de l'API
+        // Populate the dropdown with data from the API
         data.forEach(item => {
             const option = document.createElement('option');
             option.value = item.ID; // Suppose que l'API renvoie un champ ID
@@ -33,16 +33,18 @@ async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'S�
     }
 }
 
-// Appeler la fonction pour chaque dropdown
+// Call the function for each dropdown after loading the API paths
 window.onload = async function() {
-    await populateDropdown('http://localhost/projet_web/api/education_levels.php', 'educationLevelDropdown', 'education_level', 'Sélectionnez un niveau d\'éducation');
-    await populateDropdown('http://localhost/projet_web/api/fields.php', 'fieldDropdown', 'field_name', 'Sélectionnez un domaine');
-    await populateDropdown('http://localhost/projet_web/api/experience_levels.php', 'experienceLevelDropdown', 'experience_level', 'Sélectionnez un niveau d\'expérience');
-    await populateDropdown('http://localhost/projet_web/api/current_degree.php', 'currentDegreeDropdown', 'degree_name', 'Sélectionnez un diplôme actuel');
-    await populateDropdown('http://localhost/projet_web/api/expected_graduation_year.php', 'graduationYearDropdown', 'year', 'Sélectionnez une année');
+    await loadApiPaths(); // Load the API paths from the JSON file
+
+    await populateDropdown(apiPaths.get_education_levels, 'educationLevelDropdown', 'education_level', 'Sélectionnez un niveau d\'éducation');
+    await populateDropdown(apiPaths.get_fields, 'fieldDropdown', 'field_name', 'Sélectionnez un domaine');
+    await populateDropdown(apiPaths.get_experience_levels, 'experienceLevelDropdown', 'experience_level', 'Sélectionnez un niveau d\'expérience');
+    await populateDropdown(apiPaths.get_current_degree, 'currentDegreeDropdown', 'degree_name', 'Sélectionnez un diplôme actuel');
+    await populateDropdown(apiPaths.get_expected_graduation_year, 'graduationYearDropdown', 'year', 'Sélectionnez une année');
 };
 
-// Gérer la soumission du formulaire
+// Handle form submission
 document.getElementById('profileForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Empêche la soumission classique du formulaire
     
@@ -63,18 +65,22 @@ document.getElementById('profileForm').addEventListener('submit', async function
     console.log("Données du formulaire :", formData);
 
     try {
-        const response = await fetch('http://localhost/projet_web/api/profile_pro.php', {
+        const response = await fetch(apiPaths.update_profile, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData) // Envoyer les données en JSON
+            body: JSON.stringify(formData) // Send the form data as JSON
         });
-
-        // Vérifier la réponse du serveur
-        const result = await response.json();
-        console.log("Réponse du serveur :", result);
-
+    
+        // Log the raw response for debugging
+        const rawResponse = await response.text(); // Get the raw response as text
+        console.log("Raw server response:", rawResponse); // Log the response
+    
+        // Then try to parse the response as JSON
+        const result = JSON.parse(rawResponse); // Parse it as JSON
+        console.log("Parsed server response:", result);
+    
         if (response.ok) {
             alert('Profil mis à jour avec succès !');
         } else {
@@ -84,4 +90,5 @@ document.getElementById('profileForm').addEventListener('submit', async function
         console.error('Erreur lors de la mise à jour du profil:', error);
         document.getElementById('errorMessage').textContent = `Erreur: ${error.message}`;
     }
+    
 });

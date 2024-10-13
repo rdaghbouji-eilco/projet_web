@@ -3,12 +3,12 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // Include database connection
-include_once '../config/db.php';
+include_once '../../config/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
 // Fetch all countries from the database
-$query = "SELECT * FROM Fields";
+$query = "SELECT * FROM Current_degree";
 $stmt = $db->prepare($query);
 $stmt->execute();
 

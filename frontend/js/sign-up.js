@@ -16,26 +16,34 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
     };
 
     try {
+        // Load API paths from api_paths.json
+        const response = await fetch('../config/api_paths.json'); // Adjust the path if necessary
+        const apiPaths = await response.json(); // Get the API paths
+
+        const registerApi = apiPaths.register; // Get the register API path
+
         // Send the form data to the server via a POST request
-        const response = await fetch('http://localhost/projet_web/api/user.php', {
+        const registerResponse = await fetch(registerApi, { // Use dynamic API path
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(formData)
+            body: JSON.stringify(formData) // Convert form data to JSON
         });
 
-        const result = await response.json(); // Get the response data
+        const result = await registerResponse.json(); // Get the response data
 
-        if (response.ok) {
+        if (registerResponse.ok) {
             // Successful response
             alert(result.message || 'User signed up successfully!');
+            // Redirect to login page
+            window.location.href = 'login.html';
         } else {
             // Error response
-            alert(result.message || 'Failed to sign up. Please try again.');
+            document.getElementById('errorMsg').textContent = result.message || 'Failed to sign up. Please try again.';
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred. Please try again later.');
+        document.getElementById('errorMsg').textContent = 'An error occurred. Please try again later.';
     }
 });
