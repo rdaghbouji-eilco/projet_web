@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CV</title>
+    <script defer src="../js/upload_cv.js"></script>
+</head>
+<body>
+    <h1>Upload Your CV</h1>
+
+    <!-- Form to upload CV -->
+    <form id="cvUploadForm" enctype="multipart/form-data">
+        <label for="cv">Choose your CV (PDF, DOC, DOCX):</label>
+        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required><br><br>
+
+        <button type="submit">Upload CV</button>
+    </form>
+
+    <p id="uploadStatus"></p>
+</body>
+</html>
