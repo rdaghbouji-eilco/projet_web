@@ -1,5 +1,22 @@
 console.log("JS chargé"); // Pour vérifier que le fichier JS est bien chargé
 
+// Load API paths from api_loader.js before proceeding
+let apiPaths = {};
+
+// Function to load the API paths from the JSON file (api_loader)
+async function loadApiPaths() {
+    try {
+        const response = await fetch('../../config/api_paths.json'); // Adjust the path if necessary
+        if (!response.ok) {
+            throw new Error('Failed to load API paths');
+        }
+        apiPaths = await response.json(); // Store the API paths for later use
+    } catch (error) {
+        console.error('Error loading API paths:', error);
+    }
+}
+
+
 // Function to populate the dropdowns with data from the API
 async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'Sélectionnez...') {
     try {

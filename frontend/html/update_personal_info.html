@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Personal Information</title>
+    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to common stylesheet -->
+
+    <script defer src="../js/api_loader.js"></script> <!-- Load API loader if required -->
+    <script defer src="../js/update_personal_info.js"></script> <!-- Link to the JS file for form handling -->
+</head>
+<body>
+    <div class="container">
+        <h1>Update Personal Information</h1>
+        
+        <form id="personalInfoForm" class="styled-form">
+            <!-- Phone Number -->
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <!-- Birthdate -->
+            <label for="birthdate">Birthdate:</label>
+            <input type="date" id="birthdate" name="birthdate" required>
+
+            <!-- Country -->
+            <label for="country">Country:</label>
+            <select id="countryDropdown" name="country" required>
+                <option value="">Select a country</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-submit">Update Information</button>
+            <p id="errorMessage" class="error-message"></p> <!-- Error message display -->
+        </form>
+    </div>
+</body>
+</html>
