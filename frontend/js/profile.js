@@ -1,83 +1,76 @@
-// Function to load user's profile information
-async function loadProfile() {
+// Load API paths from api_loader.js before proceeding
+let apiPaths = {};
+
+// Function to load the API paths from the JSON file (api_loader)
+async function loadApiPaths() {
     try {
-        const response = await fetch('/projet_web/api/profile/get_profile_pro.php', {
-            method: 'GET',
-            credentials: 'include'
-        });
-
-        if (response.ok) {
-            const profileData = await response.json();
-
-            // Populate the profile section
-            document.getElementById('educationLevel').textContent = profileData.education_level;
-            document.getElementById('field').textContent = profileData.field;
-            document.getElementById('currentSituation').textContent = profileData.current_situation;
-            document.getElementById('experienceLevel').textContent = profileData.experience_level;
-            document.getElementById('handicap').textContent = profileData.handicap;
-            document.getElementById('currentDegree').textContent = profileData.current_degree;
-            document.getElementById('graduationYear').textContent = profileData.expected_graduation_year;
-        } else {
-            throw new Error('Failed to load profile');
+        const response = await fetch('../../config/api_paths.json'); // Adjust the path if necessary
+        if (!response.ok) {
+            throw new Error('Failed to load API paths');
         }
+        apiPaths = await response.json(); // Store the API paths for later use
     } catch (error) {
-        console.error('Error loading profile:', error);
+        console.error('Error loading API paths:', error);
     }
 }
 
-// Function to load personal information
+// Function to show a specific section and hide the others
+function showSection(sectionId) {
+    // Get all sections
+    const sections = document.querySelectorAll('.section');
+    
+    // Hide all sections
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+
+    // Show the selected section
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+// Load the profile and personal information when the page loads
+window.onload = async function() {
+    // Load the API paths first
+    await loadApiPaths();
+
+    // Initially show the profile section
+    showSection('profileSection');
+
+    // Load profile information (using existing function to fetch and display data)
+    await loadProfileInfo();
+
+    // Load personal information (using existing function to fetch and display data)
+    await loadPersonalInfo();
+};
+
+// Fetch profile information
+async function loadProfileInfo() {
+    try {
+        const response = await fetch(apiPaths.get_profile); // Use dynamic API path from api_paths.json
+        const profileData = await response.json();
+
+        document.getElementById('educationLevel').textContent = profileData.education_level;
+        document.getElementById('field').textContent = profileData.field;
+        document.getElementById('currentSituation').textContent = profileData.current_situation;
+        document.getElementById('experienceLevel').textContent = profileData.experience_level;
+        document.getElementById('handicap').textContent = profileData.handicap;
+        document.getElementById('currentDegree').textContent = profileData.current_degree;
+        document.getElementById('graduationYear').textContent = profileData.expected_graduation_year;
+    } catch (error) {
+        console.error('Error loading profile info:', error);
+    }
+}
+
+// Fetch personal information
 async function loadPersonalInfo() {
     try {
-        const response = await fetch('/projet_web/api/profile/get_personal_info.php', {
-            method: 'GET',
-            credentials: 'include'
-        });
+        const response = await fetch(apiPaths.get_personal_info); // Use dynamic API path from api_paths.json
+        const personalData = await response.json();
 
-        if (response.ok) {
-            const personalInfo = await response.json();
-
-            // Populate the personal info section
-            document.getElementById('phone').textContent = personalInfo.phone;
-            document.getElementById('birthdate').textContent = personalInfo.birthdate;
-            document.getElementById('country').textContent = personalInfo.country;
-        } else {
-            throw new Error('Failed to load personal info');
-        }
+        document.getElementById('phone').textContent = personalData.phone;
+        document.getElementById('birthdate').textContent = personalData.birthdate;
+        document.getElementById('country').textContent = personalData.country;
     } catch (error) {
         console.error('Error loading personal info:', error);
     }
 }
-
-// Function to load CV information
-async function loadCV() {
-    const cvDownloadLink = document.getElementById('cvDownloadLink');
-    const userID = 1; // You can dynamically set this from session or user context
-    cvDownloadLink.href = `/projet_web/api/cv/get_cv.php?user_id=${userID}`;
-}
-
-// Function to handle section switching (tabs functionality)
-function setupTabs() {
-    const tabs = document.querySelectorAll('#tabs li a');
-    const sections = document.querySelectorAll('.tabContent');
-
-    tabs.forEach(tab => {
-        tab.addEventListener('click', function(event) {
-            event.preventDefault();
-
-            // Hide all sections
-            sections.forEach(section => section.style.display = 'none');
-
-            // Show the section related to the clicked tab
-            const sectionToShow = document.getElementById(this.dataset.section);
-            sectionToShow.style.display = 'block';
-        });
-    });
-}
-
-// Load all the information when the page loads and setup tabs
-window.onload = async function() {
-    await loadProfile();
-    await loadPersonalInfo();
-    await loadCV();
-    setupTabs(); // Initialize the tab functionality
-};

@@ -17,7 +17,7 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
 
     try {
         // Load API paths from api_paths.json
-        const response = await fetch('../config/api_paths.json'); // Adjust the path if necessary
+        const response = await fetch('../../config/api_paths.json'); // Adjust the path if necessary
         const apiPaths = await response.json(); // Get the API paths
 
         const registerApi = apiPaths.register; // Get the register API path

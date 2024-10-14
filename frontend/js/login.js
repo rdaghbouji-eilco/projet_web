@@ -14,7 +14,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
     try {
         // Load the API paths before using them
-        const response = await fetch('../config/api_paths.json'); // Adjust the path if necessary
+        const response = await fetch('../../config/api_paths.json'); // Adjust the path if necessary
         const apiPaths = await response.json(); // Get the API paths
         
         // Access the login API path
@@ -40,7 +40,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 
             if (loginResponse.ok) {
                 // If login is successful, redirect to the profile page
-                window.location.href = 'profile.html';
+                window.location.href = 'profile_page.html';
             } else {
                 // Display an error message if login fails
                 document.getElementById('errorMsg').textContent = result.message;

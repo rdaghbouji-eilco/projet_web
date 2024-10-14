@@ -10,5 +10,8 @@
     "get_fields": "/projet_web/api/fields/get_fields.php",
     "get_experience_levels": "/projet_web/api/experience_levels/get_experience_levels.php",
     "get_current_degree": "/projet_web/api/current_degree/get_current_degree.php",
-    "get_expected_graduation_year": "/projet_web/api/expected_graduation_year/get_expected_graduation_year.php"
+    "get_expected_graduation_year": "/projet_web/api/expected_graduation_year/get_expected_graduation_year.php",
+    "forgot_password" : "/projet_web/api/auth/forgot_password.php",
+    "reset_password" : "/projet_web/api/auth/reset_password.php"
+    
 }
