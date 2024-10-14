@@ -43,6 +43,4 @@ if (!empty($data->phone) && !empty($data->birthdate) && !empty($data->country)) 
     echo json_encode(["message" => "Incomplete personal information"]);
 }
 
-echo json_encode(["message" => "Method not allowed"]);
-
 ?>

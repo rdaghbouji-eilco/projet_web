@@ -56,7 +56,7 @@ async function populateCountryDropdown() {
         data.forEach(item => {
             const option = document.createElement('option');
             option.value = item.ID;
-            option.textContent = item.Country;
+            option.textContent = item.country;
             dropdown.appendChild(option);
         });
     } catch (error) {
