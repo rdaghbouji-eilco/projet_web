@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Gestionnaire</title>
+    <link rel="stylesheet" href="../css/dashboard_gestionnaire.css">
+    <script defer src="../js/dashboard_gestionnaire.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Gestionnaire Dashboard</h2>
+        <ul>
+            <li><a href="#" onclick="showSection('homeSection')">Accueil</a></li>
+            <li><a href="#" onclick="showSection('offersSection')">Gestion des Offres</a></li>
+            <li><a href="#" onclick="showSection('usersSection')">Gestion des Utilisateurs</a></li>
+            <li><a href="#" onclick="showSection('reportsSection')">Rapports</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <section id="homeSection" class="section">
+            <h2>Accueil</h2>
+            <p>Vue d'ensemble des statistiques et des activités récentes.</p>
+        </section>
+
+        <section id="offersSection" class="section" style="display:none;">
+            <h2>Gestion des Offres</h2>
+            <button onclick="showOfferForm()">Ajouter une offre</button>
+            
+            <div id="offersList">
+                <!-- La liste des offres sera chargée ici -->
+            </div>
+        
+            <div id="offerFormModal" class="modal" style="display:none;">
+                <div class="modal-content">
+                    <span class="close" onclick="hideOfferForm()">&times;</span>
+                    <h3 id="offerFormTitle">Modifier l'offre</h3>
+                    <form id="offerForm">
+                        <label for="entreprise_name">Nom de l'entreprise :</label>
+                        <input type="text" id="entreprise_name" name="entreprise_name" required><br><br>
+
+                        <label for="position_name">Nom du poste :</label>
+                        <input type="text" id="position_name" name="position_name" required><br><br>
+
+                        <label for="description">Description :</label>
+                        <textarea id="description" name="description" required></textarea><br><br>
+
+                        <label for="fieldDropdown">Domaine :</label>
+                        <select id="fieldDropdown" name="field"></select><br><br>
+
+                        <label for="locationDropdown">Localisation :</label>
+                        <select id="locationDropdown" name="location"></select><br><br>
+
+                        <label for="jobTypeDropdown">Type d'emploi :</label>
+                        <select id="jobTypeDropdown" name="job_type"></select><br><br>
+
+                        <label for="duration">Durée :</label>
+                        <input type="text" id="duration" name="duration" required><br><br>
+
+                        <label for="statusDropdown">Statut :</label>
+                        <select id="statusDropdown" name="status"></select><br><br>
+
+                        <label for="experienceLevelDropdown">Niveau d'expérience :</label>
+                        <select id="experienceLevelDropdown" name="experience_level"></select><br><br>
+
+                        <label for="educationLevelDropdown">Niveau d'éducation :</label>
+                        <select id="educationLevelDropdown" name="education_level"></select><br><br>
+
+                        <label for="publish_date">Date de publication :</label>
+                        <input type="date" id="publish_date" name="publish_date" required><br><br>
+
+                        <input type="hidden" id="offer_id" name="offer_id">
+                        <button type="submit">Mettre à jour l'offre</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>

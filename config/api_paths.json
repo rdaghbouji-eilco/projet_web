@@ -12,6 +12,13 @@
     "get_current_degree": "/projet_web/api/current_degree/get_current_degree.php",
     "get_expected_graduation_year": "/projet_web/api/expected_graduation_year/get_expected_graduation_year.php",
     "forgot_password" : "/projet_web/api/auth/forgot_password.php",
-    "reset_password" : "/projet_web/api/auth/reset_password.php"
-    
+    "reset_password" : "/projet_web/api/auth/reset_password.php",
+    "add_offer": "/projet_web/api/offers/add_offer.php",
+    "get_offers": "/projet_web/api/offers/get_offers.php",
+    "update_offer": "/projet_web/api/offers/update_offer.php",
+    "delete_offer": "/projet_web/api/offers/delete_offer.php",
+    "archieve_offers": "/projet_web/api/offers/archieve_offer.php",
+    "get_statuses": "/projet_web/api/statuses/get_statuses.php",
+    "get_job_types" : "/projet_web/api/job_types/get_job_types.php",
+    "get_locations" : "/projet_web/api/locations/get_locations.php"
 }
