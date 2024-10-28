@@ -1,38 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up Form</title>
-    <link rel="stylesheet" href="../css/styles.css"> <!-- Link to your common stylesheet -->
-    <script defer type="text/javascript" src="../js/sign-up.js"></script> <!-- Link to the sign-up JS script -->
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> EILCO </title>
+        <link rel="stylesheet" href="../css/menu_principal.css">
+
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        </style>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        </style>
+        
+    </head>
+
 <body>
-    <div class="container">
-        <h1>Sign Up</h1>
-
-        <form id="signUpForm" class="styled-form">
-            <!-- Name Field -->
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <!-- Surname Field -->
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname" required>
-
-            <!-- Email Field -->
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <!-- Password Field -->
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn-submit">Sign Up</button>
-        </form>
-
-        <p id="errorMsg" class="error-message"></p> <!-- Error message display -->
+	<header>
+		<img src="EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+		<ul>
+            <li><a href="offres_etu.html">Offres</a>
+            </li>
+            <li><a href="entreprises_etu.html">Entreprises</a>
+            </li>
+            <li><a href="evenements_etu.html">Evénements</a>
+            </li>
+            <li><a href="conseils_etu.html">Conseils</a>
+            </li>
+        </ul>
+	</header>
+    <div class="search-bar">
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Quoi ?">
+            <input type="text" class="city-input" placeholder="Où ?">
+            <button class="search-button">🔍</button>
+        </div>
     </div>
+    <main>
+        <div class="offers-list">
+            <div class="offer-card">
+                <h4>CFA INSTA</h4>
+                <p>Apprenti Chef de Projet Informatique - IA et Objets Connectés H/F</p>
+                <p>📍 Paris - 75 | 11/10/2024</p>
+                <button>Voir l'offre</button>
+            </div>
+
+            <div class="offer-card">
+                <h4>Axa Group Operations</h4>
+                <p>Project Manager Apprenticeship H/F</p>
+                <p>📍 Paris - 75 | 16/09/2024</p>
+                <button>Voir l'offre</button>
+            </div>
+
+            <div class="offer-card">
+                <h4>Digital School of Paris</h4>
+                <p>Alternance → Chef de Projet Digital - Community Manager H/F</p>
+                <p>📍 Paris - 75 | 15/10/2024</p>
+                <button>Voir l'offre</button>
+            </div>
+        </div>
+    </main>
+	<footer>
+        
+        <div class="premiere_partie">
+            <div class="colonne">
+                <ul>
+                    <li><h4>Étudiants</h4>
+                    </li>
+                    <hr>
+                    <li><a href="inscription_etudiant.html"> S'inscrire</a>
+                    </li>
+                    <li><a href="offres_etu.html"> Chercher une offre</a>
+                    </li>
+                    <li><a href="entreprises_etu.html"> Découvrir les entreprises</a>
+                    </li>
+                    <li><a href="evenements_etu.html"> Evénements de recrutement</a>
+                    </li>
+                    <li><a href="conseils_etu.html"> Conseils de recrutement</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>École</h4>
+                    </li>
+                    <hr>
+                    <li><a href="offre_gestionnaire.html"> Le Career Center</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>Contact</h4>
+                    </li>
+                    <hr>
+                    <li><a href="">À propos</a>
+                    </li>
+                    <li><a href=""> EILCO – 50 Rue Ferdinand Buisson</a>
+                    </li>
+                    <li><a href=""> CS 30613 – 62228 CALAIS CEDEX</a>
+                    </li>
+                    <li><a href=""> Direction générale : Tél.: 03 21 17 10 05</a>
+                    </li>
+                </ul> 
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>Étudiants</h4>
+                    </li>
+                    <hr>
+                    <li><a href=""> Statut</a>
+                    </li>
+                    <li><a href=""> Mentions légales</a>
+                    </li>
+                    <li><a href=""> Politique de confidentialité</a>
+                    </li>
+                </ul> 
+            </div>
+        </div>
+        <hr>
+        <div class="derniere_partie">
+            <p>Tous droits réservés <a href="https://eilco.univ-littoral.fr/">EILCO</a> &copy; 2024 - Site d'orientation professionnelle </p>
+        </div>  
+    </footer>
+
+	
+
 </body>
-</html>
