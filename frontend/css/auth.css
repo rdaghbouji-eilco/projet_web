@@ -197,3 +197,44 @@ footer ul {
 
 
 
+
+/* Section Styling */
+.section {
+    display: none;
+    padding: 2em;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    max-width: 500px;
+    margin: auto;
+}
+.section.active {
+    display: block;
+}
+
+/* Error Message Styling */
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+
+/* Toggle Button Styling */
+nav button {
+    padding: 0.7em 1.5em;
+    font-size: 1em;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    background-color: #003463;
+    color: #ffffff;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #001629;
+}
+
+.container {
+    position: relative;
+    z-index: 2; /* Ensure it overlays the background */
+}
