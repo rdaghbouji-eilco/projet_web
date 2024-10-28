@@ -18,7 +18,14 @@ if (!isset($_SESSION['user_ID'])) {
 $user_ID = $_SESSION['user_ID']; // Get the user ID from session
 
 // Handle GET request - fetch user's personal info
-$query = "SELECT phone, birthdate, country FROM personal_info WHERE user_ID = :user_ID";
+$query = "
+    SELECT 
+    pr.phone AS phone, 
+    pr.birthdate AS birthdate, 
+    c.country AS country
+    FROM personal_info pr 
+    LEFT JOIN countries c ON pr.country = c.ID
+    WHERE user_ID = :user_ID";
 $stmt = $db->prepare($query);
 $stmt->bindParam(':user_ID', $user_ID);
 $stmt->execute();

@@ -1,0 +1,200 @@
+header{
+    background-color: #003463;
+    position: fixed;
+    z-index: 10;
+    width:100%; /*occupe toute la largeur de la page*/
+    height: 60px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+
+header ul{
+    display:flex;
+    justify-content: space-evenly;
+    margin : 0;
+    padding:2% 4%;
+    list-style: none;
+}
+
+header ul li{
+    margin: 0 50px;
+}
+
+header ul li a{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 300;
+    color: aliceblue;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif"; 
+    transition:transform 0.2s ease;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    transform: scale(1.1);
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+main{
+    background-color: #e6ebf1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 110vh;
+    padding:20%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;
+}
+
+
+.formulaire_inscription{
+    background-color:rgba(153, 151, 159, 0.2);
+    border-radius: 5%;
+    border:none;
+    padding: 1.5% 7%;
+    margin: auto;
+
+    box-sizing: border-box;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%; /* Occupe 100% de l'espace disponible */
+    max-width: 600px; /* Largeur maximale du formulaire */
+    min-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.titre_form h2{
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 601;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 1.7rem;
+    margin-bottom: 5%;
+    width: 130%;
+    position: relative;
+    margin-left: -15%;
+    
+}
+
+.formulaire_inscription label {
+    margin-bottom: 0.8%; 
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    font-weight: 600;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size:0.9rem;
+    display: block;
+    text-align: left;
+    margin-bottom: 1.5%;
+}
+
+.mdp p{
+    font-family: "Poppins", helvetica, arial, "sans-serif";
+    font-size: 12px;
+    text-align:justify;
+    margin: 0;
+}
+
+
+.formulaire_inscription button{
+    padding: 12px 22px;
+    font-size: 1.03rem;
+    font-weight: 500;
+    font-family:"Ubuntu", sans-serif;
+    color: rgb(255, 255, 255) ;
+    background-color:  #003463 ;
+    border-radius: 10px;
+    border: none;
+    margin-top: 6%;
+    
+}
+
+.formulaire_inscription input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px; 
+    border: 0.1px solid #000000; 
+    box-sizing: border-box;
+    font-size: 0.92em;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    margin: 0;
+    margin-bottom: 25px;
+    background-color: #ffffff;
+}
+
+.mdp input[type="password"]{
+    margin-bottom: 0.3rem;
+}
+
+.formulaire_inscription button:hover{
+    background-color:#001629;
+    color : rgb(255, 255, 255);
+}
+
+
+footer{
+    background-color: #003463;
+    padding: 1%;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    position: relative;
+
+}
+
+footer .premiere_partie a{
+    font-style: normal;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.colonne h4{
+    color: #ffffff;
+}
+
+
+.colonne{
+    display: flex; 
+}
+footer ul{
+    list-style: none;
+}
+
+.colonne ul li{
+    margin-bottom: 2%;
+}
+
+
+
+.premiere_partie{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 1.5% 0;
+    
+    
+}
+
+.derniere_partie p{
+    color: white;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    text-align: center;
+    padding: 2%;
+}
+
