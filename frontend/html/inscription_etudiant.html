@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Page d'Inscription </title>
         <link rel="stylesheet" href="../css/style_inscription_etudiant.css">
+        <script defer type="text/javascript" src="../js/sign-up.js"></script>
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -38,30 +39,29 @@
             <div class="titre_form">
                 <h2 >Inscrivez-vous pour trouver votre voie</h2>
             </div>
-            <form id="">
+            <form id="signUpForm">
                 <div>
-                    <label for="email" class="label"> Email</label>
-                    <input type="email" id="email" name="email" required inputmode="email"/> 
+                    <label for="email" class="label">Email</label>
+                    <input type="email" id="email" name="email" required inputmode="email"/>
                 </div>
-
-                <div >
-                    <label for="Nom" class="label"> Nom</label>
-                    <input type="text" id="Nom" name="Last name" required/>
-                </div>
-
-                <div >  
-                    <label for="Prenom" class="label"> Prénom</label>
-                    <input type="text" id="Prenom" name="Name" required/> 
-                </div>     
-
                 
+                <div>
+                    <label for="surname" class="label">Nom</label>
+                    <input type="text" id="surname" name="surname" required/>
+                </div>
+                
+                <div>
+                    <label for="name" class="label">Prénom</label>
+                    <input type="text" id="name" name="name" required/>
+                </div>
+
                 <div class="mdp">
-                    <label for="Password" class="label">Mot de passe </label>
-                    <input type="Password" id="Password" name="password" title="Doit contenir au moins 8 caractères, dont un chiffre, une lettre majuscule, une lettre minuscule et un caractère spécial (@$!%*?&)" autocomplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}" required />
+                    <label for="password" class="label">Mot de passe</label>
+                    <input type="password" id="password" name="password" title="Doit contenir au moins 8 caractères, dont un chiffre, une lettre majuscule, une lettre minuscule et un caractère spécial (@$!%*?&)" autocomplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}" required />
                     <p>Votre mot de passe doit contenir au moins 12 caractères, et être composé de majuscules, de minuscules et chiffres.</p>
                 </div>
-                
-                <button type="submit">M'inscrire</button>
+
+                <button type="submit" class="btn-submit">M'inscrire</button>
             </form>
         </section>
     </main>

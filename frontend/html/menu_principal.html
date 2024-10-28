@@ -3,8 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> EILCO </title>
-        <link rel="stylesheet" href="../css/menu_principal.css">
+        <title> EILCO | Offres de stage </title>
+        <link rel="stylesheet" href="/CSS/menu_principal.css">
 
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -12,12 +12,22 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
         </style>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
         
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24
+            }
+        </style>
     </head>
 
 <body>
 	<header>
-		<img src="EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+		<img src="/Images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
 		<ul>
             <li><a href="offres_etu.html">Offres</a>
             </li>
@@ -29,11 +39,26 @@
             </li>
         </ul>
 	</header>
-    <div class="search-bar">
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Quoi ?">
-            <input type="text" class="city-input" placeholder="Où ?">
-            <button class="search-button">🔍</button>
+    <div class="recherche">
+        <div class="search-bar">
+            <div class="search-container">
+                <div class="search-field1">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" class="search-input" placeholder="Rechercher par offre, entreprise ou mots-clé">
+                </div>
+                <div class="search-field">
+                    <span class="material-symbols-outlined">work</span>
+                    <input type="text" class="search-input" placeholder="Contrat">
+                </div>
+                <div class="search-field">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <input type="text" class="search-input" placeholder="Ville, département...">
+                </div>
+            </div>
+            <div class="button-with-icon">
+                <span class="material-symbols-outlined">filter_alt</span>
+                <button class="button" >Tous les filtres</button>
+            </div>
         </div>
     </div>
     <main>
