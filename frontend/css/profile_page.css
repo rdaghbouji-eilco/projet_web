@@ -1,0 +1,189 @@
+/* General styles */
+html, body {
+    width: 100%; 
+    height: 100%; 
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    z-index: 10;
+    width: 100%; 
+    height: 65px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto; 
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header ul li {
+    margin: 0 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    transform: scale(1.02);
+}
+
+/* Container for the whole profile page */
+.container {
+    max-width: 800px;
+    margin: 100px auto 40px; /* adjusted margin to account for fixed header */
+    padding: 20px;
+}
+
+/* Profile box styling (applies to all sections) */
+.profile-box, #profileSection, #personalInfoSection, #cvSection {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+/* Profile box header with image */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+.profile-details p {
+    margin: 5px 0;
+}
+
+/* Detail item icon and text alignment */
+.detail-item .icon, .detail-item p {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.detail-item .icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+.detail-item p {
+    margin: 0;
+}
+
+/* Button styles */
+button {
+    background-color: #012545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #014a76;
+}
+
+a {
+    color: #012545;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Footer styles */
+footer {
+    background-color: #012545;
+    padding: 1%;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+footer .premiere_partie a {
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.colonne h4 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.colonne {
+    flex: 1;
+}
+
+footer ul {
+    list-style: none;
+}
+
+.colonne ul li {
+    margin-bottom: 2%;
+}
+
+.premiere_partie {
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 1.5% 0;
+}
+
+.derniere_partie p {
+    color: white;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 2%;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ffffff;
+    margin: 10px 0;
+}

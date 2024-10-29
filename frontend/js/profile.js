@@ -39,16 +39,28 @@ window.onload = async function() {
     // Load profile information (using existing function to fetch and display data)
     await loadProfileInfo();
 
+    await loadUsername();
+
     // Load personal information (using existing function to fetch and display data)
     await loadPersonalInfo();
 };
+
+async function loadUsername() {
+    try {
+        const response = await fetch(apiPaths.get_user); // Use dynamic API path from api_paths.json
+        const userData = await response.json();
+        document.getElementById('name').textContent = userData.name;
+        document.getElementById('surname').textContent = userData.surname;
+    } catch (error) {
+        console.error('Error loading name surname:', error);
+    }
+}
 
 // Fetch profile information
 async function loadProfileInfo() {
     try {
         const response = await fetch(apiPaths.get_profile); // Use dynamic API path from api_paths.json
         const profileData = await response.json();
-
         document.getElementById('educationLevel').textContent = profileData.education_level;
         document.getElementById('field').textContent = profileData.field;
         document.getElementById('currentSituation').textContent = profileData.current_situation;

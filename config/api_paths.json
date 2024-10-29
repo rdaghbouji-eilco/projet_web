@@ -21,5 +21,6 @@
     "get_statuses": "/repo-projet_web/api/statuses/get_statuses.php",
     "get_job_types" : "/repo-projet_web/api/job_types/get_job_types.php",
     "get_locations" : "/repo-projet_web/api/locations/get_locations.php",
-    "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php"
+    "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php",
+    "get_user" : "/repo-projet_web/api/user/get_user.php"
 }
