@@ -1,14 +1,8 @@
 
-* {
+body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html, body {
-    width: 100%; 
-    height: 100%; 
-    overflow-x: hidden; 
 }
 
 header {
@@ -34,12 +28,12 @@ header ul {
     display: flex;
     justify-content: space-evenly;
     margin: 0;
-    padding: 0;
+    padding: 2% 4%;
     list-style: none;
 }
 
 header ul li {
-    margin: 0 20px;
+    margin: 0 50px;
 }
 
 header ul li a {
@@ -55,6 +49,8 @@ header ul li a {
 header ul li a:hover {
     transform: scale(1.02);
 }
+
+
 .recherche{
     padding : 0% 10%;
 }
