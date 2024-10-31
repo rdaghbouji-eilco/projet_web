@@ -64,7 +64,7 @@ main{
 }
 
 .container {
-    background-color: rgba(132, 140, 241, 0.2);
+    background-color: rgba(167, 172, 244, 0.2);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     width: 60%;
     max-width: 700px;
@@ -95,20 +95,19 @@ main{
 .selection button{
     font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
     font-size: 1rem;
-    font-weight: 400;
+    font-weight: 600;
     padding: 12px 22px;
     margin: auto;
     cursor: pointer;
     border: none;
-    background-color: #003463;
-    color: #ffffff;
-    border-radius:10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s;
+    background: none;
+    color: #0c2942;
+    /*box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);*/
+    transition: border-bottom 0.1s ease, transform 0.1s ease;
 }
-.selection button:hover {
-    background-color: #001629;
+.selection button:hover,.selection button:focus{
     transform: scale(1.02);
+    border-bottom: 2px solid #134169;
 }
 
 .section {
@@ -220,7 +219,7 @@ main{
 }
 
 .btn-submit:hover {
-    background-color: #3189db;
+    background-color: #1c79d0;
     color: #ffffff;
 }
 
