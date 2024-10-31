@@ -1,14 +1,21 @@
 /* Header Styling */
 header {
-    background-color: #003463;
+    background-color:#ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     z-index: 10;
-    width: 100%;
-    height: 60px;
+    width: 100%; 
+    height: 65px;
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between; 
+    padding: 0 20px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto; 
 }
 
 header ul {
@@ -26,75 +33,140 @@ header ul li {
 header ul li a {
     text-decoration: none;
     font-size: 15px;
-    font-weight: 300;
-    color: aliceblue;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
     transition: transform 0.2s ease;
     display: inline-block;
 }
 
 header ul li a:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 /* Body and Main Styling */
 body {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    
 }
 
-main {
-    background-color: #ffffff;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 110vh;
-    padding: 20%;
-    box-sizing: border-box;
+main{
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
+    height: 100vh;
+    justify-content: center; 
     align-items: center;
+    padding: 6%;
+    padding-top: 65px;
 }
 
-/* Form Section Styling */
-.formulaire_inscription {
-    background-color:rgba(186, 196, 205, 0.2);
-    border-radius: 5%;
-    border:none;
-    padding: 1.5% 7%;
-    margin: auto;
-
+.container {
+    background-color: rgba(132, 140, 241, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 60%;
+    max-width: 700px;
+    min-width: 280px;
+    height: auto;
+    min-height:630px;
+    max-height: 80vh;
+    padding: 2%;
+    margin :auto ;
+    margin-top: 1%;
     box-sizing: border-box;
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    width: 100%; /* Occupe 100% de l'espace disponible */
-    max-width: 600px; /* Largeur maximale du formulaire */
-    min-width: 300px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    border-radius: 4%;
 }
 
-/* Form Title Styling */
-.titre_form h2 {
+.selection{
+    display: flex;
+    justify-content: space-evenly;
+    width: 70%; 
+    margin-top: 2%;
+    max-width: 700px;
+    min-width: 290px;
+}
+
+.selection button{
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 12px 22px;
+    margin: auto;
+    cursor: pointer;
+    border: none;
+    background-color: #003463;
+    color: #ffffff;
+    border-radius:10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+.selection button:hover {
+    background-color: #001629;
+    transform: scale(1.02);
+}
+
+.section {
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 500px;
+    margin: 5% auto 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.section.active {
+    display: block;
+}
+
+.titre_form1 h2 {
     font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
     font-weight: 601;
     font-style: normal;
     color: rgb(0, 0, 0);
-    font-size: 1.7rem;
-    margin-bottom: 5%;
-    width: 130%;
+    font-size: 1.4rem;
+    width: auto;
+    margin: auto auto 5%;
     position: relative;
-    margin-left: -15%;
+    justify-content: center;
+    text-align: center;
 }
 
-/* Label Styling */
-.formulaire_inscription label {
+
+
+.titre_form2 h2 {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 601;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 1.4rem;
+    width: auto;
+    margin: auto;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.titre_form2 h3 {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    width: auto;
+    margin: 1% auto 5%;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.section label {
     margin-bottom: 0.8%; 
     font-family: "Poppins",Arial, Helvetica, "sans-serif";
     font-weight: 600;
@@ -103,13 +175,13 @@ main {
     font-size:0.9rem;
     display: block;
     text-align: left;
-    margin-bottom: 1.5%;
+    margin-bottom: 1%;
 }
 
-/* Input Field Styling */
-.formulaire_inscription input[type="text"],
-.formulaire_inscription input[type="email"],
-.formulaire_inscription input[type="password"] {
+
+.section input[type="text"],
+.section input[type="email"],
+.section input[type="password"]{
     width: 100%;
     padding: 10px;
     border-radius: 20px;
@@ -117,7 +189,7 @@ main {
     box-sizing: border-box;
     font-size: 0.92em;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
-    margin-bottom: 25px;
+    margin-bottom: 2%;
     background-color: #ffffff;
 }
 
@@ -125,7 +197,6 @@ main {
     margin-bottom: 0.3rem;
 }
 
-/* Password Requirement Text */
 .mdp p {
     font-family: "Poppins", Helvetica, Arial, sans-serif;
     font-size: 12px;
@@ -133,23 +204,39 @@ main {
     margin: 0;
 }
 
-/* Submit Button Styling */
-.formulaire_inscription button {
+.btn-submit {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-size: 1rem;
     padding: 12px 22px;
-    font-size: 1.03rem;
-    font-weight: 500;
-    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
     color: #ffffff;
-    background-color: #003463;
-    border-radius: 10px;
+    background-color: #04549a;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
     border: none;
-    margin-top: 6%;
+    margin-top: 5%;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-.formulaire_inscription button:hover {
-    background-color: #001629;
+.btn-submit:hover {
+    background-color: #3189db;
     color: #ffffff;
 }
+
+/* Error Message Styling */
+.error {
+    color: red;
+    font-family: "Poppins", Helvetica, Arial, sans-serif;
+    font-size: 0.9em;
+    margin-top: 1em;
+}
+.mdp_oublie{
+    font-family: "Poppins", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+}
+
+
 
 /* Footer Styling */
 footer {
@@ -195,46 +282,3 @@ footer ul {
     padding: 2%;
 }
 
-
-
-
-/* Section Styling */
-.section {
-    display: none;
-    padding: 2em;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    max-width: 500px;
-    margin: auto;
-}
-.section.active {
-    display: block;
-}
-
-/* Error Message Styling */
-.error {
-    color: red;
-    font-size: 0.9em;
-    margin-top: 1em;
-}
-
-/* Toggle Button Styling */
-nav button {
-    padding: 0.7em 1.5em;
-    font-size: 1em;
-    margin: 0 5px;
-    cursor: pointer;
-    border: none;
-    background-color: #003463;
-    color: #ffffff;
-    transition: background-color 0.3s;
-}
-
-nav button:hover {
-    background-color: #001629;
-}
-
-.container {
-    position: relative;
-    z-index: 2; /* Ensure it overlays the background */
-}

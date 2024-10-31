@@ -1,4 +1,5 @@
 let apiPaths = {}; // Global variable to store the API paths
+let offerId = null;
 
 async function loadApiPaths() {
     try {
@@ -44,16 +45,23 @@ async function loadOffers() {
     }
 }
 
-// Function to edit an offer and pre-fill form with current data
 async function editOffer(offerId) {
     try {
-        const response = await fetch(`${apiPaths.get_offers}?id=${offerId}`); // Fetch the specific offer by ID
+        // Récupère toutes les offres, y compris celle avec l'ID donné
+        const response = await fetch(`${apiPaths.get_offers}?id=${offerId}`);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération de l\'offre.');
         }
-        const offer = await response.json();
+        const offers = await response.json();
 
-        // Pre-fill the form fields with the offer data
+        // Trouve l'offre avec l'ID donné
+        const offer = offers.find(item => item.id === offerId);
+        if (!offer) {
+            console.error('Offre non trouvée');
+            return;
+        }
+
+        // Remplir les champs du formulaire avec les données de l'offre spécifique
         document.getElementById('entreprise_name').value = offer.entreprise_name;
         document.getElementById('position_name').value = offer.position_name;
         document.getElementById('description').value = offer.description;
@@ -66,41 +74,17 @@ async function editOffer(offerId) {
         document.getElementById('educationLevelDropdown').value = offer.education_level;
         document.getElementById('publish_date').value = offer.publish_date;
 
-        // Set the hidden input with the offer ID for update functionality
+        // Affecter l'ID de l'offre au champ caché pour les futures modifications
         document.getElementById('offer_id').value = offerId;
 
-        // Change the form title to indicate this is an update
+        // Mettre à jour le titre et afficher le formulaire
         document.getElementById('offerFormTitle').textContent = 'Modifier l\'offre';
-
-        // Show the form modal
         document.getElementById('offerFormModal').style.display = 'block';
     } catch (error) {
         console.error('Erreur lors de la modification de l\'offre:', error);
     }
 }
 
-
-// Function to delete offer
-async function deleteOffer(offerId) {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette offre?')) {
-        try {
-            const response = await fetch(apiPaths.delete_offer, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ id: offerId })
-            });
-
-            if (response.ok) {
-                alert('Offre supprimée avec succès.');
-                loadOffers(); // Reload offers
-            } else {
-                throw new Error('Échec de la suppression de l\'offre.');
-            }
-        } catch (error) {
-            console.error('Erreur lors de la suppression de l\'offre:', error);
-        }
-    }
-}
 
 // Function to archive offer
 async function archiveOffer(offerId) {
@@ -178,6 +162,9 @@ function showSection(sectionId) {
 
 // Function to show the offer form modal
 function showOfferForm() {
+    document.getElementById('offerForm').reset(); // Clear form
+    document.getElementById('offerFormTitle').textContent = 'Ajouter une offre';
+    offerId = null; // Reset offer ID
     document.getElementById('offerFormModal').style.display = 'block';
 }
 

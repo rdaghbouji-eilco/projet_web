@@ -8,7 +8,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Fetch all countries from the database
-$query = "SELECT * FROM job_type_status";
+$query = "SELECT * FROM job_offer_status";
 $stmt = $db->prepare($query);
 $stmt->execute();
 
