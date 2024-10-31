@@ -7,164 +7,137 @@
     <link rel="stylesheet" href="../css/profile_page.css">
     <script defer src="../js/profile.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    </style>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap');
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    
     <style>
         .material-symbols-outlined {
-          font-variation-settings:
-          'FILL' 0,
-          'wght' 400,
-          'GRAD' 0,
-          'opsz' 24
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
     </style>
 </head>
 <body>
     <header>
-		<img src="/Images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
-		<ul>
-            <li><a href="offres_etu.html">Offres</a>
-            </li>
-            <li><a href="entreprises_etu.html">Entreprises</a>
-            </li>
-            <li><a href="evenements_etu.html">Evénements</a>
-            </li>
-            <li><a href="conseils_etu.html">Conseils</a>
-            </li>
+        <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+        <ul>
+            <li><a href="offres_etu.html">Offres</a></li>
+            <li><a href="entreprises_etu.html">Entreprises</a></li>
+            <li><a href="evenements_etu.html">Evénements</a></li>
+            <li><a href="conseils_etu.html">Conseils</a></li>
         </ul>
-	</header>
+    </header>
+    
+    <!-- Main Container -->
     <div class="container">
         <h1>Profile Page</h1>
-
-        <!-- Profile Section -->
-        <div id="profileSection" >
-            <div class="profile-box">
-                <div class="profile-header">
-                    <img src="profile-placeholder.png" alt="Profile Picture" class="profile-image">
-                    <p><strong></strong> <span id="name"></span></p>
-                    <p><strong></strong> <span id="surname"></span></p>
+    
+        <!-- Layout setup for main and aside -->
+        <div class="two-columns">
+            <aside class="left-section">
+                <div id="profileSection" class="box">
+                    <div class="profile-header">
+                        <img src="profile-placeholder.png" alt="Profile Picture" class="profile-image">
+                        <div class="profile-info">
+                            <p><strong></strong> <span id="name"></span></p>
+                            <p><strong></strong> <span id="surname"></span></p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <p><strong>Phone:</strong> <span id="phone"></span></p>
+                        <p><strong>Birthdate:</strong> <span id="birthdate"></span></p>
+                        <p><strong>Country:</strong> <span id="country"></span></p>
+                        <button class="custom-button" aria-label="Update Personal Info"
+                            onclick="window.location.href='update_personal_info.html'">Update Personal
+                            Info</button>
+            
+                    </div>
                 </div>
-                <div class="profile-details">
-                    <div class="detail-item">
-                        <p><strong>Education Level:</strong> <span id="educationLevel"></span></p>
-                    </div>
-                    <div class="detail-item">   
-                        <p><strong>Field:</strong> <span id="field"></span></p>
-                    </div>
-                    <div class="detail-item">    
-                        <p><strong>Current Situation:</strong> <span id="currentSituation"></span></p>
-                    </div>
-                    <div class="detail-item">    
-                        <p><strong>Experience Level:</strong> <span id="experienceLevel"></span></p>
-                    </div>
-                    <div class="detail-item">    
-                        <p><strong>Handicap:</strong> <span id="handicap"></span></p>
-                    </div>
-                    <div class="detail-item">    
-                        <p><strong>Current Degree:</strong> <span id="currentDegree"></span></p>
-                    </div>
-                    <div class="detail-item">   
-                        <span class="icon">📅</span>
-                        <p><strong>Expected Graduation Year:</strong> <span id="graduationYear"></span></p>
-                    </div>
-                <!-- Button to update profile -->
-                <button onclick="window.location.href='update_profile_pro.html'">Update Profile</button>
-            </div>
-        </div>
-
-        <!-- Personal Info Section -->
-        <div id="personalInfoSection" >
-            <div class="personal-box"></div>
-            <h2>Personal Information</h2>
-            <p><strong>Phone:</strong> <span id="phone"></span></p>
-            <p><strong>Birthdate:</strong> <span id="birthdate"></span></p>
-            <p><strong>Country:</strong> <span id="country"></span></p>
-            <!-- Button to update personal info -->
-            <button onclick="window.location.href='update_personal_info.html'">Update Personal Info</button>
-        </div>
-
-        <!-- CV Section -->
-        <div id="cvSection" >
-            <h2>CV</h2>
-            <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
-            <!-- Button to load/update CV -->
-            <button onclick="window.location.href='upload_cv.html'">Upload/Update CV</button>
+            </aside>
+    
+            <main class="right-section">
+                <!-- Personal Info Section -->
+                <h2>Personal Information</h2>
+                <div id="personalInfoSection" class="box">
+                    <p><strong>Education Level:</strong> <span id="educationLevel"></span></p>
+                    <p><strong>Field:</strong> <span id="field"></span></p>
+                    <p><strong>Current Situation:</strong> <span id="currentSituation"></span></p>
+                    <p><strong>Experience Level:</strong> <span id="experienceLevel"></span></p>
+                    <p><strong>Handicap:</strong> <span id="handicap"></span></p>
+                    <p><strong>Current Degree:</strong> <span id="currentDegree"></span></p>
+                    <p><strong>Expected Graduation Year:</strong> <span id="graduationYear"></span></p>
+                    <button class = "custom-button" aria-label="Update Profile" onclick="window.location.href='update_profile_pro.html'">Update
+                        Profile</button>
+                </div>
+    
+                <!-- CV Section -->
+                <h2>CV</h2>
+                <div id="cvSection" class="box">
+    
+                    <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
+                    <button class = "custom-button" aria-label="Upload/Update CV" onclick="window.location.href='upload_cv.html'">Upload/Update
+                        CV</button>
+                </div>
+            </main>
         </div>
     </div>
+    <!-- Footer Section -->
     <footer>
-        
         <div class="premiere_partie">
             <div class="colonne">
                 <ul>
-                    <li><h4>Étudiants</h4>
+                    <li>
+                        <h4>Étudiants</h4>
                     </li>
                     <hr>
-                    <li><a href="inscription_etudiant.html"> S'inscrire</a>
-                    </li>
-                    <li><a href="offres_etu.html"> Chercher une offre</a>
-                    </li>
-                    <li><a href="entreprises_etu.html"> Découvrir les entreprises</a>
-                    </li>
-                    <li><a href="evenements_etu.html"> Evénements de recrutement</a>
-                    </li>
-                    <li><a href="conseils_etu.html"> Conseils de recrutement</a>
-                    </li>
+                    <li><a href="inscription_etudiant.html"> S'inscrire</a></li>
+                    <li><a href="offres_etu.html"> Chercher une offre</a></li>
+                    <li><a href="entreprises_etu.html"> Découvrir les entreprises</a></li>
+                    <li><a href="evenements_etu.html"> Evénements de recrutement</a></li>
+                    <li><a href="conseils_etu.html"> Conseils de recrutement</a></li>
                 </ul>
             </div>
             <div class="colonne">
                 <ul>
-                    <li><h4>École</h4>
+                    <li>
+                        <h4>École</h4>
                     </li>
                     <hr>
-                    <li><a href="offre_gestionnaire.html"> Le Career Center</a>
-                    </li>
-                    <li><a href=""> XXXXXX</a>
-                    </li>
-                    <li><a href=""> XXXXXX</a>
-                    </li>
-                    <li><a href=""> XXXXXX</a>
-                    </li>
+                    <li><a href="offre_gestionnaire.html"> Le Career Center</a></li>
+                    <li><a href="#"> XXXXXX</a></li>
+                    <li><a href="#"> XXXXXX</a></li>
+                    <li><a href="#"> XXXXXX</a></li>
                 </ul>
             </div>
             <div class="colonne">
                 <ul>
-                    <li><h4>Contact</h4>
+                    <li>
+                        <h4>Contact</h4>
                     </li>
                     <hr>
-                    <li><a href="">À propos</a>
-                    </li>
-                    <li><a href=""> EILCO – 50 Rue Ferdinand Buisson</a>
-                    </li>
-                    <li><a href=""> CS 30613 – 62228 CALAIS CEDEX</a>
-                    </li>
-                    <li><a href=""> Direction générale : Tél.: 03 21 17 10 05</a>
-                    </li>
-                </ul> 
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#"> EILCO – 50 Rue Ferdinand Buisson</a></li>
+                    <li><a href="#"> CS 30613 – 62228 CALAIS CEDEX</a></li>
+                    <li><a href="#"> Direction générale : Tél.: 03 21 17 10 05</a></li>
+                </ul>
             </div>
             <div class="colonne">
                 <ul>
-                    <li><h4>Étudiants</h4>
+                    <li>
+                        <h4>Informations</h4>
                     </li>
                     <hr>
-                    <li><a href=""> Statut</a>
-                    </li>
-                    <li><a href=""> Mentions légales</a>
-                    </li>
-                    <li><a href=""> Politique de confidentialité</a>
-                    </li>
-                </ul> 
+                    <li><a href="#"> Statut</a></li>
+                    <li><a href="#"> Mentions légales</a></li>
+                    <li><a href="#"> Politique de confidentialité</a></li>
+                </ul>
             </div>
         </div>
         <hr>
         <div class="derniere_partie">
-            <p>Tous droits réservés <a href="https://eilco.univ-littoral.fr/">EILCO</a> &copy; 2024 - Site d'orientation professionnelle </p>
-        </div>  
+            <p>Tous droits réservés <a href="https://eilco.univ-littoral.fr/">EILCO</a> &copy; 2024 - Site d'orientation
+                professionnelle</p>
+        </div>
     </footer>
-
+    </div>
 </body>
 </html>
