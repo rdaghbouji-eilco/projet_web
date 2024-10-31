@@ -40,6 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $profilePictureName = uniqid("profile_", true) . '.' . $fileType;
         $uploadPath = $uploadDirectory . $profilePictureName;
 
+        // Fetch the current profile picture filename from the database
+        $query = "SELECT profile_picture FROM personal_info WHERE user_ID = :user_ID";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':user_ID', $user_ID);
+        $stmt->execute();
+        $existingPhoto = $stmt->fetch(PDO::FETCH_ASSOC)['profile_picture'];
+
+        // Delete the existing file if it exists
+        if ($existingPhoto && file_exists($uploadDirectory . $existingPhoto)) {
+            unlink($uploadDirectory . $existingPhoto);
+        }
+
         if (!move_uploaded_file($picture['tmp_name'], $uploadPath)) {
             http_response_code(500);
             echo json_encode(["message" => "Failed to move the uploaded file"]);
