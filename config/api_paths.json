@@ -23,4 +23,5 @@
     "get_locations" : "/repo-projet_web/api/locations/get_locations.php",
     "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php",
     "get_user" : "/repo-projet_web/api/user/get_user.php"
+
 }
