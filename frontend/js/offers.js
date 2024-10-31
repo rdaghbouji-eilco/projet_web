@@ -24,6 +24,11 @@ function showSection(sectionId) {
     document.getElementById(sectionId).style.display = 'block';
 }
 
+// Function to hide a specific section
+function hideSection(sectionId) {
+    document.getElementById(sectionId).style.display = 'none';
+}
+
 // Load the profile and personal information when the page loads
 window.onload = async function() {
     await loadApiPaths();
@@ -55,13 +60,8 @@ async function loadOffers() {
                     <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
                     <p><strong>Position:</strong> ${offer.position_name}</p>
                     <p><strong>Description:</strong> ${offer.description}</p>
-                    <p><strong>Field:</strong> ${offer.field}</p>
-                    <p><strong>Location:</strong> ${offer.location}</p>
-                    <p><strong>Duration:</strong> ${offer.duration}</p>
                     <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
-                    <p><strong>Status:</strong> ${offer.status}</p>
-                    <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
-                    <p><strong>Education Level:</strong> ${offer.education_level}</p>
+                    <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
                 // Append the new offer element to the offers list container
@@ -74,4 +74,39 @@ async function loadOffers() {
     } catch (error) {
         console.error('Error in loadOffers function:', error);
     }
+}
+
+// Function to display offer details
+function showOfferDetails(offerId) {
+    // Assuming offersData is available globally or you fetch it again here
+    // For simplicity, we'll re-fetch the offers data
+    fetch(apiPaths.get_offers)
+        .then(response => response.json())
+        .then(offersData => {
+            const offer = offersData.find(o => o.id === offerId);
+            if (offer) {
+                const offerDetailsContainer = document.getElementById('offerDetailsContainer');
+                offerDetailsContainer.innerHTML = `
+                   <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
+                    <p><strong>Position:</strong> ${offer.position_name}</p>
+                    <p><strong>Description:</strong> ${offer.description}</p>
+                    <p><strong>Field:</strong> ${offer.field}</p>
+                    <p><strong>Location:</strong> ${offer.location}</p>
+                    <p><strong>Duration:</strong> ${offer.duration}</p>
+                    <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
+                    <p><strong>Status:</strong> ${offer.status}</p>
+                    <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
+                    <p><strong>Education Level:</strong> ${offer.education_level}</p>
+                `;
+                hideSection('offersListContainer'); // Hide the offers list section
+                showSection('offre'); // Show the offer details section
+            }
+        })
+        .catch(error => console.error('Error fetching offer details:', error));
+}
+
+// Function to handle "Retour" button click
+function handleRetourButtonClick() {
+    hideSection('offre'); // Hide the offer details section
+    showSection('offersListContainer'); // Show the offers list section
 }
