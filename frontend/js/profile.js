@@ -14,43 +14,24 @@ async function loadApiPaths() {
     }
 }
 
-// Function to show a specific section and hide the others
-function showSection(sectionId) {
-    // Get all sections
-    const sections = document.querySelectorAll('.section');
-    
-    // Hide all sections
-    sections.forEach(section => {
-        section.style.display = 'none';
-    });
-
-    // Show the selected section
-    document.getElementById(sectionId).style.display = 'block';
-}
-
-// Load the profile and personal information when the page loads
+// Load profile and personal information when the page loads
 window.onload = async function() {
-    // Load the API paths first
-    await loadApiPaths();
+    await loadApiPaths();  // Load API paths first
 
-    // Initially show the profile section
-    showSection('profileSection');
-
-    // Load profile information (using existing function to fetch and display data)
-    await loadProfileInfo();
-
+    // Load user information
     await loadUsername();
-
-    // Load personal information (using existing function to fetch and display data)
+    await loadProfileInfo();
     await loadPersonalInfo();
+    await loadCVLink();  // Load CV link dynamically
 };
 
+// Load the username and surname
 async function loadUsername() {
     try {
         const response = await fetch(apiPaths.get_user); // Use dynamic API path from api_paths.json
         const userData = await response.json();
-        document.getElementById('name').textContent = userData.name;
-        document.getElementById('surname').textContent = userData.surname;
+        document.getElementById('name').textContent = userData.name || "N/A";
+        document.getElementById('surname').textContent = userData.surname || "N/A";
     } catch (error) {
         console.error('Error loading name surname:', error);
     }
@@ -61,13 +42,15 @@ async function loadProfileInfo() {
     try {
         const response = await fetch(apiPaths.get_profile); // Use dynamic API path from api_paths.json
         const profileData = await response.json();
-        document.getElementById('educationLevel').textContent = profileData.education_level;
-        document.getElementById('field').textContent = profileData.field;
-        document.getElementById('currentSituation').textContent = profileData.current_situation;
-        document.getElementById('experienceLevel').textContent = profileData.experience_level;
-        document.getElementById('handicap').textContent = profileData.handicap;
-        document.getElementById('currentDegree').textContent = profileData.current_degree;
-        document.getElementById('graduationYear').textContent = profileData.expected_graduation_year;
+        
+        // Use fallback values for undefined fields
+        document.getElementById('educationLevel').textContent = profileData.education_level || "N/A";
+        document.getElementById('field').textContent = profileData.field || "N/A";
+        document.getElementById('currentSituation').textContent = profileData.current_situation || "N/A";
+        document.getElementById('experienceLevel').textContent = profileData.experience_level || "N/A";
+        document.getElementById('handicap').textContent = profileData.handicap ? "Yes" : "No";
+        document.getElementById('currentDegree').textContent = profileData.current_degree || "N/A";
+        document.getElementById('graduationYear').textContent = profileData.expected_graduation_year || "N/A";
     } catch (error) {
         console.error('Error loading profile info:', error);
     }
@@ -79,10 +62,30 @@ async function loadPersonalInfo() {
         const response = await fetch(apiPaths.get_personal_info); // Use dynamic API path from api_paths.json
         const personalData = await response.json();
 
-        document.getElementById('phone').textContent = personalData.phone;
-        document.getElementById('birthdate').textContent = personalData.birthdate;
-        document.getElementById('country').textContent = personalData.country;
+        document.getElementById('phone').textContent = personalData.phone || "N/A";
+        document.getElementById('birthdate').textContent = personalData.birthdate || "N/A";
+        document.getElementById('country').textContent = personalData.country || "N/A";
     } catch (error) {
         console.error('Error loading personal info:', error);
     }
 }
+
+async function loadCVLink() {
+    try {
+        const response = await fetch(apiPaths.get_cv);
+        
+        if (response.ok) {
+            // Set the link to the CV file download path
+            const cvDownloadLink = document.getElementById('cvDownloadLink');
+            cvDownloadLink.href = apiPaths.get_cv; // Set to direct download
+            cvDownloadLink.textContent = "Download CV";
+        } else {
+            // If not OK, check if it’s a JSON error message
+            const errorData = await response.json();
+            console.error("Error loading CV link:", errorData.message);
+        }
+    } catch (error) {
+        console.error("Error loading CV link:", error);
+    }
+}
+
