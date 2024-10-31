@@ -3,6 +3,7 @@
     "login": "/repo-projet_web/api/auth/login.php",
     "register": "/repo-projet_web/api/auth/register.php",
     "get_profile": "/repo-projet_web/api/profile/get_profile_pro.php",
+    "upload_profile_picture": "../../api/profile/upload_profile_picture.php",
     "update_profile": "/repo-projet_web/api/profile/update_profile_pro.php",
     "get_personal_info": "/repo-projet_web/api/profile/get_personal_info.php",
     "update_personal_info": "/repo-projet_web/api/profile/update_personal_info.php",

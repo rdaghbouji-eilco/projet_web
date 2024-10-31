@@ -13,6 +13,45 @@ async function loadApiPaths() {
         console.error('Error loading API paths:', error);
     }
 }
+async function uploadProfilePicture() {
+    const fileInput = document.getElementById('profilePictureInput');
+    const formData = new FormData();
+    formData.append('profile_picture', fileInput.files[0]);
+
+    try {
+        const response = await fetch(apiPaths.upload_profile_picture, {
+            method: 'POST',
+            body: formData,
+            credentials: 'include'
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Update the profile picture display
+            document.getElementById('profileImage').src = `../../uploads/profile_pictures/${result.filename}`;
+            alert('Profile picture updated successfully!');
+        } else {
+            throw new Error(result.message || 'Failed to upload profile picture');
+        }
+    } catch (error) {
+        console.error('Error uploading profile picture:', error);
+    }
+}
+
+// Function to load the profile picture on page load
+async function loadProfilePicture() {
+    try {
+        const response = await fetch(apiPaths.get_personal_info, { credentials: 'include' });
+        const data = await response.json();
+        
+        if (data.profile_picture) {
+            document.getElementById('profileImage').src = `../../uploads/profile_pictures/${data.profile_picture}`;
+        }
+    } catch (error) {
+        console.error('Error loading profile picture:', error);
+    }
+}
 
 // Load profile and personal information when the page loads
 window.onload = async function() {
@@ -22,6 +61,7 @@ window.onload = async function() {
     await loadUsername();
     await loadProfileInfo();
     await loadPersonalInfo();
+    await loadProfilePicture();
     await loadCVLink();  // Load CV link dynamically
 };
 
@@ -56,15 +96,20 @@ async function loadProfileInfo() {
     }
 }
 
-// Fetch personal information
+
+// Fetch personal information including profile picture
 async function loadPersonalInfo() {
     try {
-        const response = await fetch(apiPaths.get_personal_info); // Use dynamic API path from api_paths.json
+        const response = await fetch(apiPaths.get_personal_info);
         const personalData = await response.json();
 
         document.getElementById('phone').textContent = personalData.phone || "N/A";
         document.getElementById('birthdate').textContent = personalData.birthdate || "N/A";
         document.getElementById('country').textContent = personalData.country || "N/A";
+
+        // Set the profile picture if it exists
+        const profilePicture = document.getElementById('profilePicture');
+        profilePicture.src = personalData.profile_picture_url || "profile-placeholder.png";
     } catch (error) {
         console.error('Error loading personal info:', error);
     }
