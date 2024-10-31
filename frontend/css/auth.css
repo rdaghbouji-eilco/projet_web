@@ -59,16 +59,22 @@ main{
     height: 100vh;
     justify-content: center; 
     align-items: center;
+    padding: 6%;
+    padding-top: 65px;
 }
 
 .container {
     background-color: rgba(132, 140, 241, 0.2);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    width: 50%;
+    width: 60%;
     max-width: 700px;
+    min-width: 280px;
     height: auto;
-    padding: 3%;
+    min-height:630px;
+    max-height: 80vh;
+    padding: 2%;
     margin :auto ;
+    margin-top: 1%;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -80,7 +86,10 @@ main{
 .selection{
     display: flex;
     justify-content: space-evenly;
-    width: 100%; 
+    width: 70%; 
+    margin-top: 2%;
+    max-width: 700px;
+    min-width: 290px;
 }
 
 .selection button{
@@ -106,7 +115,7 @@ main{
     padding: 0;
     box-sizing: border-box;
     max-width: 500px;
-    margin: 10% auto 0;
+    margin: 5% auto 0;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -116,7 +125,7 @@ main{
     display: block;
 }
 
-.titre_form h2 {
+.titre_form1 h2 {
     font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
     font-weight: 601;
     font-style: normal;
@@ -124,6 +133,34 @@ main{
     font-size: 1.4rem;
     width: auto;
     margin: auto auto 5%;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+.titre_form2 h2 {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 601;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 1.4rem;
+    width: auto;
+    margin: auto;
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.titre_form2 h3 {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 500;
+    font-style: normal;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    width: auto;
+    margin: 1% auto 5%;
     position: relative;
     justify-content: center;
     text-align: center;
@@ -144,7 +181,7 @@ main{
 
 .section input[type="text"],
 .section input[type="email"],
-.section input[type="password"] {
+.section input[type="password"]{
     width: 100%;
     padding: 10px;
     border-radius: 20px;
@@ -177,7 +214,7 @@ main{
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     border: none;
-    margin-top: 10%;
+    margin-top: 5%;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -244,3 +281,4 @@ footer ul {
     text-align: center;
     padding: 2%;
 }
+
