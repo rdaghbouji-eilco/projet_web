@@ -17,21 +17,29 @@ if (!isset($_SESSION['user_ID'])) {
 
 $user_ID = $_SESSION['user_ID']; // Get the user ID from session
 
-// Handle GET request - fetch user's personal info
+// Handle GET request - fetch user's personal info and profile picture
 $query = "
     SELECT 
-    pr.phone AS phone, 
-    pr.birthdate AS birthdate, 
-    c.country AS country
+        pr.phone AS phone, 
+        pr.birthdate AS birthdate, 
+        c.country AS country,
+        pr.profile_picture AS profile_picture
     FROM personal_info pr 
     LEFT JOIN countries c ON pr.country = c.ID
-    WHERE user_ID = :user_ID";
+    WHERE pr.user_ID = :user_ID";
 $stmt = $db->prepare($query);
 $stmt->bindParam(':user_ID', $user_ID);
 $stmt->execute();
 $personalInfo = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($personalInfo) {
+    // Add the full path to the profile picture if it exists
+    if ($personalInfo['profile_picture']) {
+        $personalInfo['profile_picture_url'] = "../../uploads/profile_pictures/" . $personalInfo['profile_picture'];
+    } else {
+        $personalInfo['profile_picture_url'] = null; // Default to null if no picture is set
+    }
+    
     echo json_encode($personalInfo);
 } else {
     http_response_code(404); // Not Found

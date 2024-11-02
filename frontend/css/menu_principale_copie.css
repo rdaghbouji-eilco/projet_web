@@ -1,38 +1,40 @@
-body{
+/* Global Styles */
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins", Arial, Helvetica, sans-serif; /* Set a global font */
 }
 
 header {
-    background-color:#ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     z-index: 10;
-    width: 100%; 
+    width: 100%;
     height: 65px;
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     padding: 0 20px;
 }
 
 header .logo {
     height: 40px;
-    width: auto; 
+    width: auto;
 }
 
 header ul {
     display: flex;
     justify-content: space-evenly;
     margin: 0;
-    padding: 2% 4%;
+    padding: 0;
     list-style: none;
 }
 
 header ul li {
-    margin: 0 50px;
+    margin: 0 20px; /* Adjusted margin for better spacing */
 }
 
 header ul li a {
@@ -40,27 +42,24 @@ header ul li a {
     font-size: 15px;
     font-weight: 400;
     color: rgb(0, 0, 0);
-    font-family: "Poppins", Arial, Helvetica, "sans-serif";
     transition: transform 0.2s ease;
-    display: inline-block;
 }
 
 header ul li a:hover {
     transform: scale(1.02);
 }
 
-
-.recherche{
-    padding : 0% 10%;
+.recherche {
+    padding: 80px 10% 20px; /* Added top padding to avoid overlap with fixed header */
 }
+
 .search-bar {
-    margin-top: 110px;
     width: 100%;
     height: 160px;
     background-color: #003463;
     display: flex;
     flex-direction: column;
-    align-content: center;
+    align-items: center; /* Centering elements */
     border-radius: 25px;
     padding: 1.5%;
 }
@@ -68,78 +67,54 @@ header ul li a:hover {
 .search-container {
     display: flex;
     width: 100%;
-    height: 55px ;
+    height: 55px;
     background-color: #ffffff;
-    border-radius:15px ;
+    border-radius: 15px;
     border: none;
-    padding: 0% 1%;
+    padding: 0 1%;
 }
 
-.search-input{
+.search-input {
     flex: 1;
-    padding: 5px 3px;
+    padding: 5px 10px; /* Added more padding for better usability */
     border: none;
     border-radius: 15px;
     font-size: 15px;
-    height : 55px;
-    font-family: "Poppins",Arial, Helvetica, "sans-serif";
-    box-sizing: border-box;
     outline: none;
 }
 
-
-
-.material-symbols-outlined{
-    display: flex;
+.material-symbols-outlined {
     align-self: center;
-    margin-right: 1%;
-    
+    margin-right: 5px; /* Adjusted margin for better spacing */
 }
 
-.search-field1{
+.search-field1 {
     display: flex;
     width: 55%;
-    background-color:#ffffff;
+    background-color: #ffffff;
     transition: background-color 0.3s ease;
 }
 
-.search-field1 :hover{
+.search-field1:hover {
     background-color: #ddd;
-}
-
-.search-field{
-    padding: 0;
-    display: flex;
 }
 
 .button-with-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #134068 ;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    height : 50px;
-    margin-top: 1.4%;
-    max-width: 15%;
-    padding: 0.9%;
-    
-    
-    
-}
-
-.button{
     background-color: #134068;
     color: white;
     border: none;
-    font-family: "Poppins",Arial, Helvetica, "sans-serif";
-    font-size: 14px;
-    font-weight: 500;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 1.4%;
+    max-width: 15%;
+    padding: 0.9%;
 }
 
 main {
-    margin-top: 20px;
+    margin-top: 230px; /* Margin to separate from the fixed header */
     padding: 20px;
 }
 
@@ -147,7 +122,6 @@ main {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    
 }
 
 .offer-card {
@@ -155,19 +129,21 @@ main {
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    
+    transition: transform 0.2s ease; /* Added transition for hover effect */
+}
+
+.offer-card:hover {
+    transform: scale(1.02); /* Scale effect on hover */
 }
 
 .offer-card h4 {
     margin-bottom: 5px;
     font-weight: 500;
-    font-family:"Poppins",Arial, Helvetica, "sans-serif";
 }
 
 .offer-card p {
     margin-bottom: 10px;
     color: #666;
-    font-family:"Poppins",Arial, Helvetica, "sans-serif";
 }
 
 .offer-card button {
@@ -178,57 +154,62 @@ main {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family:"Poppins",Arial, Helvetica, "sans-serif";
 }
 
 .offer-card button:hover {
     background-color: #f0f0f0;
 }
 
-footer{
-    background-color: #012545;
-    padding: 1%;
-    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
-    position: relative;
-
+.section {
+    padding: 20px; /* Added padding for section */
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 10px; /* Rounded corners for sections */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
-footer .premiere_partie a{
-    font-style: normal;
+
+.section h2 {
+    margin-bottom: 15px; /* Spacing below section title */
+    font-size: 24px; /* Increased font size for emphasis */
+}
+
+footer {
+    background-color: #012545;
+    padding: 20px; /* Increased padding for footer */
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    position: relative;
+}
+
+footer .premiere_partie a {
     color: white;
     font-size: 0.9rem;
     text-decoration: none;
 }
 
-.colonne h4{
+.colonne h4 {
     color: #ffffff;
 }
 
-
-.colonne{
-    display: flex; 
+.colonne {
+    display: flex;
 }
-footer ul{
+
+footer ul {
     list-style: none;
 }
 
-.colonne ul li{
+.colonne ul li {
     margin-bottom: 2%;
 }
 
-
-
-.premiere_partie{
+.premiere_partie {
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
     padding: 1.5% 0;
-    
-    
 }
 
-.derniere_partie p{
+.derniere_partie p {
     color: white;
-    font-family: "Poppins",Arial, Helvetica, "sans-serif";
     text-align: center;
     padding: 2%;
 }

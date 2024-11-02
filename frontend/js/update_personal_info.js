@@ -28,6 +28,11 @@ async function loadPersonalInfo() {
             document.getElementById('phone').value = personalInfo.phone || '';
             document.getElementById('birthdate').value = personalInfo.birthdate || '';
             document.getElementById('countryDropdown').value = personalInfo.country || '';
+            
+            // Set profile picture if available
+            if (personalInfo.profile_picture) {
+                document.getElementById('profileImage').src = "../../uploads/profile_pictures/" + personalInfo.profile_picture;
+            }
         } else {
             throw new Error('Failed to load personal info');
         }
@@ -64,29 +69,37 @@ async function populateCountryDropdown() {
     }
 }
 
-// Handle form submission
+// Handle form submission with profile picture
 document.getElementById('personalInfoForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
 
-    // Get form data
-    const formData = {
-        phone: document.getElementById('phone').value,
-        birthdate: document.getElementById('birthdate').value,
-        country: document.getElementById('countryDropdown').value
-    };
+    // Prepare form data with both text inputs and file
+    const formData = new FormData();
+    formData.append('phone', document.getElementById('phone').value);
+    formData.append('birthdate', document.getElementById('birthdate').value);
+    formData.append('country', document.getElementById('countryDropdown').value);
+
+    // Add the profile picture if a file is selected
+    const profilePictureInput = document.getElementById('profilePicture');
+    if (profilePictureInput.files.length > 0) {
+        formData.append('profile_picture', profilePictureInput.files[0]);
+    }
 
     try {
         const response = await fetch(apiPaths.update_personal_info, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
             credentials: 'include', // Ensure the session is linked to the user
-            body: JSON.stringify(formData)
+            body: formData // Send form data, including the file
         });
 
         const result = await response.json();
 
         if (response.ok) {
             alert('Personal information updated successfully');
+            // Update profile picture preview if available
+            if (result.profile_picture_url) {
+                document.getElementById('profileImage').src = result.profile_picture_url;
+            }
         } else {
             throw new Error(result.message || 'Error updating personal info');
         }

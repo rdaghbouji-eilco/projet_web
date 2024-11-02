@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> EILCO | Offres de stage </title>
+        <link rel="stylesheet" href="../css/menu_principal.css  ">
+        <script defer src="../js/offers.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        </style>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        
+        <style>
+            .material-symbols-outlined {
+              font-variation-settings:
+              'FILL' 0,
+              'wght' 400,
+              'GRAD' 0,
+              'opsz' 24
+            }
+        </style>
+    </head>
+
+<body>
+	<header>
+		<img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+		<ul>
+            <li><a href="offres_etu.html">Offres</a>
+            </li>
+            <li><a href="entreprises_etu.html">Entreprises</a>
+            </li>
+            <li><a href="evenements_etu.html">Evénements</a>
+            </li>
+            <li><a href="conseils_etu.html">Conseils</a>
+            </li>
+        </ul>
+	</header>
+    <div class="recherche">
+        <div class="search-bar">
+            <div class="search-container">
+                <div class="search-field1">
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="text" class="search-input" placeholder="Rechercher par offre, entreprise ou mots-clé">
+                </div>
+                <div class="search-field">
+                    <span class="material-symbols-outlined">work</span>
+                    <input type="text" class="search-input" placeholder="Contrat">
+                </div>
+                <div class="search-field">
+                    <span class="material-symbols-outlined">location_on</span>
+                    <input type="text" class="search-input" placeholder="Ville, département...">
+                </div>
+            </div>
+            <div class="button-with-icon">
+                <span class="material-symbols-outlined">filter_alt</span>
+                <button class="button" >Tous les filtres</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="offers-list" id="offersListContainer">
+            <!-- This container will dynamically display all enterprise names using JS-->
+        </div>
+        <section id="offre" class="section" >
+            <h2>Détails de l'offre</h2>
+            <div id="offerDetailsContainer">
+                <!-- Offer details will be populated here -->
+            </div>
+            <button onclick="handleRetourButtonClick()">Retour</button>
+
+        </section>
+    </main>
+	<footer>
+        
+        <div class="premiere_partie">
+            <div class="colonne">
+                <ul>
+                    <li><h4>Étudiants</h4>
+                    </li>
+                    <hr>
+                    <li><a href="inscription_etudiant.html"> S'inscrire</a>
+                    </li>
+                    <li><a href="offres_etu.html"> Chercher une offre</a>
+                    </li>
+                    <li><a href="entreprises_etu.html"> Découvrir les entreprises</a>
+                    </li>
+                    <li><a href="evenements_etu.html"> Evénements de recrutement</a>
+                    </li>
+                    <li><a href="conseils_etu.html"> Conseils de recrutement</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>École</h4>
+                    </li>
+                    <hr>
+                    <li><a href="offre_gestionnaire.html"> Le Career Center</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                    <li><a href=""> XXXXXX</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>Contact</h4>
+                    </li>
+                    <hr>
+                    <li><a href="">À propos</a>
+                    </li>
+                    <li><a href=""> EILCO – 50 Rue Ferdinand Buisson</a>
+                    </li>
+                    <li><a href=""> CS 30613 – 62228 CALAIS CEDEX</a>
+                    </li>
+                    <li><a href=""> Direction générale : Tél.: 03 21 17 10 05</a>
+                    </li>
+                </ul> 
+            </div>
+            <div class="colonne">
+                <ul>
+                    <li><h4>Étudiants</h4>
+                    </li>
+                    <hr>
+                    <li><a href=""> Statut</a>
+                    </li>
+                    <li><a href=""> Mentions légales</a>
+                    </li>
+                    <li><a href=""> Politique de confidentialité</a>
+                    </li>
+                </ul> 
+            </div>
+        </div>
+        <hr>
+        <div class="derniere_partie">
+            <p>Tous droits réservés <a href="https://eilco.univ-littoral.fr/">EILCO</a> &copy; 2024 - Site d'orientation professionnelle </p>
+        </div>  
+    </footer>
+
+	
+
+</body>
