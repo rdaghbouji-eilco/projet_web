@@ -4,10 +4,13 @@ let apiPaths = {}; // Global variable to store the API paths
 async function loadApiPaths() {
     try {
         const response = await fetch('../../config/api_paths.json');
-        if (!response.ok) {
-            throw new Error('Failed to load API paths');
-        }
+        if (!response.ok) throw new Error('Failed to load API paths');
         apiPaths = await response.json();
+
+        // Check if apiPaths is correctly loaded
+        if (!apiPaths.get_user || !apiPaths.get_profile) {
+            throw new Error("API paths are missing or incorrectly configured");
+        }
     } catch (error) {
         console.error('Error loading API paths:', error);
     }
@@ -30,15 +33,15 @@ async function uploadProfilePicture() {
             body: formData,
             credentials: 'include'
         });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-            document.getElementById('profilePicture').src = `../../uploads/profile_pictures/${result.filename}`;
-            alert('Profile picture updated successfully!');
-        } else {
-            throw new Error(result.message || 'Failed to upload profile picture');
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Failed to upload profile picture');
         }
+
+        const result = await response.json();
+        document.getElementById('profilePicture').src = `../../uploads/profile_pictures/${result.filename}`;
+        alert('Profile picture updated successfully!');
     } catch (error) {
         console.error('Error uploading profile picture:', error);
     }
@@ -46,15 +49,15 @@ async function uploadProfilePicture() {
 
 // Load the profile picture on page load
 async function loadProfilePicture() {
+    if (!apiPaths.get_personal_info) return; // Early return if API path isn't loaded
     try {
         const response = await fetch(apiPaths.get_personal_info, { credentials: 'include' });
+        if (!response.ok) throw new Error("Failed to fetch personal info");
+
         const data = await response.json();
-        
-        if (data.profile_picture) {
-            document.getElementById('profilePicture').src = `../../uploads/profile_pictures/${data.profile_picture}`;
-        } else {
-            document.getElementById('profilePicture').src = "profile-placeholder.png";
-        }
+        document.getElementById('profilePicture').src = data.profile_picture 
+            ? `../../uploads/profile_pictures/${data.profile_picture}` 
+            : "profile-placeholder.png";
     } catch (error) {
         console.error('Error loading profile picture:', error);
     }
@@ -63,6 +66,8 @@ async function loadProfilePicture() {
 // Load profile and personal information when the page loads
 window.onload = async function() {
     await loadApiPaths();
+    if (Object.keys(apiPaths).length === 0) return; // Stop if API paths not loaded
+
     await loadUsername();
     await loadProfileInfo();
     await loadPersonalInfo();
@@ -72,8 +77,11 @@ window.onload = async function() {
 
 // Load the username and surname
 async function loadUsername() {
+    if (!apiPaths.get_user) return; // Early return if API path isn't loaded
     try {
         const response = await fetch(apiPaths.get_user);
+        if (!response.ok) throw new Error("Failed to fetch user data");
+
         const userData = await response.json();
         document.getElementById('name').textContent = userData.name || "N/A";
         document.getElementById('surname').textContent = userData.surname || "N/A";
@@ -84,10 +92,12 @@ async function loadUsername() {
 
 // Fetch profile information
 async function loadProfileInfo() {
+    if (!apiPaths.get_profile) return; // Early return if API path isn't loaded
     try {
         const response = await fetch(apiPaths.get_profile);
+        if (!response.ok) throw new Error("Failed to fetch profile info");
+
         const profileData = await response.json();
-        
         document.getElementById('educationLevel').textContent = profileData.education_level || "N/A";
         document.getElementById('field').textContent = profileData.field || "N/A";
         document.getElementById('currentSituation').textContent = profileData.current_situation || "N/A";
@@ -102,18 +112,17 @@ async function loadProfileInfo() {
 
 // Fetch personal information including profile picture
 async function loadPersonalInfo() {
+    if (!apiPaths.get_personal_info) return; // Early return if API path isn't loaded
     try {
         const response = await fetch(apiPaths.get_personal_info);
-        const personalData = await response.json();
+        if (!response.ok) throw new Error("Failed to fetch personal info");
 
+        const personalData = await response.json();
         document.getElementById('phone').textContent = personalData.phone || "N/A";
         document.getElementById('birthdate').textContent = personalData.birthdate || "N/A";
         document.getElementById('country').textContent = personalData.country || "N/A";
-
-        // Set the profile picture if it exists
-        const profilePicture = document.getElementById('profilePicture');
-        profilePicture.src = personalData.profile_picture_url 
-            ? `../../uploads/profile_pictures/${personalData.profile_picture_url}` 
+        document.getElementById('profilePicture').src = personalData.profile_picture 
+            ? `../../uploads/profile_pictures/${personalData.profile_picture}` 
             : "profile-placeholder.png";
     } catch (error) {
         console.error('Error loading personal info:', error);
@@ -122,17 +131,14 @@ async function loadPersonalInfo() {
 
 // Load CV link
 async function loadCVLink() {
+    if (!apiPaths.get_cv) return; // Early return if API path isn't loaded
     try {
         const response = await fetch(apiPaths.get_cv);
-        
-        if (response.ok) {
-            const cvDownloadLink = document.getElementById('cvDownloadLink');
-            cvDownloadLink.href = apiPaths.get_cv;
-            cvDownloadLink.textContent = "Download CV";
-        } else {
-            const errorData = await response.json();
-            console.error("Error loading CV link:", errorData.message);
-        }
+        if (!response.ok) throw new Error("Failed to fetch CV");
+
+        const cvDownloadLink = document.getElementById('cvDownloadLink');
+        cvDownloadLink.href = apiPaths.get_cv;
+        cvDownloadLink.textContent = "Download CV";
     } catch (error) {
         console.error("Error loading CV link:", error);
     }

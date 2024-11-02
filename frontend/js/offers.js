@@ -33,6 +33,8 @@ function hideSection(sectionId) {
 window.onload = async function() {
     await loadApiPaths();
     await loadOffers();
+    showSection('offersListContainer');
+    
 };
 
 async function loadOffers() {
@@ -52,20 +54,23 @@ async function loadOffers() {
         if (Array.isArray(offersData)) {
             offersData.forEach(offer => {
                 // Create a new div element for each offer
-                const offerElement = document.createElement('div');
-                offerElement.className = 'offer'; // Optional: add a class for styling
+                const offerCard = document.createElement('div');
+                offerCard.className = 'offer-card'; // Add a class for styling each card
 
-                // Create content for each offer
-                offerElement.innerHTML = `
-                    <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
-                    <p><strong>Position:</strong> ${offer.position_name}</p>
-                    <p><strong>Description:</strong> ${offer.description}</p>
-                    <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
+                // Populate the card with the offer data
+                offerCard.innerHTML = `
+                    <h4>${offer.entreprise_name}</h4>
+                    <p>${offer.position_name}</p>
+                    
+                    <p> <span class="material-symbols-outlined">location_on</span>
+                     ${offer.location}  |
+                      <span class="material-symbols-outlined">work</span> 
+                      Internship ${offer.duration} mois</p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
-                // Append the new offer element to the offers list container
-                offersListContainer.appendChild(offerElement);
+                // Append each offer card to the offers list container
+                offersListContainer.appendChild(offerCard);
             });
         } else {
             console.error('Expected offersData to be an array, but got:', offersData);
@@ -79,7 +84,6 @@ async function loadOffers() {
 // Function to display offer details
 function showOfferDetails(offerId) {
     // Assuming offersData is available globally or you fetch it again here
-    // For simplicity, we'll re-fetch the offers data
     fetch(apiPaths.get_offers)
         .then(response => response.json())
         .then(offersData => {
@@ -104,6 +108,7 @@ function showOfferDetails(offerId) {
         })
         .catch(error => console.error('Error fetching offer details:', error));
 }
+
 
 // Function to handle "Retour" button click
 function handleRetourButtonClick() {
