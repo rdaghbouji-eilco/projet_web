@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> EILCO | Offres de stage </title>
         <link rel="stylesheet" href="../css/menu_principal.css">
-        <script defer src="/frontend/js/menu_principal_filtres.js"></script>
+        <script defer src="../js/menu_principal.js"></script>
         
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -28,7 +28,7 @@
 
 <body>
 	<header>
-		<img src="/Images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+		<img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
 		<ul>
             <li><a href="offres_etu.html">Offres</a>
             </li>
@@ -58,34 +58,85 @@
             </div>
             <div class="button-with-icon">
                 <span class="material-symbols-outlined">filter_alt</span>
-                <button class="button" >Tous les filtres</button>
+                <button class="button" id = "open-filters-btn">Tous les filtres</button>
             </div>
         </div>
     </div>
-    <main>
-        <div class="offers-list">
-            <div class="offer-card">
-                <h4>CFA INSTA</h4>
-                <p>Apprenti Chef de Projet Informatique - IA et Objets Connectés H/F</p>
-                <p>📍 Paris - 75 | 11/10/2024</p>
-                <button>Voir l'offre</button>
-            </div>
 
-            <div class="offer-card">
-                <h4>Axa Group Operations</h4>
-                <p>Project Manager Apprenticeship H/F</p>
-                <p>📍 Paris - 75 | 16/09/2024</p>
-                <button>Voir l'offre</button>
-            </div>
+    <!-- Overlay background -->
+    <div id="overlay"></div>
 
-            <div class="offer-card">
-                <h4>Digital School of Paris</h4>
-                <p>Alternance → Chef de Projet Digital - Community Manager H/F</p>
-                <p>📍 Paris - 75 | 15/10/2024</p>
-                <button>Voir l'offre</button>
+    <!-- Fenêtre des filtres -->
+    <div id="popup-filters" >
+        <h3>Filtres</h3>
+        <div class="popup-content">
+            <label for="duration">Durée du stage</label>
+            <div id="duration" class="checkbox-group"></div>
+        </div>
+        <div class="popup-content">
+            <label for="experience">Niveau d'expérience</label>
+            <div id="experience" class="checkbox-group"></div>
+        </div>
+        <div class="popup-content">
+            <label for="language">Langue</label>
+            <select id="language"></select>
+        </div>
+        <div class="popup-content">
+            <label for="field">Domaine d'étude</label>
+            <select id="field"></select>
+        </div>
+        <div class="popup-content">
+            <label for="educationLevel">Niveau d'étude</label>
+            <div id="educationLevel" class="checkbox-group"></div>
+        </div>
+        <div class="popup-content">
+            <label for="country">Pays</label>
+            <select id="country"></select>
+        </div>
+        <div class="popup-content">
+            <label for="startDate">Date de début</label>
+            <input type="date" id="startDate" name="startDate">
+        </div>
+        <div class="popup-content">
+            <label>Télétravail</label>
+            <div id="telework" class="checkbox-group">
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="telework-hybrid" name="telework" value="hybrid">
+                    <label for="telework-hybrid">Hybride</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="telework-yes" name="telework" value="yes">
+                    <label for="telework-yes">Oui</label>
+                </div>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="telework-no" name="telework" value="no">
+                    <label for="telework-no">Non</label>
+                </div>
             </div>
         </div>
+        <div class="popup-content">
+            <label for="jobType">Type de contrat</label>
+            <div id="jobType" class="checkbox-group"></div>
+        </div>
+        <div class="popup-content">
+            <button id="apply-filters" class="apply-filters-button">Appliquer les filtres</button>
+        </div>
+    </div>
+
+
+    <main>
+        <div class="offers-list" id="offersListContainer">
+            <!-- This container will dynamically display all enterprise names using JS-->
+        </div>
+        <section id="offre" class="section" >
+            <h2>Détails de l'offre</h2>
+            <div id="offerDetailsContainer" class="offer-details">
+                <!-- Offer details will be populated here -->
+            </div>
+            <button class="retour-button" onclick="handleRetourButtonClick() "  >Retour</button>
+        </section>
     </main>
+
 	<footer>
         
         <div class="premiere_partie">

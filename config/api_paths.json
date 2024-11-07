@@ -7,6 +7,8 @@
     "update_profile": "/repo-projet_web/api/profile/update_profile_pro.php",
     "get_personal_info": "/repo-projet_web/api/profile/get_personal_info.php",
     "update_personal_info": "/repo-projet_web/api/profile/update_personal_info.php",
+    "get_languages" : "/repo-projet_web/api/languages/get_languages.php",
+    "get_durations" : "/repo-projet_web/api/durations/get_durations.php",
     "get_education_levels": "/repo-projet_web/api/education_levels/get_education_levels.php",
     "get_fields": "/repo-projet_web/api/fields/get_fields.php",
     "get_experience_levels": "/repo-projet_web/api/experience_levels/get_experience_levels.php",

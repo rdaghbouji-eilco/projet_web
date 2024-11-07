@@ -52,6 +52,98 @@ async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'SÃ
     }
 }
 
+// Function to show a specific section and hide the others
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.style.display = 'none';
+    });
+    document.getElementById(sectionId).style.display = 'block';
+}
+
+// Function to hide a specific section
+function hideSection(sectionId) {
+    document.getElementById(sectionId).style.display = 'none';
+}
+
+// Function to handle "Retour" button click
+function handleRetourButtonClick() {
+    hideSection('offre'); // Hide the offer details section
+    showSection('offersListContainer'); // Show the offers list section
+}
+
+async function loadOffers() {
+    try {
+        const response = await fetch(apiPaths.get_offers); // Use dynamic API path from api_paths.json
+        if (!response.ok) {
+            throw new Error(`Failed to fetch offers: ${response.status}`);
+        }
+
+        const offersData = await response.json();
+        console.log("Offers Data:", offersData); // Log the fetched data to check its structure
+
+        const offersListContainer = document.getElementById('offersListContainer');
+        offersListContainer.innerHTML = ''; // Clear previous data
+
+        // Check if the data is in the expected format
+        if (Array.isArray(offersData)) {
+            offersData.forEach(offer => {
+                // Create a new div element for each offer
+                const offerCard = document.createElement('div');
+                offerCard.className = 'offer-card'; // Add a class for styling each card
+
+                // Populate the card with the offer data
+                offerCard.innerHTML = `
+                    <h4>${offer.entreprise_name}</h4>
+                    <p>${offer.position_name}</p>
+                    
+                    <p> <span class="material-symbols-outlined">location_on</span>
+                     ${offer.location}  |
+                      <span class="material-symbols-outlined">work</span> 
+                      Internship ${offer.duration} mois</p>
+                    <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
+                `;
+
+                // Append each offer card to the offers list container
+                offersListContainer.appendChild(offerCard);
+            });
+        } else {
+            console.error('Expected offersData to be an array, but got:', offersData);
+        }
+
+    } catch (error) {
+        console.error('Error in loadOffers function:', error);
+    }
+}
+
+// Function to display offer details
+function showOfferDetails(offerId) {
+    // Assuming offersData is available globally or you fetch it again here
+    fetch(apiPaths.get_offers)
+        .then(response => response.json())
+        .then(offersData => {
+            const offer = offersData.find(o => o.id === offerId);
+            if (offer) {
+                const offerDetailsContainer = document.getElementById('offerDetailsContainer');
+                offerDetailsContainer.innerHTML = `
+                   <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
+                    <p><strong>Position:</strong> ${offer.position_name}</p>
+                    <p><strong>Description:</strong> ${offer.description}</p>
+                    <p><strong>Field:</strong> ${offer.field}</p>
+                    <p><strong>Location:</strong> ${offer.location}</p>
+                    <p><strong>Duration:</strong> ${offer.duration}</p>
+                    <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
+                    <p><strong>Status:</strong> ${offer.status}</p>
+                    <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
+                    <p><strong>Education Level:</strong> ${offer.education_level}</p>
+                `;
+                hideSection('offersListContainer'); // Hide the offers list section
+                showSection('offre'); // Show the offer details section
+            }
+        })
+        .catch(error => console.error('Error fetching offer details:', error));
+}
+
 // General function to populate a checkbox group with data from an API
 async function populateCheckboxGroup(apiUrl, containerId, dataKey) {
     try {
@@ -143,3 +235,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("Lieu: ", location);
     });
 });
+
+// Load the profile and personal information when the page loads
+window.onload = async function() {
+    await loadApiPaths();
+    await loadOffers();
+    showSection('offersListContainer');
+    
+};
