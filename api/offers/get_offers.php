@@ -12,28 +12,20 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Requête SQL pour récupérer les offres d'emploi
-$query = "
-        SELECT 
-            jo.entreprise_name AS entreprise_name, 
-            jo.position_name AS position_name, 
-            jo.description AS description, 
-            f.field_name AS field, 
-            l.location AS location, 
-            jt.job_type AS job_type, 
-            d.Duration AS duration, 
-            jo.publish_date AS publish_date, 
-            jo.status AS status, 
-            exp.experience_level AS experience_level, 
-            el.education_level AS education_level
-        FROM job_offers jo 
-        LEFT JOIN fields f ON jo.field = f.ID
-        LEFT JOIN education_levels el ON jo.education_level = el.ID
-        LEFT JOIN experience_levels exp ON jo.experience_level = exp.ID
-        LEFT JOIN Locations l ON jo.location = l.ID
-        LEFT JOIN job_types jt ON jo.job_type = jt.ID
-        LEFT JOIN durations d ON jo.duration = d.ID
-          ";
-
+$query = "SELECT 
+            ID, 
+            entreprise_name, 
+            position_name, 
+            description, 
+            field, 
+            location, 
+            job_type, 
+            duration, 
+            publish_date, 
+            status, 
+            experience_level, 
+            education_level 
+          FROM job_offers";
 $stmt = $db->prepare($query);
 $stmt->execute();
 
