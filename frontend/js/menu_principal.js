@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const popupFilters = document.getElementById('popup-filters');
     const overlay = document.getElementById('overlay');
     const applyFiltersBtn = document.getElementById('apply-filters');
+    const closeButton = document.querySelector('.close-button'); // Select the close "X" button
 
     await loadApiPaths(); // Ensure API paths are loaded first
 
@@ -208,6 +209,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Close popup when clicking on overlay
     overlay.addEventListener('click', function () {
+        popupFilters.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+
+    // Close popup when clicking on the "X" button
+    closeButton.addEventListener('click', function () {
         popupFilters.classList.remove('active');
         overlay.style.display = 'none';
     });

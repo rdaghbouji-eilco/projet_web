@@ -56,10 +56,10 @@
                     <input type="text" class="search-input" placeholder="Ville, département...">
                 </div>
             </div>
-            <div class="button-with-icon">
+            <button class="button-with-icon" id="open-filters-btn">
                 <span class="material-symbols-outlined">filter_alt</span>
-                <button class="button" id = "open-filters-btn">Tous les filtres</button>
-            </div>
+                <span class="button-text">Tous les filtres</span>
+            </button>
         </div>
     </div>
 
@@ -68,7 +68,10 @@
 
     <!-- Fenêtre des filtres -->
     <div id="popup-filters" >
-        <h3>Filtres</h3>
+        <button class="close-button" onclick="closePopup()">×</button>
+        <h3>Plus de critères</h3>
+        <hr>
+        <br>
         <div class="popup-content">
             <label for="duration">Durée du stage</label>
             <div id="duration" class="checkbox-group"></div>
@@ -79,11 +82,11 @@
         </div>
         <div class="popup-content">
             <label for="language">Langue</label>
-            <select id="language"></select>
+            <select id="language" class="selection"></select>
         </div>
         <div class="popup-content">
             <label for="field">Domaine d'étude</label>
-            <select id="field"></select>
+            <select id="field" class="selection"></select>
         </div>
         <div class="popup-content">
             <label for="educationLevel">Niveau d'étude</label>
@@ -91,7 +94,7 @@
         </div>
         <div class="popup-content">
             <label for="country">Pays</label>
-            <select id="country"></select>
+            <select id="country" class="selection"></select>
         </div>
         <div class="popup-content">
             <label for="startDate">Date de début</label>
@@ -118,7 +121,7 @@
             <label for="jobType">Type de contrat</label>
             <div id="jobType" class="checkbox-group"></div>
         </div>
-        <div class="popup-content">
+        <div class="popup-content-btn">
             <button id="apply-filters" class="apply-filters-button">Appliquer les filtres</button>
         </div>
     </div>
