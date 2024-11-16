@@ -1,7 +1,7 @@
 <?php
 // Database connection
 class Database {
-    private $host = 'localhost';
+    private $host = '127.0.0.1';
     private $db_name = 'db_projet_web';
     private $username = 'root';
     private $password = '';
