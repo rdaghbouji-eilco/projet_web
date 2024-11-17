@@ -74,7 +74,8 @@ function handleRetourButtonClick() {
 
 async function loadOffers() {
     try {
-        const response = await fetch(apiPaths.get_offers); // Use dynamic API path from api_paths.json
+        const fullUrl = `${baseUrl}${apiPaths.get_offers}`;
+        const response = await fetch(fullUrl); // Use dynamic API path from api_paths.json
         if (!response.ok) {
             throw new Error(`Failed to fetch offers: ${response.status}`);
         }
@@ -119,7 +120,8 @@ async function loadOffers() {
 // Function to display offer details
 function showOfferDetails(offerId) {
     // Assuming offersData is available globally or you fetch it again here
-    fetch(apiPaths.get_offers)
+    const fullUrl = `${baseUrl}${apiPaths.get_offers}`;
+    fetch(fullUrl)
         .then(response => response.json())
         .then(offersData => {
             const offer = offersData.find(o => o.id === offerId);
