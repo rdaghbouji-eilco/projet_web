@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -6,11 +7,13 @@ include_once '../../config/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
-if (!isset($id)) {
+if (!isset($_SESSION['user_ID'])) {
     http_response_code(400);
-    echo json_encode(['message' => 'User ID is required']);
+    echo json_encode(['message' => 'User id is required']);
     exit();
 }
+
+$id = $_SESSION['user_ID']; // Get the user  IDfrom session
 
 $query = "SELECT * FROM users WHERE ID = :id";
 $stmt = $db->prepare($query);

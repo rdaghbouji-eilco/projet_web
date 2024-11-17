@@ -8,7 +8,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Fetch all countries from the database
-$query = "SELECT * FROM job_offer_status";
+$query = "SELECT * FROM durations";
 $stmt = $db->prepare($query);
 $stmt->execute();
 

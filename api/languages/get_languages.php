@@ -8,7 +8,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Fetch all countries from the database
-$query = "SELECT * FROM spoken_languages";
+$query = "SELECT * FROM languages";
 $stmt = $db->prepare($query);
 $stmt->execute();
 

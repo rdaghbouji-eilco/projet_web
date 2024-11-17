@@ -77,6 +77,8 @@ document.getElementById('profileForm').addEventListener('submit', async function
         current_degree: document.getElementById('currentDegreeDropdown').value,
         expected_graduation_year: document.getElementById('graduationYearDropdown').value
     };
+    
+    formData.handicap = parseInt(document.getElementById('handicapDropdown').value, 10);
 
     // Afficher les données dans la console pour vérifier
     console.log("Données du formulaire :", formData);

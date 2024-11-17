@@ -1,0 +1,291 @@
+/* Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    background-color: rgb(246, 246, 246);
+}
+
+header {
+    background-color:#ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    position: fixed;
+    z-index: 10;
+    width: 100%; 
+    height: 65px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto; 
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 2% 4%;
+    list-style: none;
+}
+
+header ul li {
+    margin: 0 50px;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    transform: scale(1.02);
+}
+
+
+.recherche {
+    padding: 100px 10% 20px;
+}
+
+.search-bar {
+    width: 100%;
+    height: 160px;
+    background-color: #003463;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    padding: 1.5%;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    height: 55px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 0 1%;
+}
+
+.search-input {
+    flex: 1;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    outline: none;
+}
+
+.material-symbols-outlined {
+    align-self: center;
+    margin: 5px;
+}
+
+.search-field1,
+.search-field {
+    display: flex;
+    width: 33%;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.search-field1:hover,
+.search-field:hover {
+    background-color: #ddd;
+}
+
+.button-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #134068 ;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    height : 50px;
+    margin-top: 1.4%;
+    max-width: 15%;
+    padding: 0.9%;
+    
+    
+    
+}
+
+.button{
+    background-color: #134068;
+    color: white;
+    border: none;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    font-size: 14px;
+    font-weight: 500;
+}
+main {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Styling for the container holding all offers */
+.offers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+}
+
+/* Individual offer card styling */
+.offer-card {
+    width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+    margin-bottom: 10px;
+    border: 2px solid rgb(222, 222, 222);
+    margin-bottom: 10px;
+    margin-left:auto; margin-right:auto;
+}
+
+.offer-card h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    
+}
+
+.offer-card p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.offer-card .view-offer-button {
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    background-color: rgb(222, 222, 222);
+    color: #000000;
+    border:none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.offer-card .view-offer-button:hover {
+    background-color: #979797;
+}
+
+.offer-card:hover {
+    transform: scale(1.01);
+    border: 2px solid rgb(158, 158, 158);
+}
+
+
+.offer-details {
+    width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+    margin-bottom: 10px;
+    border: 2px solid rgb(222, 222, 222);
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.offer-details h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.offer-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+
+
+.retour-button {
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    background-color: rgb(222, 222, 222);
+    color: #000000;
+    border:none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.retour-button:hover {
+    background-color: #979797;
+}
+
+
+
+
+footer{
+    background-color: #012545;
+    padding: 1%;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    position: relative;
+
+}
+footer .premiere_partie a{
+    font-style: normal;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.colonne h4{
+    color: #ffffff;
+}
+
+
+.colonne{
+    display: flex; 
+}
+footer ul{
+    list-style: none;
+}
+
+.colonne ul li{
+    margin-bottom: 2%;
+}
+
+
+
+.premiere_partie{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 1.5% 0;
+    
+    
+}
+
+.derniere_partie p{
+    color: white;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    text-align: center;
+    padding: 2%;
+}

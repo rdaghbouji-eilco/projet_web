@@ -1,5 +1,5 @@
-
-* {
+/* Global Styles */
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -11,12 +11,14 @@ html, body {
     overflow-x: hidden; 
 }
 
+/* Header Styles */
 header {
     background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
     z-index: 10;
     width: 100%; 
-    height: 60px;
+    height: 65px;
     top: 0;
     display: flex;
     align-items: center;
@@ -33,12 +35,12 @@ header ul {
     display: flex;
     justify-content: space-evenly;
     margin: 0;
-    padding: 0;
+    padding: 2% 4%;
     list-style: none;
 }
 
 header ul li {
-    margin: 0 20px;
+    margin: 0 50px;
 }
 
 header ul li a {
@@ -52,46 +54,289 @@ header ul li a {
 }
 
 header ul li a:hover {
-    transform: scale(1.1);
+    transform: scale(1.02);
+}
+
+/* Search Bar Styles */
+.recherche{
+    padding : 0% 10%;
 }
 
 .search-bar {
-    margin-top: 70px;
+    margin-top: 110px;
     width: 100%;
-    height: 70px;
-    background-color: #6aa2ff;
+    min-width: 900px;
+    height: 160px;
+    background-color: #003463;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-content: center;
+    border-radius: 25px;
+    padding: 1.5%;
 }
 
 .search-container {
     display: flex;
-    gap: 10px;
-    width: 60%;
-    max-width: 800px;
+    width: 100%;
+    min-width: 200px;
+    height: 55px ;
+    background-color: #ffffff;
+    border-radius:15px ;
+    border: none;
+    padding: 0% 1%;
 }
 
-.search-input, .city-input {
-    flex: 10;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-    height : 40px;
+.search-input{
+    flex: 1;
+    padding: 5px 3px;
+    border: none;
+    border-radius: 15px;
+    font-size: 15px;
+    height : 55px;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    box-sizing: border-box;
+    outline: none;
 }
 
-.search-button {
-    padding: 15px 20px;
-    background-color: black;
+.material-symbols-outlined{
+    display: flex;
+    align-self: center;
+    margin-right: 1%;
+}
+
+.search-field1{
+    display: flex;
+    width: 55%;
+    background-color:#ffffff;
+    border-radius: 15px;
+    min-height: 55px;
+    transition: background-color 0.3s ease;
+}
+
+.search-field1 :hover{
+    background-color: #ddd;
+}
+
+.search-field{
+    padding: 0;
+    display: flex;
+}
+
+/* Style for the combined button */
+.button-with-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #134068;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
+    height: 50px;
+    margin-top: 1%;
+    max-width: 12%;
+    min-width: 100px;
+    padding: 0.8% 1.5%;
+    transition: background-color 0.2s;
     cursor: pointer;
-    height : 40px;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.button-with-icon:hover {
+    background-color: #174f81;
 }
 
 
+.button-with-icon .material-symbols-outlined {
+    font-size: 1.2rem; /* Adjust icon size */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+
+.button-with-icon .button-text {
+    color: #ffffff;
+}
+
+
+
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+    z-index: 5;
+    display: none; /* Keep hidden by default */
+}
+
+.close-button {
+    position: absolute;
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    top: 20px;
+    right: 15px;
+    background: white;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1;
+    padding: 1% 1.5%;
+    border-radius: 15%;
+}
+
+.close-button:hover {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+#popup-filters {
+    width: 100%;  
+    max-width: 700px;
+    border: 0.5px solid rgb(0, 0, 0);
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    max-height: 90vh;
+    overflow-y: auto; /* Activer le défilement vertical */ 
+}
+
+#popup-filters h3{
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 601;
+    font-style: normal;
+    color: #113b61;
+    font-size: 1.4rem;
+    width: auto;
+    position: relative;
+    margin-bottom: 5%;
+}
+
+/* Container for each checkbox group */
+.checkbox-group {
+    display: flex;
+    gap: 15px; /* Space between checkboxes */
+    flex-wrap: wrap; /* Wrap checkboxes to the next line if space is limited */
+}
+
+/* Individual checkbox wrapper to keep label and checkbox together */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+/* Optional: Increase space between label and checkbox */
+.checkbox-wrapper label {
+    margin-left: 5px;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    cursor: pointer;
+}
+
+/* Hide the default checkbox appearance */
+.checkbox-wrapper input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none; /* For Safari */
+    width: 20px;
+    height: 20px;
+    border: 1px solid #134068; /* Border color of the checkbox */
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    background-color: #f0f0f0; /* Unchecked background color */
+}
+
+/* Checked background color */
+.checkbox-wrapper input[type="checkbox"]:checked {
+    background-color: #134068; /* Color for checked background */
+    border:none;
+}
+
+/* Optional: Checkmark styling */
+.checkbox-wrapper input[type="checkbox"]:checked::after {
+    content: '✔'; /* Unicode character for checkmark */
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.checkbox-wrapper label {
+    font-size: 1rem; /* Optional: adjust label size to match checkbox */
+    margin-left: 8px; /* Adjust spacing between checkbox and label */
+}
+
+
+.popup-content{
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    margin-bottom: 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-content > label{
+    font-weight: 600;
+    align-self:flex-start;
+    margin-bottom: 2%;
+
+}
+.selection, #startDate {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    padding: 8px; /* Ajustez selon vos besoins */
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    box-sizing: border-box;
+    appearance: none;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+
+
+.apply-filters-button {
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-size: 0.9rem;
+    padding: 12px 22px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color: #134068;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: none;
+    margin-top: 5%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup-content-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.apply-filters-button:hover {
+    background-color: #19568c;
+    color: #ffffff;
+}
+
+
+/* Main Content Styles */
 main {
     margin-top: 20px;
     padding: 20px;
@@ -101,84 +346,179 @@ main {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 20px;
 }
 
+/* Individual offer card styling */
 .offer-card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+    margin-bottom: 10px;
+    border: 2px solid rgb(222, 222, 222);
+    margin-bottom: 10px;
+    margin-left:auto; margin-right:auto;
 }
 
 .offer-card h4 {
-    margin-bottom: 5px;
-    font-weight: 500;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+    
 }
 
 .offer-card p {
-    margin-bottom: 10px;
-    color: #666;
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-.offer-card button {
-    padding: 10px 15px;
-    background-color: white;
-    color: black;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.offer-card .view-offer-button {
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    background-color: rgb(222, 222, 222);
+    color: #000000;
+    border:none;
+    padding: 8px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
 }
 
-.offer-card button:hover {
-    background-color: #f0f0f0;
+.offer-card .view-offer-button:hover {
+    background-color: #979797;
 }
 
-footer{
-    background-color: #0f3455;
+.offer-card:hover {
+    transform: scale(1.01);
+    border: 2px solid rgb(158, 158, 158);
+}
+.offer-details {
+    width: 1200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+    margin-bottom: 10px;
+    border: 2px solid rgb(222, 222, 222);
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.offer-details h4 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.offer-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.retour-button {
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    background-color: rgb(222, 222, 222);
+    color: #000000;
+    border:none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.retour-button:hover {
+    background-color: #979797;
+}
+
+
+
+
+
+
+
+/* Footer Styles */
+footer {
+    background-color: #012545;
     padding: 1%;
-    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif";
     position: relative;
-
 }
-footer .premiere_partie a{
+
+footer .premiere_partie a {
     font-style: normal;
     color: white;
     font-size: 0.9rem;
     text-decoration: none;
 }
 
-.colonne h4{
+.colonne h4 {
     color: #ffffff;
 }
 
-
-.colonne{
-    display: flex; 
+.colonne {
+    display: flex;
 }
-footer ul{
+
+footer ul {
     list-style: none;
 }
 
-.colonne ul li{
+.colonne ul li {
     margin-bottom: 2%;
 }
 
-
-
-.premiere_partie{
+.premiere_partie {
     display: flex;
     gap: 10px;
     justify-content: space-evenly;
     padding: 1.5% 0;
-    
-    
 }
 
-.derniere_partie p{
+.derniere_partie p {
     color: white;
     font-family: "Poppins",Arial, Helvetica, "sans-serif";
     text-align: center;
     padding: 2%;
 }
 
+.active {
+    display: block !important;
+}
+
+
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .search-bar {
+        min-width: 700px;
+    }
+    
+    .search-container {
+        width: 100%;
+    }
+
+    .button-with-icon {
+        max-width: 20%;
+    }
+
+    .offer-card {
+        padding: 15px;
+    }
+
+    footer .premiere_partie {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}

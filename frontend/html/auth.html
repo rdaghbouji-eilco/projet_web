@@ -1,14 +1,12 @@
-<!-- forgotten_password.html -->
 <!DOCTYPE html>
-<html lang="fr">
-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mot de passe oublié</title>
-    <link rel="stylesheet" href="../css/forgot_password.css">
-    <script defer src="../js/forgot_password.js"></script>
+    <title> Inscription | Connexion </title>
+    <link rel="stylesheet" href="../css/auth.css">
+    <script defer type="text/javascript" src="../js/auth.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -20,7 +18,6 @@
 </head>
 
 <body>
-
     <header>
         <img src="/Images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
         <ul>
@@ -32,23 +29,71 @@
     </header>
 
     <main>
+        <div class="fond"></div>
 
-        <section class="container">
-            <h1>Un coup de main pour retrouver votre mot de passe ?</h1>
-            <form id="forgotPasswordForm">
-                
-                <label for="email">Saisissez votre email pour choisir un nouveau mot de passe</label>
-                <input type="email" id="email" name="email" placeholder="Entrez votre email.." required>
-                
-                <button type="submit">Envoyer</button>
-            </form>
+        <div class="container">
 
-            <p id="message" style="color: green;"></p>
-            <p id="errorMsg" style="color: red;"></p>
+            <!-- Navigation Buttons -->
+            <nav class="selection">
+                <button onclick="showSection('formulaire_inscription')">Inscription</button>
+                <button onclick="showSection('formulaire_connexion')">Connexion</button>
+            </nav>
 
-        </section>
+            <section id="formulaire_inscription" class="section">
+                <div class="titre_form1">
+                    <h2>Inscrivez-vous pour trouver votre voie !</h2>
+                </div>
+                <form id="signUpForm">
+                    <div>
+                        <label for="signUpEmail" class="label">Email</label>
+                        <input type="email" id="signUpEmail" name="email" required inputmode="email" />
+                    </div>
+
+                    <div>
+                        <label for="lastName" class="label">Nom</label>
+                        <input type="text" id="lastName" name="surname" required />
+                    </div>
+
+                    <div>
+                        <label for="firstName" class="label">Prénom</label>
+                        <input type="text" id="firstName" name="name" required />
+                    </div>
+
+                    <div class="mdp">
+                        <label for="signUpPassword" class="label">Mot de passe</label>
+                        <input type="password" id="signUpPassword" name="password"
+                            title="Doit contenir au moins 8 caractères, dont un chiffre, une lettre majuscule, une lettre minuscule et un caractère spécial (@$!%*?&)"
+                            autocomplete="new-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&]).{8,}"
+                            required />
+                        <p>Votre mot de passe doit contenir au moins 12 caractères, et être composé de majuscules, de
+                            minuscules et chiffres.</p>
+                    </div>
+
+                    <button type="submit" class="btn-submit">M'inscrire</button>
+                    <p id="signUpErrorMsg" style="color: red;" class="error"></p>
+                </form>
+            </section>
+
+            <section id="formulaire_connexion" class="section">
+                <div class="titre_form2">
+                    <h2>Ravi de vous retrouver sur EILCO !</h2>
+                    <h3>Retrouvez toutes vos offres et candidatures en vous connectant :</h3>
+                </div>
+                <form id="loginForm">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required><br><br>
+
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" name="password" required><br><br>
+
+                    <p id="loginErrorMsg" style="color: red;" class="error"></p>
+                    <button type="submit" class="btn-submit">Se connecter</button>
+                    <p class="mdp_oublie"><a href="forgot_password.html">Mot de passe oublié ?</a></p>
+                </form>
+            </section>
+        </div>
+
     </main>
-
     <footer>
 
         <div class="premiere_partie">
@@ -124,6 +169,6 @@
         </div>
     </footer>
 
-
 </body>
+
 </html>

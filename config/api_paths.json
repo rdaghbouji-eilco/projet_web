@@ -3,9 +3,12 @@
     "login": "/repo-projet_web/api/auth/login.php",
     "register": "/repo-projet_web/api/auth/register.php",
     "get_profile": "/repo-projet_web/api/profile/get_profile_pro.php",
+    "upload_profile_picture": "../../api/profile/upload_profile_picture.php",
     "update_profile": "/repo-projet_web/api/profile/update_profile_pro.php",
     "get_personal_info": "/repo-projet_web/api/profile/get_personal_info.php",
     "update_personal_info": "/repo-projet_web/api/profile/update_personal_info.php",
+    "get_languages" : "/repo-projet_web/api/languages/get_languages.php",
+    "get_durations" : "/repo-projet_web/api/durations/get_durations.php",
     "get_education_levels": "/repo-projet_web/api/education_levels/get_education_levels.php",
     "get_fields": "/repo-projet_web/api/fields/get_fields.php",
     "get_experience_levels": "/repo-projet_web/api/experience_levels/get_experience_levels.php",
@@ -21,5 +24,8 @@
     "get_statuses": "/repo-projet_web/api/statuses/get_statuses.php",
     "get_job_types" : "/repo-projet_web/api/job_types/get_job_types.php",
     "get_locations" : "/repo-projet_web/api/locations/get_locations.php",
-    "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php"
+    "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php",
+    "get_cv" : "/repo-projet_web/api/profile/get_cv.php",
+    "get_user" : "/repo-projet_web/api/user/get_user.php"
+    
 }

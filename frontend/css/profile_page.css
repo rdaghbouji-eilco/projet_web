@@ -1,0 +1,262 @@
+/* Basic resets */
+header {
+    background-color:#ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    position: fixed;
+    z-index: 10;
+    width: 100%; 
+    height: 65px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto; 
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header ul li {
+    margin: 0 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    transform: scale(1.02);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/* Main container */
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* Layout setup */
+.two-columns {
+    display: flex;
+    gap: 20px;
+}
+
+/* Left section (Profile Section) */
+.left-section {
+    flex: 2; /* Takes up one part of the flex container */
+}
+
+/* Right section (Personal Info & CV Section) */
+.right-section {
+    flex: 4; /* Takes up two parts of the flex container for more space */
+}
+
+/* Box styling for sections */
+.box {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Profile Section */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+}
+
+.profile-info {
+    color: #012545;
+}
+
+
+.profile-info p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 4px;
+}
+
+
+.profile-details {
+    margin-top: 20px; 
+    line-height: 1.5; 
+}
+
+
+.profile-details p {
+    margin-bottom: 12px; 
+    font-size: 16px; 
+    color: #333; 
+}
+
+
+
+
+/* Personal Info Section */
+#personalInfoSection h2,
+#cvSection h2 {
+    color: #012545;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#personalInfoSection p,
+#cvSection p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* Buttons */
+.custom-button {
+    margin-top: 15px; 
+    padding: 10px 15px; 
+    background-color: #f9f9f9; 
+    color: #333;
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.custom-button:hover {
+    background-color: #dedede ;
+}
+
+/* Utility classes */
+.text-muted {
+    color: #777;
+    font-size: 13px;
+}
+
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+.mt-3 {
+    margin-top: 12px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Footer styles */
+footer{
+    background-color: #012545;
+    padding: 1%;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    position: relative;
+
+}
+footer .premiere_partie a{
+    font-style: normal;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.colonne h4{
+    color: #ffffff;
+}
+
+
+.colonne{
+    display: flex; 
+}
+footer ul{
+    list-style: none;
+}
+
+.colonne ul li{
+    margin-bottom: 2%;
+}
+
+
+
+.premiere_partie{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 1.5% 0;
+    
+    
+}
+
+.derniere_partie p{
+    color: white;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    text-align: center;
+    padding: 2%;
+}
+
+
+@media all and(min-width: 800px){
+    .right-section{
+        flex:3;
+    }
+    .left-section{
+        order:1;
+    }
+    .right-section{
+        order:2;
+    }
+    .footer{
+        order:4;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .two-columns {
+        flex-direction: column; /* Stack vertically on small screens */
+    }
+
+    .left-section, .right-section {
+        margin-bottom: 20px; /* Space between sections */
+    }
+
+    .colonne {
+        width: 100%; /* Full width for columns in footer on mobile */
+        margin-bottom: 20px;
+    }
+}
