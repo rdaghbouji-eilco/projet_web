@@ -72,22 +72,16 @@ function handleRetourButtonClick() {
     showSection('offersListContainer'); // Show the offers list section
 }
 
-async function loadOffers(filters = {}) {
+async function loadOffers() {
     try {
-        // Build the query string using the helper function
-        const queryString = buildQueryString(filters);
-
-        // Append query string to the API URL
-        const fullUrl = `${baseUrl}${apiPaths.get_offers_filtres}?${queryString}`;
-        console.log("Fetching offers with URL:", fullUrl); // Debug log
-
-        const response = await fetch(fullUrl);
+        const fullUrl = `${baseUrl}${apiPaths.get_offers}`;
+        const response = await fetch(fullUrl); // Use dynamic API path from api_paths.json
         if (!response.ok) {
             throw new Error(`Failed to fetch offers: ${response.status}`);
         }
 
         const offersData = await response.json();
-        console.log("Filtered Offers Data:", offersData); // Log the fetched data to check its structure
+        console.log("Offers Data:", offersData); // Log the fetched data to check its structure
 
         const offersListContainer = document.getElementById('offersListContainer');
         offersListContainer.innerHTML = ''; // Clear previous data
@@ -104,8 +98,10 @@ async function loadOffers(filters = {}) {
                     <h4>${offer.entreprise_name}</h4>
                     <p>${offer.position_name}</p>
                     
-                    <p> <span class="material-symbols-outlined"> ${offer.location}</span> | <span class="material-symbols-outlined">work</span> 
-                      Durée ${offer.duration}</p>
+                    <p> <span class="material-symbols-outlined">location_on</span>
+                     ${offer.location}  |
+                      <span class="material-symbols-outlined">work</span> 
+                      Internship ${offer.duration} mois</p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
@@ -121,12 +117,10 @@ async function loadOffers(filters = {}) {
     }
 }
 
-
 // Function to display offer details
 function showOfferDetails(offerId) {
     // Assuming offersData is available globally or you fetch it again here
-    const fullUrl = `${baseUrl}${apiPaths.get_offers}`;
-    fetch(fullUrl)
+    fetch(apiPaths.get_offers)
         .then(response => response.json())
         .then(offersData => {
             const offer = offersData.find(o => o.id === offerId);
@@ -140,15 +134,14 @@ function showOfferDetails(offerId) {
                     <p><strong>Location:</strong> ${offer.location}</p>
                     <p><strong>Duration:</strong> ${offer.duration}</p>
                     <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
+                    <p><strong>Status:</strong> ${offer.status}</p>
                     <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
                     <p><strong>Education Level:</strong> ${offer.education_level}</p>
                 `;
                 hideSection('offersListContainer'); // Hide the offers list section
                 showSection('offre'); // Show the offer details section
-
             }
         })
-        
         .catch(error => console.error('Error fetching offer details:', error));
 }
 
@@ -189,34 +182,6 @@ async function populateCheckboxGroup(apiUrl, containerId, dataKey) {
     }
 }
 
-function getSelectedFilters() {
-    return {
-        duration: Array.from(document.querySelectorAll('#duration input:checked')).map(el => el.value),
-        experience: Array.from(document.querySelectorAll('#experience input:checked')).map(el => el.value),
-        language: document.getElementById('language').value,
-        field: document.getElementById('field').value,
-        educationLevel: Array.from(document.querySelectorAll('#educationLevel input:checked')).map(el => el.value),
-        country: document.getElementById('country').value,
-        jobType: Array.from(document.querySelectorAll('#jobType input:checked')).map(el => el.value),
-        startDate: document.getElementById('startDate').value,
-        remote: Array.from(document.querySelectorAll('#telework input:checked')).map(el => el.value)
-    };
-}
-
-function buildQueryString(filters) {
-    return Object.keys(filters)
-        .map(key => {
-            const value = filters[key];
-            if (Array.isArray(value)) {
-                return `${key}=${encodeURIComponent(value.join(','))}`;
-            }
-            return `${key}=${encodeURIComponent(value)}`;
-        })
-        .filter(param => param.includes('=') && !param.endsWith('='))
-        .join('&');
-}
-
-
 
 document.addEventListener('DOMContentLoaded', async () => {
     const openFiltersBtn = document.getElementById('open-filters-btn');
@@ -255,20 +220,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         overlay.style.display = 'none';
     });
 
-    // Event listener for the "Apply Filters" button
-    applyFiltersBtn.addEventListener('click', async function () {
-        const selectedFilters = getSelectedFilters();
+    // Apply filters and log selected values
+    applyFiltersBtn.addEventListener('click', function () {
+        const duration = document.getElementById('duration').value;
+        const experience = document.getElementById('experience').value;
+        const language = document.getElementById('language').value;
+        const field = document.getElementById('field').value;
+        const educationLevel = document.getElementById('educationLevel').value;
+        const country = document.getElementById('country').value;
+        const jobType = document.getElementById('jobType').value;
+        const location = document.getElementById('location').value;
+        const startDate = document.getElementById('startDate').value;
 
-        console.log("Filtres appliqués:", selectedFilters);
-
-        try {
-            // Use loadOffers function to handle the API call and display offers
-            await loadOffers(selectedFilters);
-            popupFilters.classList.remove('active');
-            overlay.style.display = 'none';
-        } catch (error) {
-            console.error('Error fetching filtered offers:', error);
-        }
+        console.log("Filtres appliqués:");
+        console.log("Durée du stage: ", duration);
+        console.log("Niveau d'expérience: ", experience);
+        console.log("Langue: ", language);
+        console.log("Domaine d'étude: ", field);
+        console.log("Niveau d'étude: ", educationLevel);
+        console.log("Pays: ", country);
+        console.log("Type de contrat: ", jobType);
+        console.log("Lieu: ", location);
     });
 });
 
