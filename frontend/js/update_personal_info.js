@@ -1,17 +1,3 @@
-let apiPaths = {}; // Global variable to store the API paths
-
-// Function to load the API paths from the JSON file
-async function loadApiPaths() {
-    try {
-        const response = await fetch('../../config/api_paths.json'); // Adjust path to your JSON file
-        if (!response.ok) {
-            throw new Error('Failed to load API paths');
-        }
-        apiPaths = await response.json(); // Store the API paths for later use
-    } catch (error) {
-        console.error('Error loading API paths:', error);
-    }
-}
 
 // Function to load user's current personal info
 async function loadPersonalInfo() {
@@ -109,9 +95,65 @@ document.getElementById('personalInfoForm').addEventListener('submit', async fun
     }
 });
 
-// On page load
-window.onload = async function() {
-    await loadApiPaths(); // Load API paths from the JSON file
-    await populateCountryDropdown(); // Populate the country dropdown
-    await loadPersonalInfo(); // Load user's personal information
+
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const updateProfileBtn = document.getElementById('update-info-btn'); // Ensure the button ID is correct
+    const popupProfile = document.getElementById('popup-info'); // The modal element
+    const overlayProfile = document.getElementById('overlay-info'); // The overlay element
+    const closeProfileBtn = document.querySelector('#popup-info .close-button'); // The close button inside the modal
+
+    // Function to open the modal
+    function openPopup() {
+        console.log('Opening modal');
+        popupProfile.classList.add('active'); // Add the "active" class to show the modal
+        overlayProfile.classList.add('active'); // Add the "active" class to show the overlay
+    }
+
+    // Function to close the modal
+    function closePopup() {
+        console.log('Close function triggered');
+        popupProfile.classList.remove('active'); // Remove the "active" class to hide the modal
+        overlayProfile.classList.remove('active'); // Remove the "active" class to hide the overlay
+    }
+    console.log('Update Profile button found with ID:', updateProfileBtn.id);
+
+    // Add event listeners
+    if (updateProfileBtn) {
+        updateProfileBtn.addEventListener('click', openPopup); // Open modal when button is clicked
+    } else {
+        console.error('Update Profile button not found!');
+    }
+
+    if (overlayProfile) {
+        overlayProfile.addEventListener('click', closePopup); // Close modal when clicking on the overlay
+    } else {
+        console.error('Overlay not found!');
+    }
+
+    if (closeProfileBtn) {
+        closeProfileBtn.addEventListener('click', closePopup); // Close modal when clicking the close button
+    } else {
+        console.error('Close button not found!');
+    }
+
+    // Ensure API paths are loaded
+    await loadApiPaths();
+
+    // Populate dropdowns in the modal
+    populateCountryDropdown(); // Populate the country dropdown
+});
+
+
+// Close modal when clicking outside the content
+window.onclick = function (event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        closeModal();
+    }
 };

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Personal Information</title>
     <link rel="stylesheet" href="../css/profile_page.css">
     <script defer src="../js/profile.js"></script>
+    <script defer src="../js/update_personal_info.js"></script>
+    
+    <script defer src="../js/update_profile_pro.js"></script>
+    <script defer src="../js/load.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap');
     </style>
@@ -16,6 +21,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
@@ -26,17 +32,18 @@
             <li><a href="conseils_etu.html">Conseils</a></li>
         </ul>
     </header>
-    
+
     <!-- Main Container -->
     <div class="container">
         <h1>Profile Page</h1>
-    
+
         <!-- Layout setup for main and aside -->
         <div class="two-columns">
             <aside class="left-section">
                 <div id="profileSection" class="box">
                     <div class="profile-header">
-                        <img src="../../uploads/profile_pictures/profile-placeholder.png" id="profilePicture" alt="Profile Picture" class="profile-image">
+                        <img src="../../uploads/profile_pictures/profile-placeholder.png" id="profilePicture"
+                            alt="Profile Picture" class="profile-image">
                         <div class="profile-info">
                             <p><strong></strong> <span id="name"></span></p>
                             <p><strong></strong> <span id="surname"></span></p>
@@ -47,13 +54,47 @@
                         <p><strong>Birthdate:</strong> <span id="birthdate"></span></p>
                         <p><strong>Country:</strong> <span id="country"></span></p>
                         <button class="custom-button" aria-label="Update Personal Info"
-                            onclick="window.location.href='update_personal_info.html'">Update Personal
-                            Info</button>
-            
+                            id="update-info-btn">
+                            Update Personal Info
+                        </button>
+                    </div>
+                    <div>
+                        <!-- Overlay background -->
+                        <div id="overlay-info"></div>
+
+                        <!-- Pop-up modal for profile form -->
+                        <div id="popup-info" class="modal">
+                            <button class="close-button" onclick="closePopup()">×</button>
+                            <h3>Update Profile Information</h3>
+                            <hr>
+                            <form id="personalInfoForm" class="section" >
+                                <!-- Phone Number -->
+                                <label for="phone">Phone Number:</label>
+                                <input type="text" id="phone" name="phone" required>
+                        
+                                <!-- Birthdate -->
+                                <label for="birthdate">Birthdate:</label>
+                                <input type="date" id="birthdate" name="birthdate" required>
+                        
+                                <!-- Country -->
+                                <label for="country">Country:</label>
+                                <select id="countryDropdown" name="country" required>
+                                    <option value="">Select a country</option>
+                                </select>
+                        
+                                <!-- Profile Picture Upload -->
+                                <label for="profilePicture">Profile Picture:</label>
+                                <input type="file" id="profilePicture" name="profile_picture" accept="image/*">
+                        
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn-submit">Update Information</button>
+                                <p id="errorMessage" class="error-message"></p> <!-- Error message display -->
+                            </form>
+                        </div>
                     </div>
                 </div>
             </aside>
-    
+
             <main class="right-section">
                 <!-- Personal Info Section -->
                 <h2>Personal Information</h2>
@@ -65,21 +106,95 @@
                     <p><strong>Handicap:</strong> <span id="handicap"></span></p>
                     <p><strong>Current Degree:</strong> <span id="currentDegree"></span></p>
                     <p><strong>Expected Graduation Year:</strong> <span id="graduationYear"></span></p>
-                    <button class = "custom-button" aria-label="Update Profile" onclick="window.location.href='update_profile_pro.html'">Update
-                        Profile</button>
+                    <button class="custom-button" aria-label="Update Profile" id="update-form-btn">
+                        Update Profile
+                    </button>
                 </div>
-    
-                <!-- CV Section -->
-                <h2>CV</h2>
-                <div id="cvSection" class="box">
-    
-                    <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
-                    <button class = "custom-button" aria-label="Upload/Update CV" onclick="window.location.href='upload_cv.html'">Upload/Update
-                        CV</button>
+                <div>
+                    <!-- Overlay background -->
+                    <div id="overlay-profile"></div>
+
+                    <!-- Pop-up modal for profile form -->
+                    <div id="popup-profile" class="modal" >
+                        <button class="close-button" onclick="closePopup()">×</button>
+                        <h3>Update Profile Information</h3>
+                        <hr>
+                        <form id="profileForm" class="section" >
+                            <!-- Education Level -->
+                            <label for="educationLevel">Niveau d'éducation :</label>
+                            <select id="educationLevelDropdown" name="education_level" required>
+                                <option value="">Sélectionnez un niveau d'éducation</option>
+                            </select>
+
+                            <!-- Field -->
+                            <label for="field">Domaine :</label>
+                            <select id="fieldDropdown" name="field" required>
+                                <option value="">Sélectionnez un domaine</option>
+                            </select>
+
+                            <!-- Current Situation -->
+                            <label for="currentSituation">Situation actuelle :</label>
+                            <select id="currentSituationDropdown" name="current_situation" required>
+                                <option value="">Sélectionnez une situation</option>
+                                <option value="1">À la recherche d'emploi</option>
+                                <option value="2">En poste</option>
+                            </select>
+
+                            <!-- Experience Level -->
+                            <label for="experienceLevel">Niveau d'expérience :</label>
+                            <select id="experienceLevelDropdown" name="experience_level" required>
+                                <option value="">Sélectionnez un niveau d'expérience</option>
+                            </select>
+
+                            <!-- Handicap -->
+                            <label for="handicap">Handicap :</label>
+                            <select id="handicapDropdown" name="handicap" required>
+                                <option value="">Sélectionnez une option</option>
+                                <option value="1">Oui</option>
+                                <option value="0">Non</option>
+                            </select>
+
+                            <!-- Current Degree -->
+                            <label for="currentDegree">Diplôme actuel :</label>
+                            <select id="currentDegreeDropdown" name="current_degree" required>
+                                <option value="">Sélectionnez un diplôme</option>
+                            </select>
+
+                            <!-- Expected Graduation Year -->
+                            <label for="graduationYear">Année de graduation prévue :</label>
+                            <select id="graduationYearDropdown" name="expected_graduation_year" required>
+                                <option value="">Sélectionnez une année</option>
+                            </select>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn-submit">Soumettre</button>
+                            <p id="errorMessage" class="error-message"></p>
+                        </form>
+                    </div>
+
+
+                    <!-- CV Section -->
+                    <h2>CV</h2>
+                    <div id="cvSection" class="box">
+
+                        <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a>
+                        </p>
+                        <button class="custom-button" aria-label="Upload/Update CV"
+                            onclick="window.location.href='upload_cv.html'">Upload/Update
+                            CV</button>
+                    </div>
                 </div>
             </main>
         </div>
     </div>
+
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <div id="modal-form-content"></div>
+        </div>
+    </div>
+
     <!-- Footer Section -->
     <footer>
         <div class="premiere_partie">
@@ -138,6 +253,8 @@
                 professionnelle</p>
         </div>
     </footer>
-    </div>
+
+
 </body>
+
 </html>

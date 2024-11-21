@@ -1,21 +1,3 @@
-console.log("JS chargé"); // Pour vérifier que le fichier JS est bien chargé
-
-// Load API paths from api_loader.js before proceeding
-let apiPaths = {};
-
-// Function to load the API paths from the JSON file (api_loader)
-async function loadApiPaths() {
-    try {
-        const response = await fetch('../../config/api_paths.json'); // Adjust the path if necessary
-        if (!response.ok) {
-            throw new Error('Failed to load API paths');
-        }
-        apiPaths = await response.json(); // Store the API paths for later use
-    } catch (error) {
-        console.error('Error loading API paths:', error);
-    }
-}
-
 
 // Function to populate the dropdowns with data from the API
 async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'Sélectionnez...') {
@@ -51,15 +33,6 @@ async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'S�
 }
 
 // Call the function for each dropdown after loading the API paths
-window.onload = async function() {
-    await loadApiPaths(); // Load the API paths from the JSON file
-
-    await populateDropdown(apiPaths.get_education_levels, 'educationLevelDropdown', 'education_level', 'Sélectionnez un niveau d\'éducation');
-    await populateDropdown(apiPaths.get_fields, 'fieldDropdown', 'field_name', 'Sélectionnez un domaine');
-    await populateDropdown(apiPaths.get_experience_levels, 'experienceLevelDropdown', 'experience_level', 'Sélectionnez un niveau d\'expérience');
-    await populateDropdown(apiPaths.get_current_degree, 'currentDegreeDropdown', 'degree_name', 'Sélectionnez un diplôme actuel');
-    await populateDropdown(apiPaths.get_expected_graduation_year, 'graduationYearDropdown', 'year', 'Sélectionnez une année');
-};
 
 // Handle form submission
 document.getElementById('profileForm').addEventListener('submit', async function(event) {
@@ -102,6 +75,7 @@ document.getElementById('profileForm').addEventListener('submit', async function
     
         if (response.ok) {
             alert('Profil mis à jour avec succès !');
+            location.reload();
         } else {
             throw new Error(result.message || 'Erreur inconnue');
         }
@@ -111,3 +85,68 @@ document.getElementById('profileForm').addEventListener('submit', async function
     }
     
 });
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const updateProfileBtn = document.getElementById('update-form-btn'); // Ensure the button ID is correct
+    const popupProfile = document.getElementById('popup-profile'); // The modal element
+    const overlayProfile = document.getElementById('overlay-profile'); // The overlay element
+    const closeProfileBtn = document.querySelector('#popup-profile .close-button'); // The close button inside the modal
+
+    // Function to open the modal
+    function openPopup() {
+        console.log('Opening modal');
+        popupProfile.classList.add('active'); // Add the "active" class to show the modal
+        overlayProfile.classList.add('active'); // Add the "active" class to show the overlay
+    }
+
+    // Function to close the modal
+    function closePopup() {
+        console.log('Close function triggered');
+        popupProfile.classList.remove('active'); // Remove the "active" class to hide the modal
+        overlayProfile.classList.remove('active'); // Remove the "active" class to hide the overlay
+    }
+    console.log('Update Profile button found with ID:', updateProfileBtn.id);
+
+    // Add event listeners
+    if (updateProfileBtn) {
+        updateProfileBtn.addEventListener('click', openPopup); // Open modal when button is clicked
+    } else {
+        console.error('Update Profile button not found!');
+    }
+
+    if (overlayProfile) {
+        overlayProfile.addEventListener('click', closePopup); // Close modal when clicking on the overlay
+    } else {
+        console.error('Overlay not found!');
+    }
+
+    if (closeProfileBtn) {
+        closeProfileBtn.addEventListener('click', closePopup); // Close modal when clicking the close button
+    } else {
+        console.error('Close button not found!');
+    }
+
+    // Ensure API paths are loaded
+    await loadApiPaths();
+
+    // Populate dropdowns in the modal
+    populateDropdown(apiPaths.get_education_levels, 'educationLevelDropdown', 'education_level', 'Sélectionnez un niveau d\'éducation');
+    populateDropdown(apiPaths.get_fields, 'fieldDropdown', 'field_name', 'Sélectionnez un domaine');
+    populateDropdown(apiPaths.get_experience_levels, 'experienceLevelDropdown', 'experience_level', 'Sélectionnez un niveau d\'expérience');
+    populateDropdown(apiPaths.get_current_degree, 'currentDegreeDropdown', 'degree_name', 'Sélectionnez un diplôme actuel');
+    populateDropdown(apiPaths.get_expected_graduation_year, 'graduationYearDropdown', 'year', 'Sélectionnez une année');
+});
+
+
+// Close modal when clicking outside the content
+window.onclick = function (event) {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};

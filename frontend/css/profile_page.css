@@ -1,4 +1,46 @@
 /* Basic resets */
+
+/* Modal Background */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Close Button */
+.close-button {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: black;
+}
+
+
 header {
     background-color:#ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
@@ -259,4 +301,449 @@ footer ul{
         width: 100%; /* Full width for columns in footer on mobile */
         margin-bottom: 20px;
     }
+}
+
+/* Basic resets */
+
+/* Modal Background */
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 500px;
+}
+
+/* Close Button */
+.close-button {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: black;
+}
+
+
+header {
+    background-color:#ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
+    position: fixed;
+    z-index: 10;
+    width: 100%; 
+    height: 65px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 20px;
+}
+
+header .logo {
+    height: 40px;
+    width: auto; 
+}
+
+header ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header ul li {
+    margin: 0 20px;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+header ul li a:hover {
+    transform: scale(1.02);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+/* Main container */
+.container {
+    max-width: 1000px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* Layout setup */
+.two-columns {
+    display: flex;
+    gap: 20px;
+}
+
+/* Left section (Profile Section) */
+.left-section {
+    flex: 2; /* Takes up one part of the flex container */
+}
+
+/* Right section (Personal Info & CV Section) */
+.right-section {
+    flex: 4; /* Takes up two parts of the flex container for more space */
+}
+
+/* Box styling for sections */
+.box {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Profile Section */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+}
+
+.profile-info {
+    color: #012545;
+}
+
+
+.profile-info p {
+    font-size: 14px;
+    color: #555;
+    margin-top: 4px;
+}
+
+
+.profile-details {
+    margin-top: 20px; 
+    line-height: 1.5; 
+}
+
+
+.profile-details p {
+    margin-bottom: 12px; 
+    font-size: 16px; 
+    color: #333; 
+}
+
+
+
+
+/* Personal Info Section */
+#personalInfoSection h2,
+#cvSection h2 {
+    color: #012545;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+#personalInfoSection p,
+#cvSection p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* Buttons */
+.custom-button {
+    margin-top: 15px; 
+    padding: 10px 15px; 
+    background-color: #f9f9f9; 
+    color: #333;
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+.custom-button:hover {
+    background-color: #dedede ;
+}
+
+/* Utility classes */
+.text-muted {
+    color: #777;
+    font-size: 13px;
+}
+
+.mb-2 {
+    margin-bottom: 8px;
+}
+
+.mt-3 {
+    margin-top: 12px;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Footer styles */
+footer{
+    background-color: #012545;
+    padding: 1%;
+    font-family:"Poppins",Arial, Helvetica, "sans-serif" ;
+    position: relative;
+
+}
+footer .premiere_partie a{
+    font-style: normal;
+    color: white;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.colonne h4{
+    color: #ffffff;
+}
+
+
+.colonne{
+    display: flex; 
+}
+footer ul{
+    list-style: none;
+}
+
+.colonne ul li{
+    margin-bottom: 2%;
+}
+
+
+
+.premiere_partie{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+    padding: 1.5% 0;
+    
+    
+}
+
+.derniere_partie p{
+    color: white;
+    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    text-align: center;
+    padding: 2%;
+}
+
+
+@media all and(min-width: 800px){
+    .right-section{
+        flex:3;
+    }
+    .left-section{
+        order:1;
+    }
+    .right-section{
+        order:2;
+    }
+    .footer{
+        order:4;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .two-columns {
+        flex-direction: column; /* Stack vertically on small screens */
+    }
+
+    .left-section, .right-section {
+        margin-bottom: 20px; /* Space between sections */
+    }
+
+    .colonne {
+        width: 100%; /* Full width for columns in footer on mobile */
+        margin-bottom: 20px;
+    }
+}
+
+/* Overlay Style */
+#overlay-profile,
+#overlay-info {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay with transparency */
+    z-index: 1000; /* Ensure it stays above other elements */
+    display: none; /* Initially hidden */
+    transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+#overlay-profile.active,
+#overlay-info.active {
+    display: block; /* Visible when active */
+    opacity: 1;
+}
+
+/* Modal Style (Shared Styles for Both Modals) */
+#popup-profile,
+#popup-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95); /* Start slightly scaled down */
+    width: 90%;
+    max-width: 600px; /* Restrict max width */
+    background: #fff; /* White background */
+    border-radius: 15px; /* Smooth rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    z-index: 1100; /* Above the overlay */
+    padding: 25px 20px;
+    display: none; /* Initially hidden */
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth slide-in effect */
+    opacity: 0; /* Start invisible */
+}
+
+#popup-profile.active,
+#popup-info.active {
+    display: block; /* Visible when active */
+    transform: translate(-50%, -50%) scale(1); /* Full size */
+    opacity: 1; /* Fully visible */
+}
+
+/* Modal Header */
+#popup-profile h3,
+#popup-info h3 {
+    font-family: 'Poppins', sans-serif; /* Use modern font */
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #012545; /* Deep blue text */
+    text-align: center;
+    border-bottom: 2px solid #eee; /* Subtle bottom border */
+    padding-bottom: 10px;
+}
+
+/* Close Button */
+#popup-profile .close-button,
+#popup-info .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #aaa; /* Light gray */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+#popup-profile .close-button:hover,
+#popup-info .close-button:hover {
+    color: #000; /* Black on hover */
+}
+
+/* Form Inputs (Shared for Both Modals) */
+#popup-profile label,
+#popup-info label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555; /* Medium-dark text */
+    margin-bottom: 5px;
+    display: block; /* Ensure proper spacing */
+}
+
+#popup-profile input,
+#popup-info input,
+#popup-profile select,
+#popup-info select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd; /* Subtle border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px; /* Space between fields */
+    transition: border-color 0.2s ease;
+}
+
+#popup-profile input:focus,
+#popup-info input:focus,
+#popup-profile select:focus,
+#popup-info select:focus {
+    border-color: #012545; /* Highlighted border on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Submit Button */
+#popup-profile .btn-submit,
+#popup-info .btn-submit {
+    width: 100%;
+    padding: 12px;
+    background-color: #012545; /* Deep blue */
+    color: #fff; /* White text */
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+#popup-profile .btn-submit:hover,
+#popup-info .btn-submit:hover {
+    background-color: #024375; /* Lighter blue on hover */
+}
+
+/* Error Message */
+#popup-profile .error-message,
+#popup-info .error-message {
+    font-size: 0.9rem;
+    color: #e74c3c; /* Red for error */
+    margin-top: 10px;
+    text-align: center;
 }
