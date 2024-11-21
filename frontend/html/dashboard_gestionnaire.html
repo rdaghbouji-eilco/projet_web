@@ -6,15 +6,45 @@
     <title>Dashboard Gestionnaire</title>
     <link rel="stylesheet" href="../css/dashboard_gestionnaire.css">
     <script defer src="../js/dashboard_gestionnaire.js"></script>
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
 </head>
 <body>
     <div class="sidebar">
         <h2>Gestionnaire Dashboard</h2>
-        <ul>
-            <li><a href="#" onclick="showSection('homeSection')">Accueil</a></li>
-            <li><a href="#" onclick="showSection('offersSection')">Gestion des Offres</a></li>
-            <li><a href="#" onclick="showSection('usersSection')">Gestion des Utilisateurs</a></li>
-            <li><a href="#" onclick="showSection('reportsSection')">Rapports</a></li>
+        <div class="logo-details">
+            <i class="bx bxl-c-plus-plus"></i>
+            <span class="logo_name">D-CLIC</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li>
+                <a href="#" onclick="showSection('homeSection')">
+                  <i class="bx bx-grid-alt"></i>
+                  Accueil
+                </a>
+              </li>
+              
+            <li>
+                <a href="#" onclick="showSection('offersSection')">
+                    <i class="bx bx-list-ul"></i>
+                    Gestion des Offres
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('usersSection')">
+                    <i class="bx bx-book-alt"></i>
+                    Gestion des Utilisateurs
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="showSection('reportsSection')">
+                    <i class="bx bx-pie-chart-alt-2"></i>
+                    Rapports
+                </a>
+            </li>
         </ul>
     </div>
 

@@ -1,20 +1,4 @@
-let apiPaths = {}; // Global variable to store the API paths
 
-// Function to load the API paths from the JSON file
-async function loadApiPaths() {
-    try {
-        const response = await fetch('../../config/api_paths.json');
-        if (!response.ok) throw new Error('Failed to load API paths');
-        apiPaths = await response.json();
-
-        // Check if apiPaths is correctly loaded
-        if (!apiPaths.get_user || !apiPaths.get_profile) {
-            throw new Error("API paths are missing or incorrectly configured");
-        }
-    } catch (error) {
-        console.error('Error loading API paths:', error);
-    }
-}
 
 // Function to upload a new profile picture
 async function uploadProfilePicture() {
@@ -63,17 +47,8 @@ async function loadProfilePicture() {
     }
 }
 
-// Load profile and personal information when the page loads
-window.onload = async function() {
-    await loadApiPaths();
-    if (Object.keys(apiPaths).length === 0) return; // Stop if API paths not loaded
 
-    await loadUsername();
-    await loadProfileInfo();
-    await loadPersonalInfo();
-    await loadProfilePicture();
-    await loadCVLink();
-};
+
 
 // Load the username and surname
 async function loadUsername() {
@@ -143,3 +118,35 @@ async function loadCVLink() {
         console.error("Error loading CV link:", error);
     }
 }
+
+
+
+function openModal(formId) {
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-form-content');
+    const formElement = document.getElementById(formId);
+
+    if (!formElement) {
+        console.error(`Form with ID "${formId}" not found.`);
+        modalContent.innerHTML = '<p>Error: Form not found.</p>';
+        return;
+    }
+
+    const formClone = formElement.cloneNode(true);
+    formClone.style.display = 'block';
+    console.log("Cloned form:", formClone); // Check if the form is correctly cloned
+
+    modalContent.innerHTML = '';
+    modalContent.appendChild(formClone);
+
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.type = 'button';
+    cancelButton.className = 'custom-button';
+    cancelButton.onclick = closeModal;
+    formClone.appendChild(cancelButton);
+
+    modal.style.display = 'flex';
+}
+
+
