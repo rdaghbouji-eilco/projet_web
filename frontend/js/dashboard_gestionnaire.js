@@ -19,29 +19,58 @@ async function loadApiPaths() {
 
 async function loadOffers() {
     try {
-        const response = await fetch(apiPaths.get_offers); // Fetch offers from the API
+        const response = await fetch(apiPaths.get_offers);
         if (!response.ok) {
             throw new Error('Failed to load offers.');
         }
 
-        const offers = await response.json(); // Parse the JSON response
+        const offers = await response.json();
         const offersList = document.getElementById('offersList');
-        offersList.innerHTML = ''; // Clear previous offers
+        offersList.innerHTML = '';
 
+        // Create table elements
+        const table = document.createElement('table');
+        table.classList.add('offers-table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        // Define table headers
+        thead.innerHTML = `
+            <tr>
+                <th>Nom du poste</th>
+                <th>Description</th>
+                <th>Date de publication</th>
+                <th>Actions</th>
+            </tr>
+        `;
+
+        // Populate table rows with offers
         offers.forEach(offer => {
-            const offerItem = document.createElement('div');
-            offerItem.classList.add('offer-item');
-            offerItem.innerHTML = `
-                <h4>${offer.position_name}</h4>
-                <p>${offer.description}</p>
-                <p>Date limite : ${offer.publish_date}</p>
-                <button onclick="editOffer(${offer.id})">Modifier</button>
-                <button onclick="deleteOffer(${offer.id})">Supprimer</button>
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${offer.position_name}</td>
+                <td>${offer.description}</td>
+                <td>${offer.publish_date}</td>
+                <td>
+                    <button onclick="editOffer(${offer.id})" class="icon-btn edit-btn">
+                        <i class="fas fa-pencil-alt"></i> Modifier
+                    </button>
+                    <button onclick="deleteOffer(${offer.id})" class="icon-btn delete-btn">
+                        <i class="fas fa-trash-alt"></i> Supprimer
+                    </button>
+                </td>
             `;
-            offersList.appendChild(offerItem); // Add offer to the list
+            tbody.appendChild(row);
         });
+
+        // Append thead and tbody to the table
+        table.appendChild(thead);
+        table.appendChild(tbody);
+
+        // Append table to the offersList div
+        offersList.appendChild(table);
     } catch (error) {
-        // console.error('Erreur lors du chargement des offres:', error);
+        console.error('Erreur lors du chargement des offres:', error);
     }
 }
 

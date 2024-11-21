@@ -747,3 +747,64 @@ footer ul{
     margin-top: 10px;
     text-align: center;
 }
+
+/* Overlay */
+#overlay-profile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+    z-index: 1000;
+    display: none; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#overlay-profile.active {
+    display: block; /* Show when active */
+    opacity: 1;
+}
+
+/* Modal */
+#offerFormModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    padding: 20px;
+    display: none; /* Initially hidden */
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#offerFormModal.active {
+    display: block; /* Show when active */
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Close Button */
+#offerFormModal .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: color 0.3s ease;
+}
+
+#offerFormModal .close-button:hover {
+    color: #ffffff;
+}
+

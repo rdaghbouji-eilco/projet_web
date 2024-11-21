@@ -283,4 +283,74 @@ nav .profile-details i {
     background: #0d3073;
   }
   
-  
+  /* Form Container Styles */
+#offerForm {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Label Styles */
+#offerForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input and Select Styles */
+#offerForm input[type="text"],
+#offerForm input[type="date"],
+#offerForm textarea,
+#offerForm select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Input and Select Focus Styles */
+#offerForm input[type="text"]:focus,
+#offerForm input[type="date"]:focus,
+#offerForm textarea:focus,
+#offerForm select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Textarea Styles */
+#offerForm textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+/* Button Styles */
+#offerForm button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+#offerForm button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Optional Alignment for Hidden Input */
+#offerForm input[type="hidden"] {
+  display: none;
+}
