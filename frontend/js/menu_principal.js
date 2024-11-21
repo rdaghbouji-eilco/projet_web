@@ -196,7 +196,7 @@ function getSelectedFilters() {
         language: document.getElementById('language').value,
         field: document.getElementById('field').value,
         educationLevel: Array.from(document.querySelectorAll('#educationLevel input:checked')).map(el => el.value),
-        country: document.getElementById('country').value,
+        location: document.getElementById('location').value,
         jobType: Array.from(document.querySelectorAll('#jobType input:checked')).map(el => el.value),
         startDate: document.getElementById('startDate').value,
         remote: Array.from(document.querySelectorAll('#telework input:checked')).map(el => el.value)
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     await loadApiPaths(); // Ensure API paths are loaded first
 
     // Populate each dropdown with appropriate API data
-    populateDropdown(apiPaths.get_countries, 'country', 'country', 'Sélectionnez un pays');
+    populateDropdown(apiPaths.get_locations, 'location', 'Location', 'Sélectionnez une localisation');
     populateDropdown(apiPaths.get_languages, 'language', 'language_name', 'Sélectionnez une langue');
     populateDropdown(apiPaths.get_fields, 'field', 'field_name', 'Sélectionnez un domaine');
     
