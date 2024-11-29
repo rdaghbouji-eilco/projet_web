@@ -18,6 +18,7 @@
     "reset_password" : "/repo-projet_web/api/auth/reset_password.php",
     "add_offer": "/repo-projet_web/api/offers/add_offer.php",
     "get_offers": "/repo-projet_web/api/offers/get_offers.php",
+    "get_offers_by_status": "/repo-projet_web/api/offers/get_offers_by_status.php",
     "get_offers_filtres": "/repo-projet_web/api/offers/get_offers_filtres.php",
     "update_offer": "/repo-projet_web/api/offers/update_offer.php",
     "delete_offer": "/repo-projet_web/api/offers/delete_offer.php",
