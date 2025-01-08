@@ -28,7 +28,6 @@ async function loadPersonalInfo() {
     }
 }
 */
-
 // Function to populate the country dropdown
 async function populateCountryDropdown() {
     try {
@@ -95,20 +94,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 alert('Personal information updated successfully');
+                location.reload();
                 // Update profile picture preview if available
                 if (result.profile_picture_url) {
-                    document.getElementById('profileImage').src = result.profile_picture_url;
+                    document.getElementById('FormprofilePicture').src = result.profile_picture_url;
                 }
             } else {
                 throw new Error(result.message || 'Error updating personal info');
             }
         } catch (error) {
             console.error('Error updating personal info:', error);
-            document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
+            document.getElementById('errorMessage').textContent = error.message;
         }
     });
 });
-
 
 
 function closeModal() {

@@ -283,4 +283,174 @@ nav .profile-details i {
     background: #0d3073;
   }
   
-  
+  /* Form Container Styles */
+#offerForm {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Label Styles */
+#offerForm label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Input and Select Styles */
+#offerForm input[type="text"],
+#offerForm input[type="date"],
+#offerForm textarea,
+#offerForm select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Input and Select Focus Styles */
+#offerForm input[type="text"]:focus,
+#offerForm input[type="date"]:focus,
+#offerForm textarea:focus,
+#offerForm select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Textarea Styles */
+#offerForm textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+/* Button Styles */
+#offerForm button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+#offerForm button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Optional Alignment for Hidden Input */
+#offerForm input[type="hidden"] {
+  display: none;
+}
+
+/* Customize the scrollbar for the entire page */
+body {
+  overflow: auto; /* Enable scrolling */
+}
+
+body::-webkit-scrollbar {
+  width: 0; /* Hide the scrollbar width */
+  height: 0; /* Hide the scrollbar height */
+}
+
+body {
+  scrollbar-width: none; /* For Firefox: Hide scrollbar */
+}
+
+/* Optional: Scroll behavior for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offers page container */
+.offers-page-container {
+  display: flex;
+  width: 100%;
+  gap: 20px; /* Space between table and form */
+}
+
+/* Left section: Table container */
+.offers-table-container {
+  flex: 2; /* Take 2/3 of the page */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Right section: Form container */
+.offer-form-container {
+  flex: 1; /* Take 1/3 of the page */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: sticky; /* Keeps the form visible while scrolling */
+  top: 0; /* Aligns with the top of the viewport */
+}
+
+/* Table styles */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.custom-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  font-size: 14px;
+  padding: 12px 15px;
+  border-bottom: 2px solid #ddd;
+}
+
+.custom-table td {
+  font-size: 14px;
+  color: #555;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.custom-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+.add-offer-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #003463;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-offer-btn:hover {
+  background-color: #19568c;
+}
+

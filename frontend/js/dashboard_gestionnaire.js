@@ -19,31 +19,35 @@ async function loadApiPaths() {
 
 async function loadOffers() {
     try {
-        const response = await fetch(apiPaths.get_offers); // Fetch offers from the API
+        const response = await fetch(apiPaths.get_offers);
         if (!response.ok) {
             throw new Error('Failed to load offers.');
         }
 
-        const offers = await response.json(); // Parse the JSON response
-        const offersList = document.getElementById('offersList');
-        offersList.innerHTML = ''; // Clear previous offers
+        const offers = await response.json();
+        const offersTableBody = document.querySelector('.custom-table tbody');
 
-        offers.forEach(offer => {
-            const offerItem = document.createElement('div');
-            offerItem.classList.add('offer-item');
-            offerItem.innerHTML = `
-                <h4>${offer.position_name}</h4>
-                <p>${offer.description}</p>
-                <p>Date limite : ${offer.publish_date}</p>
-                <button onclick="editOffer(${offer.id})">Modifier</button>
-                <button onclick="deleteOffer(${offer.id})">Supprimer</button>
+        offersTableBody.innerHTML = ''; // Clear existing rows
+
+        offers.forEach((offer, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${offer.position_name}</td>
+                <td>${offer.description}</td>
+                <td>${offer.publish_date}</td>
+                <td class="actions">
+                    <button class="edit-btn" onclick="editOffer(${offer.id})">Modifier</button>
+                    <button class="delete-btn" onclick="deleteOffer(${offer.id})">Supprimer</button>
+                </td>
             `;
-            offersList.appendChild(offerItem); // Add offer to the list
+            offersTableBody.appendChild(row);
         });
     } catch (error) {
-        // console.error('Erreur lors du chargement des offres:', error);
+        console.error('Erreur lors du chargement des offres:', error);
     }
 }
+
 
 async function editOffer(offerId) {
     try {
@@ -166,6 +170,12 @@ function showOfferForm() {
     document.getElementById('offerFormTitle').textContent = 'Ajouter une offre';
     offerId = null; // Reset offer ID
     document.getElementById('offerFormModal').style.display = 'block';
+
+    // Scroll to the form
+    document.getElementById('offerFormModal').scrollIntoView({
+        behavior: 'smooth', // Smooth scroll animation
+        block: 'start'      // Align the form to the top of the viewport
+    });
 }
 
 // Function to hide the offer form modal

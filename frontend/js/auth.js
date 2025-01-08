@@ -22,13 +22,14 @@ function showSection(sectionId) {
 // Handle Sign-Up Form Submission
 document.getElementById('signUpForm').addEventListener('submit', async function(event) {
     event.preventDefault();
-
+    
     const formData = {
         email: document.getElementById('signUpEmail').value,
-        lastName: document.getElementById('lastName').value,
-        firstName: document.getElementById('firstName').value,
+        surname: document.getElementById('lastName').value, // Change `lastName` to `surname`
+        name: document.getElementById('firstName').value,   // Change `firstName` to `name`
         password: document.getElementById('signUpPassword').value
     };
+    
 
     try {
         const response = await fetch(apiPaths.register, {
