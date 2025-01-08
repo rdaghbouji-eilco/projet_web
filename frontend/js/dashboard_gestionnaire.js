@@ -25,54 +25,29 @@ async function loadOffers() {
         }
 
         const offers = await response.json();
-        const offersList = document.getElementById('offersList');
-        offersList.innerHTML = '';
+        const offersTableBody = document.querySelector('.custom-table tbody');
 
-        // Create table elements
-        const table = document.createElement('table');
-        table.classList.add('offers-table');
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
+        offersTableBody.innerHTML = ''; // Clear existing rows
 
-        // Define table headers
-        thead.innerHTML = `
-            <tr>
-                <th>Nom du poste</th>
-                <th>Description</th>
-                <th>Date de publication</th>
-                <th>Actions</th>
-            </tr>
-        `;
-
-        // Populate table rows with offers
-        offers.forEach(offer => {
+        offers.forEach((offer, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
+                <td>${index + 1}</td>
                 <td>${offer.position_name}</td>
                 <td>${offer.description}</td>
                 <td>${offer.publish_date}</td>
-                <td>
-                    <button onclick="editOffer(${offer.id})" class="icon-btn edit-btn">
-                        <i class="fas fa-pencil-alt"></i> Modifier
-                    </button>
-                    <button onclick="deleteOffer(${offer.id})" class="icon-btn delete-btn">
-                        <i class="fas fa-trash-alt"></i> Supprimer
-                    </button>
+                <td class="actions">
+                    <button class="edit-btn" onclick="editOffer(${offer.id})">Modifier</button>
+                    <button class="delete-btn" onclick="deleteOffer(${offer.id})">Supprimer</button>
                 </td>
             `;
-            tbody.appendChild(row);
+            offersTableBody.appendChild(row);
         });
-
-        // Append thead and tbody to the table
-        table.appendChild(thead);
-        table.appendChild(tbody);
-
-        // Append table to the offersList div
-        offersList.appendChild(table);
     } catch (error) {
         console.error('Erreur lors du chargement des offres:', error);
     }
 }
+
 
 async function editOffer(offerId) {
     try {
@@ -195,6 +170,12 @@ function showOfferForm() {
     document.getElementById('offerFormTitle').textContent = 'Ajouter une offre';
     offerId = null; // Reset offer ID
     document.getElementById('offerFormModal').style.display = 'block';
+
+    // Scroll to the form
+    document.getElementById('offerFormModal').scrollIntoView({
+        behavior: 'smooth', // Smooth scroll animation
+        block: 'start'      // Align the form to the top of the viewport
+    });
 }
 
 // Function to hide the offer form modal

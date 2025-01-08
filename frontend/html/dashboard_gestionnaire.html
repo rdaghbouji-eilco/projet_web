@@ -215,58 +215,75 @@
 
         </section>
 
-        <section id="offersSection" class="section" style="display:none;">
-            <h2>Gestion des Offres</h2>
-            <button onclick="showOfferForm()">Ajouter une offre</button>
-            
-            <div id="offersList">
-                <!-- La liste des offres sera chargée ici -->
-            </div>
-        
-            <div id="offerFormModal" class="modal" style="display:none;">
-                <div class="modal-content">
-                    <span class="close" onclick="hideOfferForm()">&times;</span>
-                    <h3 id="offerFormTitle">Ajouter une offre</h3>
-                    <form id="offerForm">
-                        <label for="entreprise_name">Nom de l'entreprise :</label>
-                        <input type="text" id="entreprise_name" name="entreprise_name" required><br><br>
-
-                        <label for="position_name">Nom du poste :</label>
-                        <input type="text" id="position_name" name="position_name" required><br><br>
-
-                        <label for="description">Description :</label>
-                        <textarea id="description" name="description" required></textarea><br><br>
-
-                        <label for="fieldDropdown">Domaine :</label>
-                        <select id="fieldDropdown" name="field"></select><br><br>
-
-                        <label for="locationDropdown">Localisation :</label>
-                        <select id="locationDropdown" name="location"></select><br><br>
-
-                        <label for="jobTypeDropdown">Type d'emploi :</label>
-                        <select id="jobTypeDropdown" name="job_type"></select><br><br>
-
-                        <label for="duration">Durée :</label>
-                        <input type="text" id="duration" name="duration" required><br><br>
-
-                        <label for="statusDropdown">Statut :</label>
-                        <select id="statusDropdown" name="status"></select><br><br>
-
-                        <label for="experienceLevelDropdown">Niveau d'expérience :</label>
-                        <select id="experienceLevelDropdown" name="experience_level"></select><br><br>
-
-                        <label for="educationLevelDropdown">Niveau d'éducation :</label>
-                        <select id="educationLevelDropdown" name="education_level"></select><br><br>
-
-                        <label for="publish_date">Date de publication :</label>
-                        <input type="date" id="publish_date" name="publish_date" required><br><br>
-
-                        <input type="hidden" id="offer_id" name="offer_id">
-                        <button type="submit">Enregistrer</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+        <section id="offersSection" class="section">
+          <h2>Gestion des Offres</h2>
+          <button class="add-offer-btn" onclick="showOfferForm()">Ajouter une offre</button>
+          <div class="offers-page-container">
+              <!-- Left Section: Table -->
+              <div class="offers-table-container">
+                  <div class="table-container">
+                      <table class="custom-table">
+                          <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Nom du poste</th>
+                                  <th>Description</th>
+                                  <th>Date de publication</th>
+                                  <th>Actions</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <!-- Rows will be dynamically populated -->
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+      
+              <!-- Right Section: Form -->
+              <div class="offer-form-container">
+                  <h3 id="offerFormTitle">Ajouter une offre</h3>
+                  <form id="offerForm">
+                      <label for="entreprise_name">Nom de l'entreprise :</label>
+                      <input type="text" id="entreprise_name" name="entreprise_name" required><br><br>
+      
+                      <label for="position_name">Nom du poste :</label>
+                      <input type="text" id="position_name" name="position_name" required><br><br>
+      
+                      <label for="description">Description :</label>
+                      <textarea id="description" name="description" required></textarea><br><br>
+      
+                      <label for="fieldDropdown">Domaine :</label>
+                      <select id="fieldDropdown" name="field"></select><br><br>
+      
+                      <label for="locationDropdown">Localisation :</label>
+                      <select id="locationDropdown" name="location"></select><br><br>
+      
+                      <label for="jobTypeDropdown">Type d'emploi :</label>
+                      <select id="jobTypeDropdown" name="job_type"></select><br><br>
+      
+                      <label for="duration">Durée :</label>
+                      <input type="text" id="duration" name="duration" required><br><br>
+      
+                      <label for="statusDropdown">Statut :</label>
+                      <select id="statusDropdown" name="status"></select><br><br>
+      
+                      <label for="experienceLevelDropdown">Niveau d'expérience :</label>
+                      <select id="experienceLevelDropdown" name="experience_level"></select><br><br>
+      
+                      <label for="educationLevelDropdown">Niveau d'éducation :</label>
+                      <select id="educationLevelDropdown" name="education_level"></select><br><br>
+      
+                      <label for="publish_date">Date de publication :</label>
+                      <input type="date" id="publish_date" name="publish_date" required><br><br>
+      
+                      <input type="hidden" id="offer_id" name="offer_id">
+                      <button type="submit">Enregistrer</button>
+                  </form>
+              </div>
+          </div>
+      </section>
+      
+      
     </div>
 </body>
 </html>

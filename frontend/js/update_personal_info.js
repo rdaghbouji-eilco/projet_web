@@ -1,4 +1,5 @@
 
+/*
 // Function to load user's current personal info
 async function loadPersonalInfo() {
     try {
@@ -27,7 +28,7 @@ async function loadPersonalInfo() {
         document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
     }
 }
-
+*/
 // Function to populate the country dropdown
 async function populateCountryDropdown() {
     try {
@@ -56,45 +57,54 @@ async function populateCountryDropdown() {
 }
 
 // Handle form submission with profile picture
-document.getElementById('personalInfoForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent default form submission
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle form submission with profile picture
+    document.getElementById('personalInfoForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
 
-    // Prepare form data with both text inputs and file
-    const formData = new FormData();
-    formData.append('phone', document.getElementById('phone').value);
-    formData.append('birthdate', document.getElementById('birthdate').value);
-    formData.append('country', document.getElementById('countryDropdown').value);
 
-    // Add the profile picture if a file is selected
-    const profilePictureInput = document.getElementById('profilePicture');
-    if (profilePictureInput.files.length > 0) {
-        formData.append('profile_picture', profilePictureInput.files[0]);
-    }
+        // Prepare form data with both text inputs and file
+        const formData = new FormData();
+        formData.append('phone', document.getElementById('Formphone').value);
+        formData.append('birthdate', document.getElementById('Formbirthdate').value);
+        formData.append('country', document.getElementById('countryDropdown').value);
 
-    try {
-        const response = await fetch(apiPaths.update_personal_info, {
-            method: 'POST',
-            credentials: 'include', // Ensure the session is linked to the user
-            body: formData // Send form data, including the file
-        });
+        console.log('Phone:', phone); // Debug log
+        console.log('Birthdate:', birthdate); // Debug log
+        console.log('Country:', country); // Debug log
 
-        const result = await response.json();
-
-        if (response.ok) {
-            alert('Personal information updated successfully');
-            // Update profile picture preview if available
-            if (result.profile_picture_url) {
-                document.getElementById('profileImage').src = result.profile_picture_url;
-            }
-        } else {
-            throw new Error(result.message || 'Error updating personal info');
+        // Add the profile picture if a file is selected
+        const profilePictureInput = document.getElementById('FormprofilePicture');
+        
+        if (profilePictureInput.files.length > 0) {
+            formData.append('profile_picture', profilePictureInput.files[0]);
         }
-    } catch (error) {
-        console.error('Error updating personal info:', error);
-        document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
-    }
-});
+        
+        try {
+            const response = await fetch(apiPaths.update_personal_info, {
+                method: 'POST',
+                credentials: 'include', // Ensure the session is linked to the user
+                body: formData // Send form data, including the file
+            });
 
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Personal information updated successfully');
+                location.reload();
+                // Update profile picture preview if available
+                if (result.profile_picture_url) {
+                    document.getElementById('FormprofilePicture').src = result.profile_picture_url;
+                }
+            } else {
+                throw new Error(result.message || 'Error updating personal info');
+            }
+        } catch (error) {
+            console.error('Error updating personal info:', error);
+            document.getElementById('errorMessage').textContent = error.message;
+        }
+    });
+});
 
 
 function closeModal() {

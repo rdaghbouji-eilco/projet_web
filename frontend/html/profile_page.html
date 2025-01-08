@@ -9,7 +9,7 @@
     <script defer src="../js/profile.js"></script>
     <script defer src="../js/update_personal_info.js"></script>
     
-    <script defer src="../js/update_profile_pro.js"></script>
+    <script defer src="../js/update_profile_pro.js" defer></script>
     <script defer src="../js/load.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap');
@@ -70,11 +70,11 @@
                             <form id="personalInfoForm" class="section" >
                                 <!-- Phone Number -->
                                 <label for="phone">Phone Number:</label>
-                                <input type="text" id="phone" name="phone" required>
+                                <input id="Formphone" name="phone" required>
                         
                                 <!-- Birthdate -->
                                 <label for="birthdate">Birthdate:</label>
-                                <input type="date" id="birthdate" name="birthdate" required>
+                                <input id="Formbirthdate" type="date"  name="birthdate" required>
                         
                                 <!-- Country -->
                                 <label for="country">Country:</label>
@@ -83,8 +83,8 @@
                                 </select>
                         
                                 <!-- Profile Picture Upload -->
-                                <label for="profilePicture">Profile Picture:</label>
-                                <input type="file" id="profilePicture" name="profile_picture" accept="image/*">
+                                <label for="FormprofilePicture">Profile Picture:</label>
+                                <input type="file" id="FormprofilePicture" name="profile_picture" accept="image/*">
                         
                                 <!-- Submit Button -->
                                 <button type="submit" class="btn-submit">Update Information</button>
