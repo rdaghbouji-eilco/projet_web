@@ -1,4 +1,4 @@
-
+/*
 // Function to load user's current personal info
 async function loadPersonalInfo() {
     try {
@@ -27,6 +27,7 @@ async function loadPersonalInfo() {
         document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
     }
 }
+*/
 
 // Function to populate the country dropdown
 async function populateCountryDropdown() {
@@ -55,44 +56,57 @@ async function populateCountryDropdown() {
     }
 }
 
-// Handle form submission with profile picture
-document.getElementById('personalInfoForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent default form submission
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle form submission with profile picture
+    document.getElementById('personalInfoForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent default form submission
+        
+        // Collect values
+        const phone = document.getElementById('form-phone').value || '';
+        const birthdate = document.getElementById('form-birthdate').value || '';
+        const country = document.getElementById('countryDropdown').value || '';
 
-    // Prepare form data with both text inputs and file
-    const formData = new FormData();
-    formData.append('phone', document.getElementById('phone').value);
-    formData.append('birthdate', document.getElementById('birthdate').value);
-    formData.append('country', document.getElementById('countryDropdown').value);
+        console.log('Phone:', phone);
+        console.log('Birthdate:', birthdate);
+        console.log('Country:', country);
 
-    // Add the profile picture if a file is selected
-    const profilePictureInput = document.getElementById('profilePicture');
-    if (profilePictureInput.files.length > 0) {
-        formData.append('profile_picture', profilePictureInput.files[0]);
-    }
+        // Prepare FormData
+        const formData = new FormData();
+        formData.append('phone', phone);
+        formData.append('birthdate', birthdate);
+        formData.append('country', country);
 
-    try {
-        const response = await fetch(apiPaths.update_personal_info, {
-            method: 'POST',
-            credentials: 'include', // Ensure the session is linked to the user
-            body: formData // Send form data, including the file
-        });
+        // Add the profile picture if a file is selected
+        const profilePictureInput = document.getElementById('profilePictureInput');
+        console.log('Profile Picture Input Element:', profilePictureInput);
 
-        const result = await response.json();
-
-        if (response.ok) {
-            alert('Personal information updated successfully');
-            // Update profile picture preview if available
-            if (result.profile_picture_url) {
-                document.getElementById('profileImage').src = result.profile_picture_url;
-            }
-        } else {
-            throw new Error(result.message || 'Error updating personal info');
+        if (profilePictureInput.files.length > 0) {
+            formData.append('profile_picture', profilePictureInput.files[0]);
         }
-    } catch (error) {
-        console.error('Error updating personal info:', error);
-        document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
-    }
+
+        try {
+            const response = await fetch(apiPaths.update_personal_info, {
+                method: 'POST',
+                credentials: 'include', // Ensure the session is linked to the user
+                body: formData // Send form data, including the file
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('Personal information updated successfully');
+                // Update profile picture preview if available
+                if (result.profile_picture_url) {
+                    document.getElementById('profileImage').src = result.profile_picture_url;
+                }
+            } else {
+                throw new Error(result.message || 'Error updating personal info');
+            }
+        } catch (error) {
+            console.error('Error updating personal info:', error);
+            document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
+        }
+    });
 });
 
 
