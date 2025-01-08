@@ -15,7 +15,7 @@ try {
         SELECT 
             a.ID AS application_id,
             a.application_date,
-            a.application_status,
+            aa.Application_status as application_status,
             o.position_name,
             o.entreprise_name,
             u.name AS applicant_name,
@@ -27,6 +27,8 @@ try {
             job_offers o ON a.offer_ID = o.ID
         JOIN 
             users u ON a.user_ID = u.ID
+        JOIN
+            application_status aa ON a.application_status=aa.ID
         ORDER BY 
             a.application_date DESC
         LIMIT 5

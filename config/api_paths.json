@@ -18,16 +18,24 @@
     "reset_password" : "/repo-projet_web/api/auth/reset_password.php",
     "add_offer": "/repo-projet_web/api/offers/add_offer.php",
     "get_offers": "/repo-projet_web/api/offers/get_offers.php",
+    "get_entreprises": "/repo-projet_web/api/offers/get_entreprises.php",
     "get_offers_by_status": "/repo-projet_web/api/offers/get_offers_by_status.php",
     "get_offers_filtres": "/repo-projet_web/api/offers/get_offers_filtres.php",
     "update_offer": "/repo-projet_web/api/offers/update_offer.php",
     "delete_offer": "/repo-projet_web/api/offers/delete_offer.php",
     "archieve_offers": "/repo-projet_web/api/offers/archieve_offer.php",
+    "get_recent_offers": "/repo-projet_web/api/offers/get_recent_offers.php",
+    "get_total_offers": "/repo-projet_web/api/offers/get_total_offers.php",
     "get_statuses": "/repo-projet_web/api/statuses/get_statuses.php",
     "get_job_types" : "/repo-projet_web/api/job_types/get_job_types.php",
     "get_locations" : "/repo-projet_web/api/locations/get_locations.php",
     "upload_cv" : "/repo-projet_web/api/profile/upload_cv.php",
     "get_cv" : "/repo-projet_web/api/profile/get_cv.php",
-    "get_user" : "/repo-projet_web/api/user/get_user.php"
-    
+    "get_user" : "/repo-projet_web/api/user/get_user.php",
+    "get_application_statuses": "/repo-projet_web/api/applications/get_application_statuses.php",
+    "get_applications_per_offers": "/repo-projet_web/api/applications/get_applications_per_offers.php",
+    "get_recent_applications": "/repo-projet_web/api/applications/get_recent_applications.php",
+    "get_total_applications": "/repo-projet_web/api/applications/get_total_applications.php",
+    "get_applications": "/repo-projet_web/api/applications/get_applications.php",
+    "get_applications_by_status": "/repo-projet_web/api/applications/get_applications_by_status.php"
 }
