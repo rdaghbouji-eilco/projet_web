@@ -37,5 +37,6 @@
     "get_recent_applications": "/repo-projet_web/api/applications/get_recent_applications.php",
     "get_total_applications": "/repo-projet_web/api/applications/get_total_applications.php",
     "get_applications": "/repo-projet_web/api/applications/get_applications.php",
-    "get_applications_by_status": "/repo-projet_web/api/applications/get_applications_by_status.php"
+    "get_applications_by_status": "/repo-projet_web/api/applications/get_applications_by_status.php",
+    "submit_application" : "/repo-projet_web/api/applications/submit_application.php"
 }

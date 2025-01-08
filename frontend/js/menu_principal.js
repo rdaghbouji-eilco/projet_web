@@ -142,6 +142,7 @@ function showOfferDetails(offerId) {
                     <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
                     <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
                     <p><strong>Education Level:</strong> ${offer.education_level}</p>
+                    <button class="btn-apply" onclick="submitApplication(${offer.id})">Submit Application</button>
                 `;
                 hideSection('offersListContainer'); // Hide the offers list section
                 showSection('offre'); // Show the offer details section
@@ -151,6 +152,39 @@ function showOfferDetails(offerId) {
         
         .catch(error => console.error('Error fetching offer details:', error));
 }
+
+async function submitApplication(offerId) {
+    try {
+        // Get the API URL for submitting the application
+        const fullUrl = `${baseUrl}${apiPaths.submit_application}`;
+        
+        // Prepare the payload
+        const payload = { offer_ID: offerId };
+        
+        // Send the application request
+        const response = await fetch(fullUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload),
+        });
+
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('Application submitted successfully!');
+            console.log('Application Response:', result);
+        } else {
+            throw new Error(result.message || 'Failed to submit application');
+        }
+    } catch (error) {
+        console.error('Error submitting application:', error);
+        alert(`Error submitting application: ${error.message}`);
+    }
+}
+
 
 // General function to populate a checkbox group with data from an API
 async function populateCheckboxGroup(apiUrl, containerId, dataKey) {
