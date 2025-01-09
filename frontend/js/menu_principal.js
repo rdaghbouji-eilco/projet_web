@@ -133,8 +133,8 @@ function showOfferDetails(offerId) {
             if (offer) {
                 const offerDetailsContainer = document.getElementById('offerDetailsContainer');
                 offerDetailsContainer.innerHTML = `
+                   <p><strong>Position:</strong> ${offer.position_name}</p>
                    <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
-                    <p><strong>Position:</strong> ${offer.position_name}</p>
                     <p><strong>Description:</strong> ${offer.description}</p>
                     <p><strong>Field:</strong> ${offer.field}</p>
                     <p><strong>Location:</strong> ${offer.location}</p>
