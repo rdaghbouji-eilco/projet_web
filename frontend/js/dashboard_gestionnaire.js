@@ -89,6 +89,26 @@ async function editOffer(offerId) {
     }
 }
 
+async function deleteOffer(offerId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette offre?')) {
+        try {
+            const response = await fetch(apiPaths.delete_offer, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: offerId })
+            });
+
+            if (response.ok) {
+                alert('Offre supprimée avec succès.');
+                loadOffers(); // Reload the offers list
+            } else {
+                throw new Error('Échec de la suppression de l\'offre.');
+            }
+        } catch (error) {
+            console.error('Erreur lors de la suppression de l\'offre:', error);
+        }
+    }
+}
 
 // Function to archive offer
 async function archiveOffer(offerId) {
