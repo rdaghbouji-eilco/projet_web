@@ -93,7 +93,6 @@ async function getTotalEntreprises() {
     }
 }
 
-
 async function getOffersByStatus() {
     try {
         const apiUrl = apiPaths.get_offers_by_status; // Utilise une API spécifique si nécessaire
@@ -112,6 +111,7 @@ async function getOffersByStatus() {
         return [];
     }
 }
+
 async function loadApplicationsByStatusChart(chart) {
     try {
         const apiUrl = apiPaths.get_applications_by_status; // Endpoint pour la répartition des statuts

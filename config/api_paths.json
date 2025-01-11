@@ -19,6 +19,7 @@
     "add_offer": "/repo-projet_web/api/offers/add_offer.php",
     "get_offers": "/repo-projet_web/api/offers/get_offers.php",
     "get_entreprises": "/repo-projet_web/api/offers/get_entreprises.php",
+    "get_total_entreprises": "/repo-projet_web/api/offers/get_total_entreprises.php",
     "get_offers_by_status": "/repo-projet_web/api/offers/get_offers_by_status.php",
     "get_offers_filtres": "/repo-projet_web/api/offers/get_offers_filtres.php",
     "update_offer": "/repo-projet_web/api/offers/update_offer.php",
