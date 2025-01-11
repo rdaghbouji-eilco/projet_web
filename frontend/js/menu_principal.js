@@ -104,8 +104,7 @@ async function loadOffers(filters = {}) {
                     <h4>${offer.entreprise_name}</h4>
                     <p>${offer.position_name}</p>
                     
-                    <p> <span class="material-symbols-outlined"> ${offer.location}</span> | <span class="material-symbols-outlined">work</span> 
-                      Durée ${offer.duration}</p>
+                    <p><span class="material-symbols-outlined">location_on</span> ${offer.location}  <span class="material-symbols-outlined">work</span> Durée ${offer.duration}</p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
@@ -133,17 +132,17 @@ function showOfferDetails(offerId) {
             if (offer) {
                 const offerDetailsContainer = document.getElementById('offerDetailsContainer');
                 offerDetailsContainer.innerHTML = `
-                   <p><strong>Position:</strong> ${offer.position_name}</p>
-                   <p><strong>Entreprise:</strong> ${offer.entreprise_name}</p>
-                    <p><strong>Description:</strong> ${offer.description}</p>
-                    <p><strong>Field:</strong> ${offer.field}</p>
-                    <p><strong>Location:</strong> ${offer.location}</p>
-                    <p><strong>Duration:</strong> ${offer.duration}</p>
-                    <p><strong>Publish Date:</strong> ${offer.publish_date}</p>
-                    <p><strong>Experience Level:</strong> ${offer.experience_level}</p>
-                    <p><strong>Education Level:</strong> ${offer.education_level}</p>
-                    <button class="btn-apply" onclick="submitApplication(${offer.id})">Submit Application</button>
-                `;
+                   <p id="offer-position">${offer.position_name}</p>
+                   <p id="offer-field">${offer.field}</p>
+                   <p class="offer-info"><span class="material-symbols-outlined">location_on</span> ${offer.location} | 
+                   <span class="material-symbols-outlined">work</span> Durée ${offer.duration}</p>
+                   <p id="offer-entreprise"> ${offer.entreprise_name}</p>
+                   <p id="offer-publish-date">Publiée le ${offer.publish_date}</p>
+                   <p id="offer-experience-level"><strong>Experience Level:</strong> ${offer.experience_level}</p>
+                   <p id="offer-education-level"><strong>Education Level:</strong> ${offer.education_level}</p>
+                   <p id="offer-description"><strong>Description:</strong> ${offer.description}</p>
+                   <button class="btn-apply" onclick="submitApplication(${offer.id})">Submit Application</button>
+                   `;
                 hideSection('offersListContainer'); // Hide the offers list section
                 showSection('offre'); // Show the offer details section
 
