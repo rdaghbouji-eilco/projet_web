@@ -18,6 +18,7 @@ async function loadApiPaths() {
 }
 
 async function loadOffers() {
+    
     try {
         const response = await fetch(apiPaths.get_offers);
         if (!response.ok) {
