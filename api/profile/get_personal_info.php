@@ -1,8 +1,11 @@
 <?php
 session_start();
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allowed methods
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allowed headers
+header("Content-Type: application/json"); // Ensure JSON response type
+
 
 include_once '../../config/db.php';
 $database = new Database();
