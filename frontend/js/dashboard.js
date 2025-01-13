@@ -3,24 +3,6 @@ import { initializeOffersSection } from '../js/offres_dashboard.js';
 import { createChart, updateChart } from '../js/charts.js';
 const baseUrl = 'http://localhost';
 
-// Load dropdown options dynamically
-async function populateDropdown(apiKey, dropdownId, dataKey, defaultOption) {
-    try {
-        const data = await fetchData(apiKey);
-        const dropdown = document.getElementById(dropdownId);
-
-        dropdown.innerHTML = `<option value="">${defaultOption}</option>`;
-        data.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item.id;
-            option.textContent = item[dataKey];
-            dropdown.appendChild(option);
-        });
-    } catch (error) {
-        console.error(`Error populating ${dropdownId}:`, error);
-    }
-}
-
 function showLoading(selector) {
     const element = document.querySelector(selector);
     element.innerHTML = '<div class="loading">Loading...</div>';
@@ -450,6 +432,8 @@ function showSection(sectionId) {
         console.error(`Section with ID "${sectionId}" not found.`);
     }
 }
+
+
 
 // Expose showSection globally
 window.showSection = showSection;

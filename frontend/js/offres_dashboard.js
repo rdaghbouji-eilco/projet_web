@@ -18,7 +18,7 @@ async function loadOffers() {
                 <td>${offer.publish_date}</td>
                 <td class="actions">
                     <button class="edit-btn" onclick="editOffer(${offer.id})">Modifier</button>
-                    <button class="delete-btn" onclick="archiveOffer(${offer.id})">Supprimer</button>
+                    <button class="delete-btn" onclick="deleteOffer(${offer.id})">Supprimer</button>
                 </td>
             `;
             offersTableBody.appendChild(row);
@@ -48,16 +48,17 @@ async function populateDropdown(apiKey, dropdownId, dataKey, defaultOption) {
 
 // Load all dropdowns for foreign keys
 async function loadForeignKeys() {
-    await populateDropdown('get_locations', 'locationDropdown', 'location_name', 'Sélectionnez un pays');
+    await populateDropdown('get_locations', 'locationDropdown', 'Location', 'Sélectionnez un pays');
     await populateDropdown('get_education_levels', 'educationLevelDropdown', 'education_level', 'Sélectionnez un niveau d\'éducation');
     await populateDropdown('get_experience_levels', 'experienceLevelDropdown', 'experience_level', 'Sélectionnez un niveau d\'expérience');
     await populateDropdown('get_fields', 'fieldDropdown', 'field_name', 'Sélectionnez un domaine');
     await populateDropdown('get_job_types', 'jobTypeDropdown', 'job_type', 'Sélectionnez un type de travail');
-    await populateDropdown('get_statuses', 'statusDropdown', 'status_name', 'Sélectionnez un statut');
+    await populateDropdown('get_statuses', 'statusDropdown', 'Job_offer_status', 'Sélectionnez un statut');
 }
 
 // Edit an existing offer
 async function editOffer(id) {
+    
     try {
         const offers = await fetchData('get_offers');
         const offer = offers.find(o => o.id === id);
@@ -80,20 +81,36 @@ async function editOffer(id) {
     } catch (error) {
         console.error('Erreur lors de la modification de l\'offre:', error);
     }
+    
+
 }
 
-// Archive (delete) an offer
-async function archiveOffer(id) {
-    if (confirm('Êtes-vous sûr de vouloir archiver cette offre?')) {
+// Attach to global scope
+window.editOffer = editOffer;
+
+async function deleteOffer(offerId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette offre?')) {
         try {
-            await fetchData('archive_offer', 'POST', { id });
-            alert('Offre archivée avec succès.');
-            loadOffers(); // Reload the offers
+            const response = await fetch(apiPaths.delete_offer, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: offerId })
+            });
+
+            if (response.ok) {
+                alert('Offre supprimée avec succès.');
+                loadOffers(); // Reload the offers list
+            } else {
+                throw new Error('Échec de la suppression de l\'offre.');
+            }
         } catch (error) {
-            console.error('Erreur lors de l\'archivage de l\'offre:', error);
+            console.error('Erreur lors de la suppression de l\'offre:', error);
         }
     }
 }
+
+// Attach to global scope
+window.deleteOffer = deleteOffer;
 
 // Handle form submission (add or update offer)
 document.getElementById('offerForm').addEventListener('submit', async function (event) {
