@@ -10,14 +10,14 @@ include_once '../../config/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
-if (!isset($_SESSION['user_ID'])) {
+if (!isset($_SESSION['user']['ID'])) {
     http_response_code(401);
     header("Content-Type: application/json");
     echo json_encode(["message" => "User not logged in"]);
     exit();
 }
 
-$user_ID = $_SESSION['user_ID'];
+$user_ID = $_SESSION['user']['ID'];
 
 $query = "SELECT CV_fichier FROM cv WHERE user_ID = :user_ID";
 $stmt = $db->prepare($query);

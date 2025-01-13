@@ -1,3 +1,23 @@
+<?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: auth.html'); // Redirige vers la page d'authentification si non connecté
+    exit();
+}
+$user = $_SESSION['user'];
+$userRole = $user['role'];
+
+// Inclusion de la navigation
+$navigationPath = 'navigation.php';
+
+if (file_exists($navigationPath)) {
+    require_once $navigationPath;
+} else {
+    // Si `navigation.php` est manquant, affiche un message d'erreur pour le débogage
+    echo "Erreur : le fichier navigation.php est introuvable.";
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,11 +26,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile and Personal Information</title>
     <link rel="stylesheet" href="../css/profile_page.css">
+    <script src="../js/api_loader.js"></script>
     <script defer src="../js/profile.js"></script>
     <script defer src="../js/update_personal_info.js"></script>
-    
-    <script defer src="../js/update_profile_pro.js" defer></script>
-    <script defer src="../js/load.js"></script>
+    <script defer src="../js/update_profile_pro.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Ubuntu:wght@300;400;500;700&display=swap');
     </style>
@@ -23,15 +42,7 @@
 </head>
 
 <body>
-    <header>
-        <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
-        <ul>
-            <li><a href="offres_etu.html">Offres</a></li>
-            <li><a href="entreprises_etu.html">Entreprises</a></li>
-            <li><a href="evenements_etu.html">Evénements</a></li>
-            <li><a href="conseils_etu.html">Conseils</a></li>
-        </ul>
-    </header>
+    <?php echo generateNavigation($userRole);?>
 
     <!-- Main Container -->
     <div class="container">

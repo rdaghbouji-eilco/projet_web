@@ -17,14 +17,16 @@ if (empty($data->name) || empty($data->email) || empty($data->password)) {
     exit();
 }
 
-$query = "INSERT INTO users (name, surname, email, password) VALUES (:name, :surname, :email, :password)";
+$query = "INSERT INTO users (name, surname, email, password, role) VALUES (:name, :surname, :email, :password, :role)";
 $stmt = $db->prepare($query);
 
 $hashed_password = password_hash($data->password, PASSWORD_DEFAULT);
+$role = 2; // Default role is 2 (user)
 
 $stmt->bindParam(':name', $data->name);
 $stmt->bindParam(':surname', $data->surname);
 $stmt->bindParam(':email', $data->email);
+$stmt->bindParam(':role', $role);
 $stmt->bindParam(':password', $hashed_password);
 
 if ($stmt->execute()) {

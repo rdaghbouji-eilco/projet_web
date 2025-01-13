@@ -1,6 +1,5 @@
-/*
 // Function to load user's current personal info
-async function loadPersonalInfo() {
+async function loadFormPersonalInfo() {
     try {
         const response = await fetch(apiPaths.get_personal_info, {
             method: 'GET',
@@ -11,9 +10,9 @@ async function loadPersonalInfo() {
             const personalInfo = await response.json();
 
             // Populate the form fields with current data
-            document.getElementById('phone').value = personalInfo.phone || '';
-            document.getElementById('birthdate').value = personalInfo.birthdate || '';
-            document.getElementById('countryDropdown').value = personalInfo.country || '';
+            document.getElementById('form-phone').value = personalInfo.phone || '';
+            document.getElementById('form-birthdate').value = personalInfo.birthdate || '';
+            
             
             // Set profile picture if available
             if (personalInfo.profile_picture) {
@@ -27,7 +26,7 @@ async function loadPersonalInfo() {
         document.getElementById('errorMessage').textContent = `Error: ${error.message}`;
     }
 }
-*/
+
 // Function to populate the country dropdown
 async function populateCountryDropdown() {
     try {
@@ -115,6 +114,17 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+async function loadPersonalInfoModal() {
+    try {
+        console.log('Loading personal info modal...');
+        await loadFormPersonalInfo(); // Load personal info
+        await populateCountryDropdown(); // Populate country dropdown
+        console.log('Personal info modal loaded successfully.');
+    } catch (error) {
+        console.error('Error loading personal info modal:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const updateProfileBtn = document.getElementById('update-info-btn'); // Ensure the button ID is correct
     const popupProfile = document.getElementById('popup-info'); // The modal element
@@ -138,7 +148,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Add event listeners
     if (updateProfileBtn) {
-        updateProfileBtn.addEventListener('click', openPopup); // Open modal when button is clicked
+        updateProfileBtn.addEventListener('click', async function () {
+            await loadApiPaths(); // Ensure API paths are loaded
+            await loadPersonalInfoModal(); // Load modal data lazily
+            document.getElementById('popup-info').classList.add('active'); // Show modal
+        });
     } else {
         console.error('Update Profile button not found!');
     }
@@ -155,11 +169,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Close button not found!');
     }
 
-    // Ensure API paths are loaded
-    await loadApiPaths();
 
-    // Populate dropdowns in the modal
-    populateCountryDropdown(); // Populate the country dropdown
 });
 
 

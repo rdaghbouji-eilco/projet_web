@@ -7,13 +7,13 @@ include_once '../../config/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
-if (!isset($_SESSION['user_ID'])) {
+if (!isset($_SESSION['user']['ID'])) {
     http_response_code(400);
     echo json_encode(['message' => 'User id is required']);
     exit();
 }
 
-$id = $_SESSION['user_ID']; // Get the user  IDfrom session
+$id =$_SESSION['user']['ID']; // Get the user  IDfrom session
 
 $query = "SELECT * FROM users WHERE ID = :id";
 $stmt = $db->prepare($query);

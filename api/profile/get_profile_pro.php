@@ -12,13 +12,13 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Check if the user is logged in (session should be active)
-if (!isset($_SESSION['user_ID'])) {
+if (!isset($_SESSION['user']['ID'])) {
     http_response_code(401); // Unauthorized
     echo json_encode(["message" => "User not logged in"]);
     exit();
 }
 
-$user_ID = $_SESSION['user_ID']; // Get the user ID from session
+$user_ID = $_SESSION['user']['ID']; // Get the user ID from session
 
 // Fetch user's profile with joins to related tables
 $query = "
