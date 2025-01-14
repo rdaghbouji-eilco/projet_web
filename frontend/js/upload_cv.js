@@ -14,11 +14,17 @@ async function loadApiPaths() {
     }
 }
 
-document.getElementById('cvUploadForm').addEventListener('submit', async function (event) {
+document.getElementById('cvSection').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent form from submitting the default way
 
     const formData = new FormData();
     const fileInput = document.getElementById('cv');
+
+    // Check if a file is selected
+    if (!fileInput.files[0]) {
+        document.getElementById('uploadStatus').textContent = 'Please select a file before uploading.';
+        return;
+    }
 
     // Append the selected file to the FormData object
     formData.append('cv', fileInput.files[0]);
@@ -33,6 +39,10 @@ document.getElementById('cvUploadForm').addEventListener('submit', async functio
 
         if (response.ok) {
             document.getElementById('uploadStatus').textContent = 'CV uploaded successfully!';
+            if (result.downloadLink) {
+                // Update the download link if provided
+                document.getElementById('cvDownloadLink').href = result.downloadLink;
+            }
         } else {
             throw new Error(result.message || 'Failed to upload CV.');
         }
@@ -40,6 +50,7 @@ document.getElementById('cvUploadForm').addEventListener('submit', async functio
         document.getElementById('uploadStatus').textContent = `Error: ${error.message}`;
     }
 });
+
 
 // Call this function to ensure API paths are loaded before any operations
 window.onload = async function() {

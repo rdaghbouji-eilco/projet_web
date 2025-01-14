@@ -186,14 +186,16 @@ if (file_exists($navigationPath)) {
 
                     <!-- CV Section -->
                     <h2>CV</h2>
-                    <div id="cvSection" class="box">
-
-                        <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a>
-                        </p>
-                        <button class="custom-button" aria-label="Upload/Update CV"
-                            onclick="window.location.href='upload_cv.html'">Upload/Update
-                            CV</button>
+                    <div class="box">
+                        <form id="cvSection">
+                            <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
+                            <label for="cv">Choose your CV (PDF, DOC, DOCX):</label>
+                            <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required><br><br>
+                            <button class="custom-button" type="submit">Upload CV</button>
+                            <p id="uploadStatus"></p>
+                        </form>
                     </div>
+                    
                 </div>
             </main>
         </div>
