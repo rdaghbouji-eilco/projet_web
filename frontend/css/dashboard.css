@@ -606,3 +606,56 @@ background-color: #f9f9f9;
 background-color: #f1f1f1;
 }
 
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    max-width: 90%;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.modal-content button {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.search-bar-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    border: 1px solid #ddd; /* Légère bordure pour définir le contour */
+    border-radius: 6px; 
+    padding: 8px 12px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour effet de profondeur */
+    width: 100%; /* S'adapte à la largeur du parent */
+    max-width: 400px; /* Largeur maximale */
+}
+
+.search-bar-container input {
+    flex-grow: 1; /* L'input occupe tout l'espace disponible */
+    border: none; /* Pas de bordure */
+    outline: none; /* Pas de surbrillance */
+    font-size: 16px; /* Taille de police lisible */
+    background: transparent; /* Fond transparent pour matcher le conteneur */
+}
