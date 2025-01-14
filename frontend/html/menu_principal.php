@@ -22,7 +22,7 @@ if (file_exists($navigationPath)) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> EILCO | Offres de stage </title>
         <link rel="stylesheet" href="../css/menu_principal.css?v=1.0">
-        <script defer src="../js/menu_principal.js?v=1.0.0"></script>
+        <script type="module" src="../js/menu_principal.js?v=1.0.0"></script>
         
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -50,15 +50,15 @@ if (file_exists($navigationPath)) {
             <div class="search-container">
                 <div class="search-field1">
                     <span class="material-symbols-outlined">search</span>
-                    <input type="text" class="search-input" placeholder="Rechercher par offre, entreprise ou mots-clé">
+                    <input type="text" id="searchBar" class="search-input" placeholder="Rechercher par offre, entreprise ou mots-clé" oninput="filterOffers()">
                 </div>
                 <div class="search-field">
                     <span class="material-symbols-outlined">work</span>
-                    <input type="text" class="search-input" placeholder="Contrat">
+                    <select id="jobType_bar" class="selection"></select>
                 </div>
                 <div class="search-field">
                     <span class="material-symbols-outlined">location_on</span>
-                    <input type="text" class="search-input" placeholder="Ville, département...">
+                    <select id="location_bar" class="selection"></select>
                 </div>
             </div>
             <button class="button-with-icon" id="open-filters-btn">
@@ -124,7 +124,7 @@ if (file_exists($navigationPath)) {
         </div>
         <div class="popup-content">
             <label for="jobType">Type de contrat</label>
-            <div id="jobType" class="checkbox-group"></div>
+            <select id="jobType" class="selection"></select>
         </div>
         <div class="popup-content-btn">
             <button id="apply-filters" class="apply-filters-button">Appliquer les filtres</button>
