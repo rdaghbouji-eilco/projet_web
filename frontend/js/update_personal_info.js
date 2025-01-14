@@ -16,7 +16,7 @@ async function loadFormPersonalInfo() {
             
             // Set profile picture if available
             if (personalInfo.profile_picture) {
-                document.getElementById('profileImage').src = "../../uploads/profile_pictures/" + personalInfo.profile_picture;
+                document.getElementById('profilePicture').src = "../../uploads/profile_pictures/" + personalInfo.profile_picture;
             }
         } else {
             throw new Error('Failed to load personal info');
