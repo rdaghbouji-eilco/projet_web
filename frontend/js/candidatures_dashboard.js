@@ -126,10 +126,17 @@ export function filterApplications() {
     const rows = document.querySelectorAll('#applicationsTableBody tr');
 
     rows.forEach(row => {
-        const text = row.textContent.toLowerCase();
-        row.style.display = text.includes(input) ? '' : 'none';
+        // Cible uniquement la cellule contenant le nom du candidat (première cellule)
+        const candidateNameCell = row.querySelector('td:nth-child(2)');
+        
+        // Vérifie si la cellule existe et si le texte correspond à la recherche
+        if (candidateNameCell) {
+            const candidateName = candidateNameCell.textContent.toLowerCase();
+            row.style.display = candidateName.includes(input) ? '' : 'none';
+        }
     });
 }
+
 
 
 // Initialisation de la section des candidatures

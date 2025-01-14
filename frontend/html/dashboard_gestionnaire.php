@@ -232,29 +232,32 @@ if ($_SESSION['user']['role'] != 3) {
       </div>
     </section>
 
+
+
+
+
     <section id="applicationsSection" class="section">
       <nav>
         <div class="sidebar-button">
           <span class="dashboard">Gestion des Candidatures</span>
         </div>
-      </nav>
-    
-      <div class="applications-page-container">
         <!-- Barre de recherche -->
         <div class="search-bar-container">
           <input 
             type="text" 
             id="searchBar" 
-            placeholder="Rechercher une candidature..." 
+            placeholder="Rechercher une candidat..." 
             onkeyup="filterApplications()">
         </div>
+      </nav>
     
+      <div class="applications-page-container">
         <!-- Liste des candidatures -->
         <div class="applications-list-container">
           <table class="custom-table">
             <thead>
               <tr>
-                <th>#</th>
+                <th> </th>
                 <th>Nom du Candidat</th>
                 <th>Offre</th>
                 <th>Date de Candidature</th>
@@ -268,9 +271,6 @@ if ($_SESSION['user']['role'] != 3) {
           </table>
         </div>
       </div>
-      
-
-    
     </section>    
     
   </div>
