@@ -351,6 +351,7 @@ main {
 
 /* Individual offer card styling */
 .offer-card {
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
     width: 1200px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -366,6 +367,7 @@ main {
 }
 
 .offer-card h4 {
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
     font-size: 1.1rem;
     font-weight: bold;
     margin: 0;
@@ -380,6 +382,7 @@ main {
     display: flex; /* Enable flexbox */
     align-items: center; /* Vertically center icons and text */
     gap: 20px; /* Space between location and duration items */
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
 }
 
 .offer-card p .material-symbols-outlined {
