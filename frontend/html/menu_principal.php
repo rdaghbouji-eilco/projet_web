@@ -1,11 +1,5 @@
 <?php
-session_start();
-
-// Vérifie si l'utilisateur est connecté
-if (!isset($_SESSION['user'])) {
-    header('Location: auth.html'); // Redirige vers la page d'authentification si non connecté
-    exit();
-}
+require_once 'auth_guard.php'; // Vérifie la connexion utilisateur
 
 // Récupération du rôle de l'utilisateur
 $userRole = $_SESSION['user']['role'] ?? null;

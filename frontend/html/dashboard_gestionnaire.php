@@ -1,3 +1,12 @@
+<?php
+require_once 'auth_guard.php'; // Vérifie la connexion utilisateur
+
+// Vérification du rôle
+if ($_SESSION['user']['role'] != 3) {
+  header('Location: auth.html'); // Redirection si non autorisé
+  exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -63,9 +72,9 @@
                 </li>
                 <li><a href="profile_page.php">Profil</a>
                 </li>
-                <li><a href="dashboard_gestionnaire.html">Espace de Gestion</a>
+                <li><a href="dashboard_gestionnaire.php">Espace de Gestion</a>
                 </li>
-                <li><a href="">Se déconnecter</a>
+                <li><a href="logout.php">Se déconnecter</a>
                 </li>
         </ul>
       </nav>
