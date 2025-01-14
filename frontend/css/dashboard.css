@@ -378,31 +378,35 @@ background-color: #013c70;
 }
 
 .edit-btn{
-    color: #000000;
-    background: #e3e3e3e8;
-    padding: 4px 12px;
-    font-size: 12px;
-    border: 1px solid #808080; /* Bords fins et gris */
-    font-weight: 400;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    background-color: #3d7ab0;
+    display: inline-block;
+    color: white;
+    border: none;
+    padding: 0px 15px;
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 5px;
 }
 .delete-btn{
-    color: #000000;
-    background: #e3e3e3e8;
-    padding: 4px 12px;
-    font-size: 12px;
-    border: 1px solid #808080; /* Bords fins et gris */
-    font-weight: 400;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    background-color: #2b6394;
+    display: inline-block;
+    color: white;
+    border: none;
+    padding: 0px 15px;
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
-    margin-top: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .edit-btn a:hover {
@@ -555,7 +559,7 @@ padding : 15px;
 flex: 2; /* Take 2/3 of the page */
 padding: 0px;
 background-color: #f9f9f9;
-border-radius: 8px;
+border-radius: 12px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 margin-bottom: 0;
 }
@@ -565,7 +569,7 @@ margin-bottom: 0;
 flex: 1; 
 padding: 0px 20px;
 background-color: #ffffff;
-border-radius: 8px;
+border-radius: 12px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 position: sticky; /* Keeps the form visible while scrolling */
 top: 0; /* Aligns with the top of the viewport */
@@ -582,7 +586,7 @@ font-family: "Poppins", Arial, sans-serif;
 }
 
 .custom-table th {
-background-color: #f4f4f4;
+background-color: #e3ecf9;
 font-weight: bold;
 text-transform: uppercase;
 color: #333;
@@ -643,19 +647,207 @@ background-color: #f1f1f1;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
-    border: 1px solid #ddd; /* Légère bordure pour définir le contour */
-    border-radius: 6px; 
-    padding: 8px 12px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Légère ombre pour effet de profondeur */
-    width: 100%; /* S'adapte à la largeur du parent */
-    max-width: 400px; /* Largeur maximale */
+    border: 1px solid #ddd;
+    border-radius: 20px; 
+    padding: 8px 15px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    width: 100%; 
+    max-width: 400px; 
+
 }
 
 .search-bar-container input {
     flex-grow: 1; /* L'input occupe tout l'espace disponible */
     border: none; /* Pas de bordure */
     outline: none; /* Pas de surbrillance */
-    font-size: 16px; /* Taille de police lisible */
-    background: transparent; /* Fond transparent pour matcher le conteneur */
+    font-size: 14px; /* Taille de police lisible */
+    background: transparent;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+
+}
+
+.applications-page-container{
+    display: flex;
+    width: 100%;
+    gap: 20px; /* Space between table and form */
+    padding : 9px 20px;
+}
+
+    
+.applications-list-container {
+flex: 2;
+padding: 0px;
+background-color: #f9f9f9;
+border-radius: 12px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+margin-bottom: 0;
+}
+
+.applications-page-container .applications-list-container {
+    max-height: 85vh; 
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+/* Personnaliser la barre de défilement */
+.offers-table-container::-webkit-scrollbar, .applications-list-container::-webkit-scrollbar {
+    width: 8px; /* Largeur de la barre de défilement */
+}
+
+/* Style de la "rail" (le fond de la barre de défilement) */
+.offers-table-container::-webkit-scrollbar-track, .applications-list-container::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Couleur de fond */
+    border-radius: 10px;
+}
+
+/* Style du "thumb" (la partie que l'on fait glisser) */
+.offers-table-container::-webkit-scrollbar-thumb, .applications-list-container::-webkit-scrollbar-thumb {
+    background: #888; /* Couleur du thumb */
+    border-radius: 10px;
+}
+
+/* Style lorsque la barre de défilement est en survol */
+.offers-table-container::-webkit-scrollbar-thumb:hover, .applications-list-container::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Couleur du thumb au survol */
+}
+
+
+.view-btn{
+    display: inline-block;
+    background-color: #4f9aeb;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: #004c8e;
+}
+
+.edit-btn2{
+    display: inline-block;
+    background-color: #497aab;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+.edit-btn2:hover {
+    background-color: #004c8e;
+}
+
+.entete{
+    background: #005097;
+}
+
+#editApplicationModal{
+    width: 100%;  
+    max-width: 700px;
+    border: 0.5px solid rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column; /* Dispose les éléments en colonne */
+    align-items: center;
+    justify-content: flex-start; /* Aligne le contenu en haut du modal */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 3%;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 10;    
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto; 
+}
+
+#editApplicationModal h3{
+    font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
+    font-weight: 601;
+    font-style: normal;
+    color: #113b61;
+    font-size: 1.4rem;
+    width: auto;
+    position: relative;
+    margin-bottom: 5%;
+}
+
+.modal-content #editApplicationForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+}
+
+#editApplicationModal label {
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+    font-weight: 500;
+}
+
+.modal-content #applicationStatus {
+    height: auto;
+    border-radius: 20px;
+    border:#00294e solid 1px;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    padding : 10px 20px;
+    width: 100%;
+}
+
+#editApplicationModal .modal-content button {
+    display: inline-block;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 20px;
+    width: 200px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editApplicationModal .modal-content button[type="submit"] {
+    background-color: #004f95;
+    color: white;
+}
+
+#editApplicationModal .modal-content button[type="submit"]:hover {
+    background-color: #003868;
+}
+
+#editApplicationModal .modal-content button[type="button"] {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#editApplicationModal .modal-content button[type="button"]:hover {
+    background-color: #e0e0e0;
+}
+
+.modal-content .modal-btn{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
 }

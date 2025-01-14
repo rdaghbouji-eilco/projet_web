@@ -57,9 +57,6 @@ if ($_SESSION['user']['role'] != 3) {
           Gestion des Candidatures
         </a>
       </li>      
-      <li class="log_out"><a href="#"><i class="bx bx-log-out">
-      </i><span class="links_name">Déconnexion</span></a>
-      </li>
     </ul>
   </div>
 
@@ -143,16 +140,10 @@ if ($_SESSION['user']['role'] != 3) {
             <div class="offres_recentes box">
               <div class="title">Offres récentes</div>
               <div class="actions_details"></div>
-              <div class="button">
-                <a href="#">Voir Tout</a>
-              </div>
             </div>
             <div class="candidatures_recentes box">
               <div class="title">Candidatures récentes</div>
               <div class="actions_details"></div>
-              <div class="button">
-                <a href="#">Voir Tout</a>
-              </div>
             </div>
           </div>
         </div>
@@ -162,7 +153,7 @@ if ($_SESSION['user']['role'] != 3) {
     <section id="offersSection" class="section">
       <nav>
         <div class="sidebar-button">
-          <span class="dashboard">Gestion des Offres</span>
+        <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
         </div>
         <button class="add-offer-btn" onclick="showOfferForm()">Ajouter une offre</button>
       </nav>
@@ -237,17 +228,17 @@ if ($_SESSION['user']['role'] != 3) {
 
 
     <section id="applicationsSection" class="section">
-      <nav>
-        <div class="sidebar-button">
-          <span class="dashboard">Gestion des Candidatures</span>
-        </div>
+      <nav class="nav_candidatures">
+      <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
         <!-- Barre de recherche -->
         <div class="search-bar-container">
           <input 
             type="text" 
             id="searchBar" 
-            placeholder="Rechercher une candidat..." 
+            placeholder="Rechercher une candidat" 
             onkeyup="filterApplications()">
+            
+            <i class='bx bx-search'></i>
         </div>
       </nav>
     
@@ -274,18 +265,20 @@ if ($_SESSION['user']['role'] != 3) {
     </section>    
     
   </div>
-  <div id="editApplicationModal" class="modal" style="display: none;">
+  <div id="editApplicationModal" class="modal2" style="display: none;">
     <div class="modal-content">
       <h3>Modifier la Candidature</h3>
       <form id="editApplicationForm">
-        <label for="applicationStatus">Statut</label>
+        <label for="applicationStatus">Statut de la Candidature</label>
         <select id="applicationStatus" name="applicationStatus">
           <option value=1>En attente</option>
           <option value=2>Acceptée</option>
           <option value=3>Refusée</option>
         </select>
-        <button type="submit">Enregistrer</button>
-        <button type="button" onclick="closeModal('editApplicationModal')">Annuler</button>
+        <div class="modal-btn">
+          <button type="submit">Enregistrer</button>
+          <button type="button" onclick="closeModal('editApplicationModal')">Annuler</button>
+        </div>
       </form>
     </div>
   </div>
