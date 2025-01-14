@@ -99,13 +99,18 @@ async function loadOffers(filters = {}) {
                 offerCard.innerHTML = `
                     <h4>${offer.entreprise_name}</h4>
                     <h5 class="position">${offer.position_name}</h5>
-                    <p class="location">
-                        <span class="material-symbols-outlined">location_on</span> ${offer.location}
-                    </p>
-                    <p>
-                        <span class="material-symbols-outlined">work</span> Internship ${offer.duration} mois
-                    </p>
-                    <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
+                    <div class="offer-details-row">
+                        <div class="location">
+                            <p>
+                                <span class="material-symbols-outlined">location_on</span> ${offer.location}
+                            </p>
+                            <p>
+                                <span class="material-symbols-outlined">work</span> Internship ${offer.duration} mois
+                            </p>
+                        </div>
+                        <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
+                    </div>
+                    
                 `;
 
                 offersListContainer.appendChild(offerCard);
@@ -346,8 +351,49 @@ export function filterOffers() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const totalOffersElement = document.getElementById("total-offers");
+
+    if (!totalOffersElement) {
+        console.error("Élément avec l'ID 'total-offers' non trouvé dans le HTML.");
+        return;
+    }
+
+    async function fetchTotalOffers() {
+        const apiUrl = "/repo-projet_web/api/offers/get_total_offers.php";
+
+        try {
+            const response = await fetch(apiUrl);
+
+            if (!response.ok) {
+                console.error(`Erreur HTTP : ${response.status}`);
+                totalOffersElement.textContent = "Erreur";
+                return;
+            }
+
+            const data = await response.json();
+
+            if (data.status === "success" && typeof data.total_offers === "number") {
+                totalOffersElement.textContent = data.total_offers;
+            } else {
+                console.error("Réponse inattendue de l'API :", data);
+                totalOffersElement.textContent = "N/A";
+            }
+        } catch (error) {
+            console.error("Erreur lors de la récupération des offres :", error);
+            totalOffersElement.textContent = "Erreur";
+        }
+    }
+
+    // Appeler la fonction pour mettre à jour le nombre total d'offres
+    fetchTotalOffers();
+});
+
+
+
 window.filterOffers = filterOffers;
 window.showOfferDetails = showOfferDetails;
 window.submitApplication = submitApplication;
 window.buildQueryString = buildQueryString;
-window.handleRetourButtonClick = handleRetourButtonClick
+window.handleRetourButtonClick = handleRetourButtonClick;
+
