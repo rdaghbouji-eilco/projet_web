@@ -15,6 +15,7 @@ async function loadApiPaths() {
     }
 }
 
+
 const baseUrl = 'http://localhost';
 
 // General function to populate dropdowns
@@ -74,51 +75,50 @@ function handleRetourButtonClick() {
 
 async function loadOffers(filters = {}) {
     try {
-        // Build the query string using the helper function
-        const queryString = buildQueryString(filters);
+        const queryParams = new URLSearchParams(filters).toString();
+        const apiUrlWithFilters = `${apiPaths.get_offers}?${queryParams}`;
 
-        // Append query string to the API URL
-        const fullUrl = `${baseUrl}${apiPaths.get_offers_filtres}?${queryString}`;
-        console.log("Fetching offers with URL:", fullUrl); // Debug log
+        console.log("Fetching offers with filters:", apiUrlWithFilters); // Debug log
 
-        const response = await fetch(fullUrl);
+        const response = await fetch(apiUrlWithFilters);
         if (!response.ok) {
             throw new Error(`Failed to fetch offers: ${response.status}`);
         }
 
         const offersData = await response.json();
-        console.log("Filtered Offers Data:", offersData); // Log the fetched data to check its structure
+        console.log("Filtered Offers Data:", offersData); // Debug log
 
+        // Display logic
         const offersListContainer = document.getElementById('offersListContainer');
         offersListContainer.innerHTML = ''; // Clear previous data
 
-        // Check if the data is in the expected format
         if (Array.isArray(offersData)) {
             offersData.forEach(offer => {
-                // Create a new div element for each offer
                 const offerCard = document.createElement('div');
-                offerCard.className = 'offer-card'; // Add a class for styling each card
-
-                // Populate the card with the offer data
+                offerCard.className = 'offer-card';
                 offerCard.innerHTML = `
                     <h4>${offer.entreprise_name}</h4>
-                    <p>${offer.position_name}</p>
-                    
-                    <p><span class="material-symbols-outlined">location_on</span> ${offer.location}  <span class="material-symbols-outlined">work</span> Durée ${offer.duration}</p>
+                    <h5 class="position">${offer.position_name}</h5>
+                    <p class="location">
+                        <span class="material-symbols-outlined">location_on</span> ${offer.location}
+                    </p>
+                    <p>
+                        <span class="material-symbols-outlined">work</span> Internship ${offer.duration} mois
+                    </p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
-                // Append each offer card to the offers list container
                 offersListContainer.appendChild(offerCard);
             });
         } else {
             console.error('Expected offersData to be an array, but got:', offersData);
         }
-
     } catch (error) {
         console.error('Error in loadOffers function:', error);
     }
 }
+
+
 
 
 // Function to display offer details
@@ -262,13 +262,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Populate each dropdown with appropriate API data
     populateDropdown(apiPaths.get_locations, 'location', 'Location', 'Sélectionnez une localisation');
+    populateDropdown(apiPaths.get_locations, 'location_bar', 'Location', 'Sélectionnez une localisation');
     populateDropdown(apiPaths.get_languages, 'language', 'language_name', 'Sélectionnez une langue');
     populateDropdown(apiPaths.get_fields, 'field', 'field_name', 'Sélectionnez un domaine');
-    
+    populateDropdown(apiPaths.get_job_types, 'jobType', 'job_type','Sélectionnez un type de contrat');
+    populateDropdown(apiPaths.get_job_types, 'jobType_bar', 'job_type', 'Contrat');
     populateCheckboxGroup(apiPaths.get_durations, 'duration', 'Duration');
     populateCheckboxGroup(apiPaths.get_experience_levels, 'experience', 'experience_level');
     populateCheckboxGroup(apiPaths.get_education_levels, 'educationLevel', 'education_level');
-    populateCheckboxGroup(apiPaths.get_job_types, 'jobType', 'job_type');
 
     // Toggle filters popup
     openFiltersBtn.addEventListener('click', function () {
@@ -295,8 +296,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log("Filtres appliqués:", selectedFilters);
 
         try {
-            // Use loadOffers function to handle the API call and display offers
-            await loadOffers(selectedFilters);
+            await loadOffers(selectedFilters); // Use loadOffers to apply filters
             popupFilters.classList.remove('active');
             overlay.style.display = 'none';
         } catch (error) {
@@ -305,6 +305,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
 });
 
+
+
+
+
 // Load the profile and personal information when the page loads
 window.onload = async function() {
     await loadApiPaths();
@@ -312,3 +316,38 @@ window.onload = async function() {
     showSection('offersListContainer');
     
 };
+
+export function filterOffers() {
+    console.log("Filter function triggered");
+
+    const input = document.getElementById('searchBar').value.toLowerCase();
+    console.log("Search Input:", input);
+
+    const offerCards = document.querySelectorAll('#offersListContainer .offer-card');
+    console.log("Found offer cards:", offerCards.length);
+
+    offerCards.forEach((card, index) => {
+        const enterpriseNameElement = card.querySelector('h4');
+        const positionNameElement = card.querySelector('h5.position'); // Updated to h5
+
+        console.log(`Card ${index + 1}:`, card.innerHTML); // Log card HTML for debugging
+        console.log("Enterprise Name Element:", enterpriseNameElement?.textContent);
+        console.log("Position Name Element:", positionNameElement?.textContent);
+
+        const enterpriseName = enterpriseNameElement ? enterpriseNameElement.textContent.toLowerCase().trim() : '';
+        const positionName = positionNameElement ? positionNameElement.textContent.toLowerCase().trim() : '';
+
+        console.log(`Enterprise: "${enterpriseName}", Position: "${positionName}"`);
+
+        const isMatch = enterpriseName.includes(input) || positionName.includes(input);
+        console.log(`Match result for "${input}":`, isMatch);
+
+        card.style.display = isMatch ? '' : 'none';
+    });
+}
+
+window.filterOffers = filterOffers;
+window.showOfferDetails = showOfferDetails;
+window.submitApplication = submitApplication;
+window.buildQueryString = buildQueryString;
+window.handleRetourButtonClick = handleRetourButtonClick

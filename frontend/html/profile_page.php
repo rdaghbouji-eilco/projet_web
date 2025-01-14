@@ -75,7 +75,7 @@ if (file_exists($navigationPath)) {
 
                         <!-- Pop-up modal for profile form -->
                         <div id="popup-info" class="modal">
-                            <button class="close-button" onclick="closePopup()">×</button>
+                            <button class="close-button" onclick="closeModal()">×</button>
                             <h3>Update Profile Information</h3>
                             <hr>
                             <form id="personalInfoForm" class="section" >
@@ -127,7 +127,7 @@ if (file_exists($navigationPath)) {
 
                     <!-- Pop-up modal for profile form -->
                     <div id="popup-profile" class="modal" >
-                        <button class="close-button" onclick="closePopup()">×</button>
+                        <button class="close-button" onclick="closeModal()">×</button>
                         <h3>Update Profile Information</h3>
                         <hr>
                         <form id="profileForm" class="section" >
