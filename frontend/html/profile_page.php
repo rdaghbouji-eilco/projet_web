@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'auth_guard.php'; // Vérifie la connexion utilisateur
 if (!isset($_SESSION['user'])) {
     header('Location: auth.html'); // Redirige vers la page d'authentification si non connecté
     exit();

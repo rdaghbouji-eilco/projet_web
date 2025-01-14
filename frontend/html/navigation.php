@@ -12,7 +12,7 @@ function generateNavigation($userRole)
 
     // Lien spécifique pour les gestionnaires
     if ($userRole == 3) {
-        $html .= '<li><a href="dashboard_gestionnaire.html">Tableau de bord Gestionnaire</a></li>';
+        $html .= '<li><a href="dashboard_gestionnaire.php">Tableau de bord Gestionnaire</a></li>';
     }
 
     // Gestion de l'état de connexion
