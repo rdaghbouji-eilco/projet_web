@@ -17,14 +17,14 @@ $database = new Database();
 $db = $database->getConnection();
 
 // Check if user_ID is set in the session
-if (!isset($_SESSION['user_ID'])) {
+if (!isset($_SESSION['user']['ID'])) {
     http_response_code(401); // Unauthorized
     echo json_encode(array("message" => "User not authenticated."));
     exit;
 }
 
 // Get the user_ID from the session
-$user_ID = $_SESSION['user_ID'];
+$user_ID = $_SESSION['user']['ID'];
 
 // Get the input data
 $data = json_decode(file_get_contents("php://input"));

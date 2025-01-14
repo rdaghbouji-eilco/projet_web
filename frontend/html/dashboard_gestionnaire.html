@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Gestionnaire</title>
-  <link rel="stylesheet" href="../css/dashboard_test.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
   <script src="../js/dashboard.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -22,10 +22,10 @@
 
 <body>
   <div class="sidebar">
-    <h2>Gestionnaire Dashboard</h2>
+    <h2>Espace Gestion</h2>
     <div class="logo-details">
-      <i class="bx bxl-c-plus-plus"></i>
-      <span class="logo_name">D-CLIC</span>
+      <i class='bx bxs-school' ></i>
+      <span class="logo_name">EILCO</span>
     </div>
 
     <ul class="nav-links">
@@ -61,19 +61,17 @@
   <div class="content">
     <section id="homeSection" class="section">
       <nav>
-        <div class="sidebar-button">
-          <i class="bx bx-menu sidebarBtn"></i>
-          <span class="dashboard">Dashboard</span>
-        </div>
-        <div class="search-box">
-          <input type="text" placeholder="Recherche..." />
-          <i class="bx bx-search"></i>
-        </div>
-        <div class="profile-details">
-          <!--<img src="images/profile.jpg" alt="">-->
-          <span class="admin_name">Komche</span>
-          <i class="bx bx-chevron-down"></i>
-        </div>
+        <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+        <ul>
+                <li><a href="menu_principal.html">Offres</a>
+                </li>
+                <li><a href="profile_page.html">Profil</a>
+                </li>
+                <li><a href="dashboard_gestionnaire.html">Espace de Gestion</a>
+                </li>
+                <li><a href="">Se déconnecter</a>
+                </li>
+        </ul>
       </nav>
       <div class="home-content">
         <div class="content-wrapper">
@@ -157,8 +155,13 @@
     </section>
 
     <section id="offersSection" class="section">
-      <h2>Gestion des Offres</h2>
-      <button class="add-offer-btn" onclick="showOfferForm()">Ajouter une offre</button>
+      <nav>
+        <div class="sidebar-button">
+          <span class="dashboard">Gestion des Offres</span>
+        </div>
+        <button class="add-offer-btn" onclick="showOfferForm()">Ajouter une offre</button>
+      </nav>
+
       <div class="offers-page-container">
         <!-- Left Section: Table -->
         <div class="offers-table-container">
@@ -166,7 +169,7 @@
             <table class="custom-table">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th> </th>
                   <th>Nom du poste</th>
                   <th>Description</th>
                   <th>Date de publication</th>
@@ -184,37 +187,37 @@
         <div class="offer-form-container" id="offerFormModal" >
           <h3 id="offerFormTitle">Ajouter une offre</h3>
           <form id="offerForm">
-            <label for="entreprise_name">Nom de l'entreprise :</label>
+            <label for="entreprise_name">Nom de l'entreprise </label>
             <input type="text" id="entreprise_name" name="entreprise_name" required><br><br>
 
-            <label for="position_name">Nom du poste :</label>
+            <label for="position_name">Nom du poste </label>
             <input type="text" id="position_name" name="position_name" required><br><br>
 
-            <label for="description">Description :</label>
+            <label for="description">Description </label>
             <textarea id="description" name="description" required></textarea><br><br>
 
-            <label for="fieldDropdown">Domaine :</label>
+            <label for="fieldDropdown">Domaine </label>
             <select id="fieldDropdown" name="field"></select><br><br>
 
-            <label for="locationDropdown">Localisation :</label>
+            <label for="locationDropdown">Localisation </label>
             <select id="locationDropdown" name="location"></select><br><br>
 
-            <label for="jobTypeDropdown">Type d'emploi :</label>
+            <label for="jobTypeDropdown">Type d'emploi </label>
             <select id="jobTypeDropdown" name="job_type"></select><br><br>
 
-            <label for="duration">Durée :</label>
+            <label for="duration">Durée </label>
             <input type="text" id="duration" name="duration" required><br><br>
 
-            <label for="statusDropdown">Statut :</label>
+            <label for="statusDropdown">Statut </label>
             <select id="statusDropdown" name="status"></select><br><br>
 
-            <label for="experienceLevelDropdown">Niveau d'expérience :</label>
+            <label for="experienceLevelDropdown">Niveau d'expérience </label>
             <select id="experienceLevelDropdown" name="experience_level"></select><br><br>
 
-            <label for="educationLevelDropdown">Niveau d'éducation :</label>
+            <label for="educationLevelDropdown">Niveau d'éducation </label>
             <select id="educationLevelDropdown" name="education_level"></select><br><br>
 
-            <label for="publish_date">Date de publication :</label>
+            <label for="publish_date">Date de publication :/label>
             <input type="date" id="publish_date" name="publish_date" required><br><br>
 
             <input type="hidden" id="offer_id" name="offer_id">

@@ -7,13 +7,13 @@ include_once '../../config/db.php';
 $database = new Database();
 $db = $database->getConnection();
 
-if (!isset($_SESSION['user_ID'])) {
+if (!isset($_SESSION['user']['ID'])) {
     http_response_code(401);
     echo json_encode(["message" => "User not logged in"]);
     exit();
 }
 
-$user_ID = $_SESSION['user_ID'];
+$user_ID = $_SESSION['user']['ID'];
 $uploadDirectory = "../../uploads/profile_pictures/";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['profile_picture'])) {

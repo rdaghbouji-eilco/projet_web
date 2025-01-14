@@ -25,8 +25,8 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
     
     const formData = {
         email: document.getElementById('signUpEmail').value,
-        surname: document.getElementById('lastName').value, // Change `lastName` to `surname`
-        name: document.getElementById('firstName').value,   // Change `firstName` to `name`
+        surname: document.getElementById('lastName').value,
+        name: document.getElementById('firstName').value,
         password: document.getElementById('signUpPassword').value
     };
     
@@ -67,10 +67,13 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             credentials: 'include',
             body: JSON.stringify(loginData)
         });
+        console.log('Response status:', response.status);
         const result = await response.json();
+        console.log('Response JSON:', result);
+    
 
         if (response.ok) {
-            window.location.href = 'profile_page.html';
+            window.location.href = 'menu_principal.php';
         } else {
             document.getElementById('loginErrorMsg').textContent = result.message || 'Échec de la connexion.';
         }

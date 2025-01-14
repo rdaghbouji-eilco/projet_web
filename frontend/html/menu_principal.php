@@ -1,11 +1,34 @@
+<?php
+session_start();
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION['user'])) {
+    header('Location: auth.html'); // Redirige vers la page d'authentification si non connecté
+    exit();
+}
+
+// Récupération du rôle de l'utilisateur
+$userRole = $_SESSION['user']['role'] ?? null;
+
+// Inclusion de la navigation
+$navigationPath = 'navigation.php';
+if (file_exists($navigationPath)) {
+    require_once $navigationPath;
+} else {
+    // Si `navigation.php` est manquant, affiche un message d'erreur pour le débogage
+    echo "Erreur : le fichier navigation.php est introuvable.";
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> EILCO | Offres de stage </title>
-        <link rel="stylesheet" href="../css/menu_principal.css">
-        <script defer src="../js/menu_principal.js"></script>
+        <link rel="stylesheet" href="../css/menu_principal.css?v=1.0">
+        <script defer src="../js/menu_principal.js?v=1.0.0"></script>
         
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
@@ -27,19 +50,7 @@
     </head>
 
 <body>
-	<header>
-		<img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
-		<ul>
-            <li><a href="offres_etu.html">Offres</a>
-            </li>
-            <li><a href="entreprises_etu.html">Entreprises</a>
-            </li>
-            <li><a href="evenements_etu.html">Evénements</a>
-            </li>
-            <li><a href="conseils_etu.html">Conseils</a>
-            </li>
-        </ul>
-	</header>
+	<?php echo generateNavigation($userRole); ?>
     <div class="recherche">
         <div class="search-bar">
             <div class="search-container">

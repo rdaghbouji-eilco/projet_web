@@ -1,4 +1,3 @@
-
 // Function to populate the dropdowns with data from the API
 async function populateDropdown(apiUrl, dropdownId, dataKey, defaultOption = 'Sélectionnez...') {
     try {
@@ -91,6 +90,22 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+async function loadProfileProModal() {
+    try {
+        console.log('Loading profile pro modal...');
+        await Promise.all([
+            populateDropdown(apiPaths.get_education_levels, 'educationLevelDropdown', 'education_level'),
+            populateDropdown(apiPaths.get_fields, 'fieldDropdown', 'field_name'),
+            populateDropdown(apiPaths.get_experience_levels, 'experienceLevelDropdown', 'experience_level'),
+            populateDropdown(apiPaths.get_current_degree, 'currentDegreeDropdown', 'degree_name'),
+            populateDropdown(apiPaths.get_expected_graduation_year, 'graduationYearDropdown', 'year'),
+        ]);
+        console.log('Profile pro modal loaded successfully.');
+    } catch (error) {
+        console.error('Error loading profile pro modal:', error);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     const updateProfileBtn = document.getElementById('update-form-btn'); // Ensure the button ID is correct
     const popupProfile = document.getElementById('popup-profile'); // The modal element
@@ -114,7 +129,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Add event listeners
     if (updateProfileBtn) {
-        updateProfileBtn.addEventListener('click', openPopup); // Open modal when button is clicked
+                updateProfileBtn.addEventListener('click', async function () {
+                await loadApiPaths(); // Ensure API paths are loaded
+                await loadProfileProModal(); // Load modal data lazily
+                document.getElementById('popup-profile').classList.add('active'); // Show modal
+            });
     } else {
         console.error('Update Profile button not found!');
     }

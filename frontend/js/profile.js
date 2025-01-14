@@ -1,5 +1,3 @@
-
-
 // Function to upload a new profile picture
 async function uploadProfilePicture() {
     const fileInput = document.getElementById('profilePictureInput');
@@ -46,8 +44,6 @@ async function loadProfilePicture() {
         console.error('Error loading profile picture:', error);
     }
 }
-
-
 
 
 // Load the username and surname
@@ -148,5 +144,30 @@ function openModal(formId) {
 
     modal.style.display = 'flex';
 }
+async function loadProfilePage() {
+    try {
+        console.log('Loading profile page data...');
+
+        // Load all critical data in parallel
+        await Promise.all([
+            loadUsername(),
+            loadProfileInfo(),
+            loadProfilePicture(),
+            loadPersonalInfo(),
+            loadCVLink(),
+        ]);
+
+        console.log('Profile page data loaded successfully.');
+    } catch (error) {
+        console.error('Error loading profile page data:', error);
+    }
+}
+
+window.onload = async function() {
+    await loadApiPaths(); // Ensure API paths are loaded
+
+    await loadProfilePage(); // Prioritize critical API calls
+};
+
 
 
