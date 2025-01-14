@@ -1,6 +1,9 @@
 import { loadApiPaths, fetchData, apiPaths } from '../js/api.js';
 import { initializeOffersSection } from '../js/offres_dashboard.js';
 import { createChart, updateChart } from '../js/charts.js';
+import { initializeApplicationsSection } from '../js/candidatures_dashboard.js';
+
+
 const baseUrl = 'http://localhost';
 
 function showLoading(selector) {
@@ -433,6 +436,11 @@ function showSection(sectionId) {
     }
 }
 
+function showApplicationsSection() {
+    showSection('applicationsSection'); // Afficher la section des candidatures
+    initializeApplicationsSection();    // Initialiser les données de la section
+}
+
 
 
 // Expose showSection globally
@@ -440,3 +448,6 @@ window.showSection = showSection;
 
 // Run dashboard initialization
 initializeDashboard();
+
+window.showApplicationsSection = showApplicationsSection;
+

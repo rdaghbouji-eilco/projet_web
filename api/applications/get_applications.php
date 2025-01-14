@@ -1,5 +1,4 @@
 <?php
-// get_offers.php
 header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allowed methods
 header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allowed headers

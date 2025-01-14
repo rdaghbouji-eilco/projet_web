@@ -43,18 +43,14 @@
         </a>
       </li>
       <li>
-        <a href="#" onclick="showSection('usersSection')">
-          <i class="bx bx-book-alt"></i>
-          Gestion des Utilisateurs
+        <a href="#" onclick="showApplicationsSection()">
+          <i class="bx bx-user"></i>
+          Gestion des Candidatures
         </a>
+      </li>      
+      <li class="log_out"><a href="#"><i class="bx bx-log-out">
+      </i><span class="links_name">Déconnexion</span></a>
       </li>
-      <li>
-        <a href="#" onclick="showSection('reportsSection')">
-          <i class="bx bx-pie-chart-alt-2"></i>
-          Rapports
-        </a>
-      </li>
-      <li class="log_out"><a href="#"><i class="bx bx-log-out"></i><span class="links_name">Déconnexion</span></a></li>
     </ul>
   </div>
 
@@ -227,8 +223,64 @@
       </div>
     </section>
 
+    <section id="applicationsSection" class="section">
+      <nav>
+        <div class="sidebar-button">
+          <span class="dashboard">Gestion des Candidatures</span>
+        </div>
+      </nav>
+    
+      <div class="applications-page-container">
+        <!-- Barre de recherche -->
+        <div class="search-bar-container">
+          <input 
+            type="text" 
+            id="searchBar" 
+            placeholder="Rechercher une candidature..." 
+            onkeyup="filterApplications()">
+        </div>
+    
+        <!-- Liste des candidatures -->
+        <div class="applications-list-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nom du Candidat</th>
+                <th>Offre</th>
+                <th>Date de Candidature</th>
+                <th>Statut</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="applicationsTableBody">
+              <!-- Les lignes seront dynamiquement ajoutées -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
 
+    
+    </section>    
+    
   </div>
+  <div id="editApplicationModal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <h3>Modifier la Candidature</h3>
+      <form id="editApplicationForm">
+        <label for="applicationStatus">Statut</label>
+        <select id="applicationStatus" name="applicationStatus">
+          <option value=1>En attente</option>
+          <option value=2>Acceptée</option>
+          <option value=3>Refusée</option>
+        </select>
+        <button type="submit">Enregistrer</button>
+        <button type="button" onclick="closeModal('editApplicationModal')">Annuler</button>
+      </form>
+    </div>
+  </div>
+  
 </body>
 
 </html>
