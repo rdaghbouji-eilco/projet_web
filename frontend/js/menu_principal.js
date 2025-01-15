@@ -137,17 +137,25 @@ function showOfferDetails(offerId) {
             if (offer) {
                 const offerDetailsContainer = document.getElementById('offerDetailsContainer');
                 offerDetailsContainer.innerHTML = `
-                   <p id="offer-position">${offer.position_name}</p>
-                   <p id="offer-field">${offer.field}</p>
-                   <p class="offer-info"><span class="material-symbols-outlined">location_on</span> ${offer.location} | 
-                   <span class="material-symbols-outlined">work</span> Durée ${offer.duration}</p>
-                   <p id="offer-entreprise"> ${offer.entreprise_name}</p>
-                   <p id="offer-publish-date">Publiée le ${offer.publish_date}</p>
-                   <p id="offer-experience-level"><strong>Experience Level:</strong> ${offer.experience_level}</p>
-                   <p id="offer-education-level"><strong>Education Level:</strong> ${offer.education_level}</p>
-                   <p id="offer-description"><strong>Description:</strong> ${offer.description}</p>
-                   <button class="btn-apply" onclick="submitApplication(${offer.id})">Submit Application</button>
-                   `;
+                    <p id="offer-position">${offer.position_name}</p>
+                    <p class="offer-info"><span class="material-symbols-outlined">location_on</span> ${offer.location} |   
+                    <span class="material-symbols-outlined">work</span> Durée ${offer.duration}</p>
+                    <p id="offer-entreprise"> ${offer.entreprise_name}</p>
+                    <p id="offer-publish-date">Publiée le ${offer.publish_date}</p>
+                    <div id="experience-education">
+                        <div id="experience">
+                            <span>Niveau d'expérience</span>
+                            <p id="offer-experience-level"> ${offer.experience_level}</p>
+                        </div>
+                        <hr>
+                        <div id="education">
+                            <span>Niveau d'études</span>
+                            <p id="offer-education-level"> ${offer.education_level}</p>
+                        </div>
+                    </div>
+                    <p id="offer-description"><strong>Description | </strong> ${offer.description}</p>
+                    <button class="btn-apply" onclick="submitApplication(${offer.id})">Postuler</button>
+                `;
                 hideSection('offersListContainer'); // Hide the offers list section
                 showSection('offre'); // Show the offer details section
 

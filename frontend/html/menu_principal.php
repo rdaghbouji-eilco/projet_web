@@ -132,19 +132,19 @@ if (file_exists($navigationPath)) {
     </div>
 
     <main>
-        <div id="total-offers-container" class="offers-counter">
-            <span id="total-offers" class="offers-number">0</span><span class="offers-label">offres</span>
-        </div>
-
         <div class="offers-list" id="offersListContainer">
             <!-- This container will dynamically display all enterprise names using JS-->
         </div>
+
         <section id="offre" class="section" >
-            
+            <div class="retour">
+                <button class="retour-button" onclick="handleRetourButtonClick() " ></button>
+                <i class='bx bx-arrow-back'></i>
+            </div>
             <div id="offerDetailsContainer" class="offer-details">
                 <!-- Offer details will be populated here -->
             </div>
-            <button class="retour-button" onclick="handleRetourButtonClick() "  >Retour</button>
+            
         </section>
     </main>
 
