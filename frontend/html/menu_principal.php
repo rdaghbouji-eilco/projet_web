@@ -131,8 +131,11 @@ if (file_exists($navigationPath)) {
         </div>
     </div>
 
-
     <main>
+        <div id="total-offers-container" class="offers-counter">
+            <span id="total-offers" class="offers-number">0</span><span class="offers-label">offres</span>
+        </div>
+
         <div class="offers-list" id="offersListContainer">
             <!-- This container will dynamically display all enterprise names using JS-->
         </div>

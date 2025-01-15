@@ -102,6 +102,7 @@ header ul li a:hover {
     display: flex;
     align-self: center;
     margin-right: 1%;
+    border: none;
 }
 
 .search-field1{
@@ -111,16 +112,16 @@ header ul li a:hover {
     border-radius: 15px;
     min-height: 55px;
     transition: background-color 0.3s ease;
+    border: none;
 }
 
-.search-field1 :hover{
-    background-color: #ddd;
-}
 
 .search-field{
     padding: 0;
     display: flex;
+    border: none;
 }
+
 
 /* Style for the combined button */
 .button-with-icon {
@@ -128,19 +129,19 @@ header ul li a:hover {
     align-items: center;
     justify-content: center;
     background-color: #134068;
-    color: white;
-    border: none;
+    color: white ;
+    border: solid 2px;
     border-radius: 10px;
     height: 50px;
-    margin-top: 1%;
-    max-width: 12%;
+    margin-top: 15px;
+    max-width: 200px;
     min-width: 100px;
     padding: 0.8% 1.5%;
     transition: background-color 0.2s;
     cursor: pointer;
     font-family: "Poppins", Arial, Helvetica, sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .button-with-icon:hover {
@@ -306,8 +307,9 @@ header ul li a:hover {
     box-sizing: border-box;
     appearance: none;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: none;
 }
+
 
 
 .apply-filters-button {
@@ -338,13 +340,52 @@ header ul li a:hover {
 
 /* Main Content Styles */
 main {
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 15px;
+    padding: 0;
 }
 
+/* Style du conteneur principal */
+.offers-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif; 
+    max-width: 400px;
+    border: none;
+    background: none;
+    margin-left: 200px;
+}
+
+/* Style du texte */
+.offers-label {
+    font-size: 24px; /* Taille standard */
+    font-weight: bold; /* Texte en gras */
+    color: #333; /* Couleur sombre pour le contraste */
+}
+
+/* Style du nombre d'offres */
+.offers-number {
+    font-size: 26px; /* Texte plus grand */
+    font-weight: bold; /* En gras */
+    color: #333; /* Bleu vif */
+    margin-left: 8px; /* Espacement entre le label et le nombre */
+    animation: fadeIn 1s ease-in-out; /* Animation lors de l'apparition */
+}
+
+
+
+#offersListContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 .offers-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 15px;
     padding: 20px;
 }
@@ -352,65 +393,89 @@ main {
 /* Individual offer card styling */
 .offer-card {
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
-    width: 1200px;
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 15px;
+    border-radius: 20px;
+    padding: 20px 25px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border: 1px solid #e0e0e0;
     transition: transform 0.2s ease;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     border: 2px solid rgb(222, 222, 222);
-    margin-bottom: 10px;
-    margin-left:auto; margin-right:auto;
-    
+    margin-bottom: 20px;
+    margin-left:auto; 
+    margin-right:auto;
+    width: 850px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
 }
 
 .offer-card h4 {
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: 17px;
+    margin: 0;
+    color: #020e5c;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.offer-card .position{
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-size: 22px;
     margin: 0;
     color: #333;
-    
+    margin-bottom: 15px;
 }
 
-.offer-card p {
-    margin: 5px 0;
-    font-size: 0.9rem;
+.offer-details-row {
+    display: flex; /* Aligne les enfants sur une ligne */
+    align-items: center; /* Centre les éléments verticalement */
+    justify-content: space-between; /* Espacement entre les éléments */
+    gap: 20px; /* Espacement horizontal entre les enfants */
+}
+
+.location {
+    display: flex; /* Aligne les éléments enfants en ligne */
+    align-items: center; /* Aligne verticalement au centre */
+    gap: 20px; /* Espacement horizontal entre les éléments */
+}
+
+.location p {
+    margin: 0; /* Supprime les marges par défaut */
+    font-size: 1rem;
+    font-weight: 500;
     color: #555;
-    display: flex; /* Enable flexbox */
-    align-items: center; /* Vertically center icons and text */
-    gap: 20px; /* Space between location and duration items */
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    display: flex;
+    flex-direction: row;
 }
 
-.offer-card p .material-symbols-outlined {
-    font-size: 20px; /* Icon size */
-    margin-right: 3px; /* Space between icon and text within the same item */
+.material-symbols-outlined {
+    font-size: 20px;
+    margin-right: 5px;
 }
-
 
 .offer-card .view-offer-button {
-    font-family: "Poppins",Arial, Helvetica, "sans-serif";
-    background-color: rgb(222, 222, 222);
-    color: #000000;
-    border:none;
-    padding: 8px 12px;
-    border-radius: 5px;
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
+    font-weight: 400;
+    color: rgb(10, 2, 85);
+    border:rgb(10, 2, 88) solid 2px;
+    padding: 10px 15px;
+    border-radius: 20px;
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.2s;
 }
 
 .offer-card .view-offer-button:hover {
-    background-color: #979797;
+    background-color: rgb(181, 197, 233);
 }
 
 .offer-card:hover {
     transform: scale(1.01);
     border: 2px solid rgb(158, 158, 158);
 }
+
 .offer-details {
     width: 1200px;
     background-color: #ffffff;
