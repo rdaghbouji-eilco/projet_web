@@ -109,7 +109,14 @@ if (file_exists($navigationPath)) {
             <main class="right-section">
 
                 <div id="personalInfoSection" class="box">
+<<<<<<< HEAD
 
+=======
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
+>>>>>>> parent of 86cd81f (Update profile_page.php)
                     <h2> Informations professionnelles</h2>
                     <p><strong>Niveau d'éducation:</strong> <span id="educationLevel"></span></p>
                     <p><strong>Domaine:</strong> <span id="field"></span></p>
@@ -191,9 +198,16 @@ if (file_exists($navigationPath)) {
                         <form id="cvSection">
 
                             <h2>CV</h2>
+<<<<<<< Updated upstream
                             <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
                             <label for="cv" style="font-size: 14px;">Séléctionnez votre CV (PDF, DOC, DOCX):</label>
 
+=======
+
+                            <h2>CV</h2>
+                            <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
+                            <label for="cv" style="font-size: 14px;">Séléctionnez votre CV (PDF, DOC, DOCX):</label>
+>>>>>>> Stashed changes
                             <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required><br><br>
                             <button class="custom-button" type="submit">Modifer/Télécharger</button>
                             <p id="uploadStatus"></p>
