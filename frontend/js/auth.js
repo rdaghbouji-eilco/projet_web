@@ -19,7 +19,18 @@ function showSection(sectionId) {
     document.getElementById(sectionId).style.display = 'block';
 }
 
-// Handle Sign-Up Form Submission
+// Validate Email Format
+function validateEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return emailRegex.test(email);
+}
+
+// Validate Password Length
+function validatePassword(password) {
+    return password.length >= 6;  // Minimum length of 6 characters
+}
+
+// Handle Sign-Up Form Submission with validation
 document.getElementById('signUpForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     
@@ -30,6 +41,16 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
         password: document.getElementById('signUpPassword').value
     };
     
+    // Validate inputs
+    if (!validateEmail(formData.email)) {
+        document.getElementById('signUpErrorMsg').textContent = 'Veuillez entrer un email valide.';
+        return;
+    }
+    
+    if (!validatePassword(formData.password)) {
+        document.getElementById('signUpErrorMsg').textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+        return;
+    }
 
     try {
         const response = await fetch(apiPaths.register, {
@@ -51,7 +72,7 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
     }
 });
 
-// Handle Login Form Submission
+// Handle Login Form Submission with validation
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -59,6 +80,17 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         email: document.getElementById('loginEmail').value,
         password: document.getElementById('loginPassword').value
     };
+
+    // Validate inputs
+    if (!validateEmail(loginData.email)) {
+        document.getElementById('loginErrorMsg').textContent = 'Veuillez entrer un email valide.';
+        return;
+    }
+    
+    if (!validatePassword(loginData.password)) {
+        document.getElementById('loginErrorMsg').textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+        return;
+    }
 
     try {
         const response = await fetch(apiPaths.login, {
@@ -70,7 +102,6 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
         console.log('Response status:', response.status);
         const result = await response.json();
         console.log('Response JSON:', result);
-    
 
         if (response.ok) {
             window.location.href = 'menu_principal.php';
