@@ -19,7 +19,7 @@ export async function loadApplications() {
                     <td>${new Date(application.application_date).toLocaleDateString()}</td>
                     <td>${application.application_status}
                     <br>
-                    <button class="edit-btn2" onclick="editApplication(${application.application_id})">Modifier</button>
+                    <button class="edit-btn" onclick="editApplication(${application.application_id})">Modifier</button>
                     </td>
                     <td class="actions">
                         <button class="view-btn" onclick="viewProfile(${application.application_id})">Voir le Profil</button>

@@ -85,6 +85,26 @@ async function deleteOffer(offerId) {
 // Attach to global scope
 window.deleteOffer = deleteOffer;
 
+// Filter the offers based on search input
+export function filterOffers() {
+    const input = document.getElementById('searchBarOffers').value.toLowerCase();
+    const rows = document.querySelectorAll('.custom-table tbody tr');  // Adjusted the selector
+
+    rows.forEach(row => {
+        // Target the cell that contains the position_name (second column)
+        const positionNameCell = row.querySelector('td:nth-child(2)');
+        
+        // Check if the cell exists and if the text matches the search input
+        if (positionNameCell) {
+            const positionName = positionNameCell.textContent.toLowerCase();
+            row.style.display = positionName.includes(input) ? '' : 'none';
+        }
+    });
+}
+
+// Attach the filter function to the search bar input
+document.getElementById('searchBarOffers').addEventListener('input', filterOffers);
+
 
 
 // Load all dropdowns for foreign keys
