@@ -105,7 +105,7 @@ async function loadOffers(filters = {}) {
                                 <span class="material-symbols-outlined">location_on</span> ${offer.location}
                             </p>
                             <p>
-                                <span class="material-symbols-outlined">work</span> Internship ${offer.duration} mois
+                                <span class="material-symbols-outlined">work</span> Internship ${offer.duration}
                             </p>
                         </div>
                         <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>

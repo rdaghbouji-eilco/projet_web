@@ -65,7 +65,7 @@ async function loadOffers() {
                     <p> <span class="material-symbols-outlined">location_on</span>
                      ${offer.location}  |
                       <span class="material-symbols-outlined">work</span> 
-                      Internship ${offer.duration} mois</p>
+                      Internship ${offer.duration}</p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
 
