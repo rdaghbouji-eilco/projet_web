@@ -111,16 +111,22 @@ if (file_exists($navigationPath)) {
                 <h2>Personal Information</h2>
                 <div id="personalInfoSection" class="box">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <p><strong>Education Level:</strong> <span id="educationLevel"></span></p>
                     <p><strong>Field:</strong> <span id="field"></span></p>
                     <p><strong>Current Situation:</strong> <span id="currentSituation"></span></p>
                     <p><strong>Experience Level:</strong> <span id="experienceLevel"></span></p>
 =======
+=======
+>>>>>>> Stashed changes
                     <h2> Informations professionnelles</h2>
                     <p><strong>Niveau d'éducation:</strong> <span id="educationLevel"></span></p>
                     <p><strong>Domaine:</strong> <span id="field"></span></p>
                     <p><strong>Situation actuelle:</strong> <span id="currentSituation"></span></p>
                     <p><strong>Niveau d'expérience:</strong> <span id="experienceLevel"></span></p>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                     <p><strong>Handicap:</strong> <span id="handicap"></span></p>
                     <p><strong>Diplôme en cours ou obtenu:</strong> <span id="currentDegree"></span></p>
@@ -197,8 +203,14 @@ if (file_exists($navigationPath)) {
                     <div class="box">
                         <form id="cvSection">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                             <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
                             <label for="cv">Choose your CV (PDF, DOC, DOCX):</label>
+=======
+                            <h2>CV</h2>
+                            <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
+                            <label for="cv" style="font-size: 14px;">Séléctionnez votre CV (PDF, DOC, DOCX):</label>
+>>>>>>> Stashed changes
 =======
                             <h2>CV</h2>
                             <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
