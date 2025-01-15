@@ -155,6 +155,15 @@ if ($_SESSION['user']['role'] != 3) {
         <div class="sidebar-button">
         <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
         </div>
+        <div class="search-bar-container">
+          <input 
+            type="text" 
+            id="searchBarOffers" 
+            placeholder="Rechercher une offre" 
+            onkeyup="filterOffers()">
+            
+            <i class='bx bx-search'></i>
+        </div>
         <button class="add-offer-btn" onclick="showOfferForm()">Ajouter une offre</button>
       </nav>
 
@@ -172,7 +181,7 @@ if ($_SESSION['user']['role'] != 3) {
                   <th>Actions</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="offersTableBody">
                 <!-- Rows will be dynamically populated -->
               </tbody>
             </table>
@@ -180,9 +189,10 @@ if ($_SESSION['user']['role'] != 3) {
         </div>
 
         <!-- Right Section: Form -->
-        <div class="offer-form-container" id="offerFormModal" >
+        <div class="offer-form-container" id="offerFormModal" style="display: none;">
           <h3 id="offerFormTitle">Ajouter une offre</h3>
-          <form id="offerForm">
+          <button type="button" id="closeButton" class="close-btn">X</button>
+          <form id="offerForm" >
             <label for="entreprise_name">Nom de l'entreprise </label>
             <input type="text" id="entreprise_name" name="entreprise_name" required><br><br>
 
@@ -202,7 +212,7 @@ if ($_SESSION['user']['role'] != 3) {
             <select id="jobTypeDropdown" name="job_type"></select><br><br>
 
             <label for="duration">Durée </label>
-            <input type="text" id="duration" name="duration" required><br><br>
+            <select id="durationDropDown" name="duration" required></select><br><br>
 
             <label for="statusDropdown">Statut </label>
             <select id="statusDropdown" name="status"></select><br><br>
@@ -213,7 +223,7 @@ if ($_SESSION['user']['role'] != 3) {
             <label for="educationLevelDropdown">Niveau d'éducation </label>
             <select id="educationLevelDropdown" name="education_level"></select><br><br>
 
-            <label for="publish_date">Date de publication :/label>
+            <label for="publish_date">Date de publication </label>
             <input type="date" id="publish_date" name="publish_date" required><br><br>
 
             <input type="hidden" id="offer_id" name="offer_id">

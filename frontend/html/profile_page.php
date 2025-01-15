@@ -46,7 +46,7 @@ if (file_exists($navigationPath)) {
 
     <!-- Main Container -->
     <div class="container">
-        <h1>Profile Page</h1>
+        <h1>Mon Profil</h1>
 
         <!-- Layout setup for main and aside -->
         <div class="two-columns">
@@ -61,12 +61,12 @@ if (file_exists($navigationPath)) {
                         </div>
                     </div>
                     <div class="profile-details">
-                        <p><strong>Phone:</strong> <span id="phone"></span></p>
-                        <p><strong>Birthdate:</strong> <span id="birthdate"></span></p>
-                        <p><strong>Country:</strong> <span id="country"></span></p>
-                        <button class="custom-button" aria-label="Update Personal Info"
+                        <p><strong>Téléphone:</strong> <span id="phone"></span></p>
+                        <p><strong>Anniversaire:</strong> <span id="birthdate"></span></p>
+                        <p><strong>Pays:</strong> <span id="country"></span></p>
+                        <button class="custom-button" aria-label="Modifier"
                             id="update-info-btn">
-                            Update Personal Info
+                            Modifier
                         </button>
                     </div>
                     <div>
@@ -76,29 +76,29 @@ if (file_exists($navigationPath)) {
                         <!-- Pop-up modal for profile form -->
                         <div id="popup-info" class="modal">
                             <button class="close-button" onclick="closeModal()">×</button>
-                            <h3>Update Profile Information</h3>
+                            <h3>Modifier</h3>
                             <hr>
                             <form id="personalInfoForm" class="section" >
                                 <!-- Phone Number -->
-                                <label for="phone">Phone Number:</label>
+                                <label for="phone">Téléphone:</label>
                                 <input type="text" id="form-phone" name="phone" required>
                         
                                 <!-- Birthdate -->
-                                <label for="birthdate">Birthdate:</label>
+                                <label for="birthdate">Anniversaire:</label>
                                 <input type="date" id="form-birthdate" name="birthdate" required>
                         
                                 <!-- Country -->
-                                <label for="country">Country:</label>
+                                <label for="country">Pays:</label>
                                 <select id="countryDropdown" name="country" required>
-                                    <option value="">Select a country</option>
+                                    <option value="">Séléctionner un pays</option>
                                 </select>
                         
                                 <!-- Profile Picture Upload -->
-                                <label for="profilePictureInput">Profile Picture:</label>
+                                <label for="profilePictureInput">Image:</label>
                                 <input type="file" id="profilePictureInput" name="profile_picture" accept="image/*">
                         
                                 <!-- Submit Button -->
-                                <button type="submit" class="btn-submit">Update Information</button>
+                                <button type="submit" class="btn-submit">Soumettre</button>
                                 <p id="errorMessage" class="error-message"></p> <!-- Error message display -->
                             </form>
                         </div>
@@ -108,17 +108,17 @@ if (file_exists($navigationPath)) {
 
             <main class="right-section">
                 <!-- Personal Info Section -->
-                <h2>Personal Information</h2>
-                <div id="personalInfoSection" class="box">
-                    <p><strong>Education Level:</strong> <span id="educationLevel"></span></p>
-                    <p><strong>Field:</strong> <span id="field"></span></p>
-                    <p><strong>Current Situation:</strong> <span id="currentSituation"></span></p>
-                    <p><strong>Experience Level:</strong> <span id="experienceLevel"></span></p>
+                <div id="personalInfoSection" class="box">  
+                    <h2> Informations professionnelles</h2>
+                    <p><strong>Niveau d'éducation:</strong> <span id="educationLevel"></span></p>
+                    <p><strong>Domaine:</strong> <span id="field"></span></p>
+                    <p><strong>Situation actuelle:</strong> <span id="currentSituation"></span></p>
+                    <p><strong>Niveau d'expérience:</strong> <span id="experienceLevel"></span></p>
                     <p><strong>Handicap:</strong> <span id="handicap"></span></p>
-                    <p><strong>Current Degree:</strong> <span id="currentDegree"></span></p>
-                    <p><strong>Expected Graduation Year:</strong> <span id="graduationYear"></span></p>
+                    <p><strong>Diplôme en cours ou obtenu:</strong> <span id="currentDegree"></span></p>
+                    <p><strong>Année d'obtention du diplôme:</strong> <span id="graduationYear"></span></p>
                     <button class="custom-button" aria-label="Update Profile" id="update-form-btn">
-                        Update Profile
+                        Modifier
                     </button>
                 </div>
                 <div>
@@ -166,13 +166,13 @@ if (file_exists($navigationPath)) {
                             </select>
 
                             <!-- Current Degree -->
-                            <label for="currentDegree">Diplôme actuel :</label>
+                            <label for="currentDegree">Diplôme en cours ou obtenu :</label>
                             <select id="currentDegreeDropdown" name="current_degree" required>
                                 <option value="">Sélectionnez un diplôme</option>
                             </select>
 
                             <!-- Expected Graduation Year -->
-                            <label for="graduationYear">Année de graduation prévue :</label>
+                            <label for="graduationYear">Année d'obtention du diplôme :</label>
                             <select id="graduationYearDropdown" name="expected_graduation_year" required>
                                 <option value="">Sélectionnez une année</option>
                             </select>
@@ -188,10 +188,14 @@ if (file_exists($navigationPath)) {
                     <h2>CV</h2>
                     <div class="box">
                         <form id="cvSection">
-                            <p><strong>Download CV:</strong> <a id="cvDownloadLink" href="#" target="_blank">Download CV</a></p>
-                            <label for="cv">Choose your CV (PDF, DOC, DOCX):</label>
+                            
+
+                            <h2>CV</h2>
+                            <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
+                            <label for="cv" style="font-size: 14px;">Séléctionnez votre CV (PDF, DOC, DOCX):</label>
+
                             <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required><br><br>
-                            <button class="custom-button" type="submit">Upload CV</button>
+                            <button class="custom-button" type="submit">Modifer/Télécharger</button>
                             <p id="uploadStatus"></p>
                         </form>
                     </div>

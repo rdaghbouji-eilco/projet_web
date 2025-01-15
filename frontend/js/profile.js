@@ -147,7 +147,7 @@ async function loadCVLink() {
 
         const cvDownloadLink = document.getElementById('cvDownloadLink');
         cvDownloadLink.href = apiPaths.get_cv;
-        cvDownloadLink.textContent = "Download CV";
+        cvDownloadLink.textContent = "CV";
     } catch (error) {
         console.error("Error loading CV link:", error);
     }
