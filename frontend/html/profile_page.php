@@ -189,6 +189,7 @@ if (file_exists($navigationPath)) {
                     <h2>CV</h2>
                     <div class="box">
                         <form id="cvSection">
+
                             <h2>CV</h2>
                             <p><strong>Télécharger le</strong> <a id="cvDownloadLink" href="#" target="_blank">CV</a></p>
                             <label for="cv" style="font-size: 14px;">Séléctionnez votre CV (PDF, DOC, DOCX):</label>
