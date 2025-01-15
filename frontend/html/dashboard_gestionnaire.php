@@ -213,7 +213,7 @@ if ($_SESSION['user']['role'] != 3) {
             <label for="educationLevelDropdown">Niveau d'éducation </label>
             <select id="educationLevelDropdown" name="education_level"></select><br><br>
 
-            <label for="publish_date">Date de publication :/label>
+            <label for="publish_date">Date de publication </label>
             <input type="date" id="publish_date" name="publish_date" required><br><br>
 
             <input type="hidden" id="offer_id" name="offer_id">
