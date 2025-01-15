@@ -202,7 +202,7 @@ if ($_SESSION['user']['role'] != 3) {
             <select id="jobTypeDropdown" name="job_type"></select><br><br>
 
             <label for="duration">Durée </label>
-            <input type="text" id="duration" name="duration" required><br><br>
+            <select id="durationDropDown" name="duration" required></select><br><br>
 
             <label for="statusDropdown">Statut </label>
             <select id="statusDropdown" name="status"></select><br><br>

@@ -73,10 +73,12 @@ function handleRetourButtonClick() {
     showSection('offersListContainer'); // Show the offers list section
 }
 
+
+// Function to load offers with applied filters
 async function loadOffers(filters = {}) {
     try {
-        const queryParams = new URLSearchParams(filters).toString();
-        const apiUrlWithFilters = `${apiPaths.get_offers}?${queryParams}`;
+        const queryParams = buildQueryString(filters);
+        const apiUrlWithFilters = `${baseUrl}${apiPaths.get_offers_filtres}?${queryParams}`;
 
         console.log("Fetching offers with filters:", apiUrlWithFilters); // Debug log
 
@@ -103,7 +105,7 @@ async function loadOffers(filters = {}) {
                         <span class="material-symbols-outlined">location_on</span> ${offer.location}
                     </p>
                     <p>
-                        <span class="material-symbols-outlined">work</span> Internship ${offer.duration} mois
+                        <span class="material-symbols-outlined">work</span> ${offer.job_type} ${offer.duration}
                     </p>
                     <button onclick="showOfferDetails(${offer.id})" class="view-offer-button">Voir l'offre</button>
                 `;
@@ -118,6 +120,109 @@ async function loadOffers(filters = {}) {
     }
 }
 
+
+// Function to get selected filters
+function getSelectedFilters() {
+    const filters = {
+        duration: Array.from(document.querySelectorAll('#duration input:checked')).map(el => el.value),
+        experience_level: Array.from(document.querySelectorAll('#experience input:checked')).map(el => el.value),
+        language: document.getElementById('language').value || null,
+        field: document.getElementById('field').value || null,
+        education_level: Array.from(document.querySelectorAll('#educationLevel input:checked')).map(el => el.value),
+        location: document.getElementById('location').value || null,
+        job_type: document.getElementById('jobType').value || null,
+        startDate: document.getElementById('startDate').value || null,
+        remote: Array.from(document.querySelectorAll('#telework input:checked')).map(el => el.value)
+    };
+
+    console.log("Captured Filters:", filters);
+    return filters;
+}
+
+
+// Function to build query string
+function buildQueryString(filters) {
+    return Object.entries(filters)
+        .filter(([key, value]) => value && (Array.isArray(value) ? value.length > 0 : value !== 'null'))
+        .map(([key, value]) => {
+            if (Array.isArray(value)) {
+                return `${key}=${value.join(',')}`;
+            }
+            return `${key}=${encodeURIComponent(value)}`;
+        })
+        .join('&');
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const openFiltersBtn = document.getElementById('open-filters-btn');
+    const popupFilters = document.getElementById('popup-filters');
+    const overlay = document.getElementById('overlay');
+    const applyFiltersBtn = document.getElementById('apply-filters');
+    const closeButton = document.querySelector('.close-button');
+
+    await loadApiPaths(); // Load API paths
+
+    // Populate filter options
+    populateDropdown(apiPaths.get_locations, 'location', 'Location', 'Sélectionnez une localisation');
+    populateDropdown(apiPaths.get_locations, 'location_bar', 'Location', 'Sélectionnez une localisation');
+    populateDropdown(apiPaths.get_languages, 'language', 'language_name', 'Sélectionnez une langue');
+    populateDropdown(apiPaths.get_fields, 'field', 'field_name', 'Sélectionnez un domaine');
+    populateDropdown(apiPaths.get_job_types, 'jobType', 'job_type', 'Sélectionnez un type de contrat');
+    populateDropdown(apiPaths.get_job_types, 'jobType_bar', 'job_type', 'Sélectionnez un type de contrat');
+    populateCheckboxGroup(apiPaths.get_durations, 'duration', 'Duration');
+    populateCheckboxGroup(apiPaths.get_experience_levels, 'experience', 'experience_level');
+    populateCheckboxGroup(apiPaths.get_education_levels, 'educationLevel', 'education_level');
+
+    // Filter popup toggle
+    openFiltersBtn.addEventListener('click', function () {
+        popupFilters.classList.toggle('active');
+        overlay.style.display = 'block';
+    });
+
+    // Close popup
+    overlay.addEventListener('click', function () {
+        popupFilters.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+    closeButton.addEventListener('click', function () {
+        popupFilters.classList.remove('active');
+        overlay.style.display = 'none';
+    });
+
+    // Apply filters (popup filters)
+    applyFiltersBtn.addEventListener('click', async function () {
+        const selectedFilters = getSelectedFilters();
+        console.log("Filters applied:", selectedFilters);
+
+        try {
+            await loadOffers(selectedFilters);
+            popupFilters.classList.remove('active');
+            overlay.style.display = 'none';
+        } catch (error) {
+            console.error('Error applying filters:', error);
+        }
+    });
+
+    // Add change event listeners for search bar dropdowns
+    document.getElementById('jobType_bar').addEventListener('change', applySearchBarFilters);
+    document.getElementById('location_bar').addEventListener('change', applySearchBarFilters);
+});
+
+// Function to apply search bar filters dynamically
+async function applySearchBarFilters() {
+    const filters = {
+        job_type: document.getElementById('jobType_bar').value || null,
+        location: document.getElementById('location_bar').value || null
+    };
+
+    console.log("Search Bar Filters:", filters);
+
+    try {
+        await loadOffers(filters); // Re-fetch offers with updated filters
+    } catch (error) {
+        console.error("Error applying search bar filters:", error);
+    }
+}
 
 
 
@@ -222,88 +327,7 @@ async function populateCheckboxGroup(apiUrl, containerId, dataKey) {
     }
 }
 
-function getSelectedFilters() {
-    return {
-        duration: Array.from(document.querySelectorAll('#duration input:checked')).map(el => el.value),
-        experience: Array.from(document.querySelectorAll('#experience input:checked')).map(el => el.value),
-        language: document.getElementById('language').value,
-        field: document.getElementById('field').value,
-        educationLevel: Array.from(document.querySelectorAll('#educationLevel input:checked')).map(el => el.value),
-        location: document.getElementById('location').value,
-        jobType: Array.from(document.querySelectorAll('#jobType input:checked')).map(el => el.value),
-        startDate: document.getElementById('startDate').value,
-        remote: Array.from(document.querySelectorAll('#telework input:checked')).map(el => el.value)
-    };
-}
 
-function buildQueryString(filters) {
-    return Object.keys(filters)
-        .map(key => {
-            const value = filters[key];
-            if (Array.isArray(value)) {
-                return `${key}=${encodeURIComponent(value.join(','))}`;
-            }
-            return `${key}=${encodeURIComponent(value)}`;
-        })
-        .filter(param => param.includes('=') && !param.endsWith('='))
-        .join('&');
-}
-
-
-
-document.addEventListener('DOMContentLoaded', async () => {
-    const openFiltersBtn = document.getElementById('open-filters-btn');
-    const popupFilters = document.getElementById('popup-filters');
-    const overlay = document.getElementById('overlay');
-    const applyFiltersBtn = document.getElementById('apply-filters');
-    const closeButton = document.querySelector('.close-button'); // Select the close "X" button
-
-    await loadApiPaths(); // Ensure API paths are loaded first
-
-    // Populate each dropdown with appropriate API data
-    populateDropdown(apiPaths.get_locations, 'location', 'Location', 'Sélectionnez une localisation');
-    populateDropdown(apiPaths.get_locations, 'location_bar', 'Location', 'Sélectionnez une localisation');
-    populateDropdown(apiPaths.get_languages, 'language', 'language_name', 'Sélectionnez une langue');
-    populateDropdown(apiPaths.get_fields, 'field', 'field_name', 'Sélectionnez un domaine');
-    populateDropdown(apiPaths.get_job_types, 'jobType', 'job_type','Sélectionnez un type de contrat');
-    populateDropdown(apiPaths.get_job_types, 'jobType_bar', 'job_type', 'Contrat');
-    populateCheckboxGroup(apiPaths.get_durations, 'duration', 'Duration');
-    populateCheckboxGroup(apiPaths.get_experience_levels, 'experience', 'experience_level');
-    populateCheckboxGroup(apiPaths.get_education_levels, 'educationLevel', 'education_level');
-
-    // Toggle filters popup
-    openFiltersBtn.addEventListener('click', function () {
-        popupFilters.classList.toggle('active');
-        overlay.style.display = 'block';
-    });
-
-    // Close popup when clicking on overlay
-    overlay.addEventListener('click', function () {
-        popupFilters.classList.remove('active');
-        overlay.style.display = 'none';
-    });
-
-    // Close popup when clicking on the "X" button
-    closeButton.addEventListener('click', function () {
-        popupFilters.classList.remove('active');
-        overlay.style.display = 'none';
-    });
-
-    // Event listener for the "Apply Filters" button
-    applyFiltersBtn.addEventListener('click', async function () {
-        const selectedFilters = getSelectedFilters();
-
-        console.log("Filtres appliqués:", selectedFilters);
-
-        try {
-            await loadOffers(selectedFilters); // Use loadOffers to apply filters
-            popupFilters.classList.remove('active');
-            overlay.style.display = 'none';
-        } catch (error) {
-            console.error('Error fetching filtered offers:', error);
-        }
-    });
-});
 
 
 
