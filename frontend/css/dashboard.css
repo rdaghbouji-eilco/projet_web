@@ -712,38 +712,41 @@ margin-bottom: 0;
 }
 
 
-.view-btn{
+.view-btn {
+    background-color: #2b6394;
     display: inline-block;
-    background-color: #4f9aeb;
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px; /* Increased padding */
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
-    font-size: 13px;
+    font-size: 14px; /* Increased font size */
     font-weight: 500;
-    border-radius: 10px;
+    border-radius: 20px;
+    width: auto; /* Allow the button to adjust its width based on content */
+    height: auto; /* Allow the button to adjust its height */
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
+
 .view-btn:hover {
-    background-color: #004c8e;
+    background: #98aacc;
 }
 
-.edit-btn2{
+.edit-btn2 {
     display: inline-block;
     background-color: #497aab;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 20px; /* Adjusted padding to match .view-btn */
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
-    font-size: 12px;
+    font-size: 14px; /* Adjusted font size to match .view-btn */
     font-weight: 500;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-
 }
+
 .edit-btn2:hover {
     background-color: #004c8e;
 }
@@ -851,3 +854,31 @@ margin-bottom: 0;
     justify-content: space-between;
     gap: 15px;
 }
+
+#closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.1rem; /* Corrected spacing */
+    color: #aaa; /* Light gray */
+    cursor: pointer;
+    transition: color 0.2s ease;
+    font-weight: bold; /* Bold text */
+}
+
+#closeButton:hover {
+    color: #000; /* Darker grey color when hovered */
+}
+
+.offer-form-container {
+    position: relative;
+    width: 400px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+  

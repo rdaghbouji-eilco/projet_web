@@ -441,7 +441,23 @@ function showApplicationsSection() {
     initializeApplicationsSection();    // Initialiser les données de la section
 }
 
-
+// Wait for the DOM to be loaded
+document.addEventListener('DOMContentLoaded', function() {
+  
+    // Close button functionality
+    document.getElementById('closeButton').addEventListener('click', function() {
+      document.getElementById('offerFormModal').style.display = 'none'; // Hide the form modal
+    });
+  
+    // Optional: Function to show the form modal
+    function showModal() {
+      document.getElementById('offerFormModal').style.display = 'block'; // Show the form modal
+    }
+  
+    // Example of showing the modal (you can call showModal() based on your needs)
+    // showModal();
+  });
+  
 
 // Expose showSection globally
 window.showSection = showSection;
