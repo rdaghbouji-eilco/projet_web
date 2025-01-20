@@ -608,18 +608,17 @@ main {
     transform: translateY(-2px);
 }
 
-.retour {
+.retour-button{
     background-color: rgb(222, 222, 222);
-    display:inline;
     border:none;
-    padding: 12px 12px;
     border-radius: 5px;
+    padding :12px;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
 .retour-button:hover {
-    background-color: #979797;
+    background-color: #c6c6c6;
 }
 
 

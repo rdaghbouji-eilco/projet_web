@@ -31,6 +31,8 @@ if (file_exists($navigationPath)) {
             @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
         </style>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
         
         <style>
             .material-symbols-outlined {
@@ -137,10 +139,8 @@ if (file_exists($navigationPath)) {
         </div>
 
         <section id="offre" class="section" >
-            <div class="retour">
-                <button class="retour-button" onclick="handleRetourButtonClick() " ></button>
-                <i class='bx bx-arrow-back'></i>
-            </div>
+                <button class="retour-button" onclick="handleRetourButtonClick() " ><i class='bx bx-arrow-back'></i></button>
+            
             <div id="offerDetailsContainer" class="offer-details">
                 <!-- Offer details will be populated here -->
             </div>
