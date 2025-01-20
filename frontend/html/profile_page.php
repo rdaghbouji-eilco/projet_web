@@ -215,29 +215,32 @@ if (file_exists($navigationPath)) {
     <!-- Footer Section -->
     <footer>
         <div class="premiere_partie">
-            <div class="colonne">
+        <div class="colonne">
                 <ul>
-                    <li>
-                        <h4>Étudiants</h4>
+                    <li><h4>Étudiants</h4>
                     </li>
                     <hr>
-                    <li><a href="inscription_etudiant.html"> S'inscrire</a></li>
-                    <li><a href="offres_etu.html"> Chercher une offre</a></li>
-                    <li><a href="entreprises_etu.html"> Découvrir les entreprises</a></li>
-                    <li><a href="evenements_etu.html"> Evénements de recrutement</a></li>
-                    <li><a href="conseils_etu.html"> Conseils de recrutement</a></li>
+                    <li><a href="auth.html"> S'inscrire</a>
+                    </li>
+                    <li><a href="menu_principal.php"> Chercher une offre</a>
+                    </li>
+                    <li><a href="menu_principal.php"> Découvrir les entreprises</a>
+                    </li>
+                    <li><a href="profile_page.php"> Profil</a>
+                    </li>
                 </ul>
             </div>
             <div class="colonne">
                 <ul>
-                    <li>
-                        <h4>École</h4>
+                    <li><h4>École</h4>
                     </li>
                     <hr>
-                    <li><a href="offre_gestionnaire.html"> Le Career Center</a></li>
-                    <li><a href="#"> XXXXXX</a></li>
-                    <li><a href="#"> XXXXXX</a></li>
-                    <li><a href="#"> XXXXXX</a></li>
+                    <li><a href="menu_principal.php"> Nos offres de stages</a>
+                    </li>
+                    <li><a href="https://eilco.univ-littoral.fr/"> L'école </a>
+                    </li>
+                    <li><a href="https://portail.eilco.fr/"> Portail</a>
+                    </li>
                 </ul>
             </div>
             <div class="colonne">

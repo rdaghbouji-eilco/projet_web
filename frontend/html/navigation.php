@@ -3,8 +3,11 @@ function generateNavigation($userRole)
 {
     // Initialisation de la liste HTML
     $html = '<header>
-        <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+        <a href="menu_principal.php">
+            <img src="../../images/EILCO-LOGO-2022.png" alt="Logo EILCO" class="logo">
+        </a>
         <ul>';
+        
 
     // Liens visibles par tous
     $html .= '<li><a href="menu_principal.php">Offres</a></li>';
