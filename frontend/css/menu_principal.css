@@ -11,10 +11,9 @@ html, body {
     overflow-x: hidden; 
 }
 
-/* Header Styles */
 header {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color:#ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);;
     position: fixed;
     z-index: 10;
     width: 100%; 
@@ -35,12 +34,12 @@ header ul {
     display: flex;
     justify-content: space-evenly;
     margin: 0;
-    padding: 2% 4%;
+    padding: 0;
     list-style: none;
 }
 
 header ul li {
-    margin: 0 50px;
+    margin: 0 20px;
 }
 
 header ul li a {
@@ -56,7 +55,6 @@ header ul li a {
 header ul li a:hover {
     transform: scale(1.02);
 }
-
 /* Search Bar Styles */
 .recherche{
     padding : 0% 10%;

@@ -86,12 +86,12 @@ body {
     display: flex;
     justify-content: space-evenly;
     margin: 0;
-    padding: 2% 4%;
+    padding: 0;
     list-style: none;
 }
 
 .section nav ul li {
-    margin: 0 50px;
+    margin: 0 20px;
 }
 
 .section nav ul li a {
