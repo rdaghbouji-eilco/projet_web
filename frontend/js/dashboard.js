@@ -347,31 +347,32 @@ async function loadRecentApplications() {
         // Mettre à jour le tableau "Candidatures récentes"
         const applicationsDetails = document.querySelector('.candidatures_recentes .actions_details');
         applicationsDetails.innerHTML = `
-            <ul class="details">
-                <li class="topic">Candidat</li>
-                ${applications.map(app => `<li>${app.applicant_name} ${app.applicant_surname}</li>`).join('')}
-            </ul>
-            <ul class="details">
-                <li class="topic">Offre</li>
-                ${applications.map(app => `<li>${app.position_name}</li>`).join('')}
-            </ul>
-            <ul class="details">
-                <li class="topic">Date</li>
-                ${applications.map(app => `<li>${new Date(app.application_date).toLocaleDateString()}</li>`).join('')}
-            </ul>
-            <ul class="details">
-                <li class="topic">Statut</li>
-                ${applications.map(app => `<li>${app.application_status || 'Non spécifié'}</li>`).join('')}
-            </ul>`;
+            <table class="details">
+                <thead>
+                    <tr>
+                        <th class="topic">Candidat</th>
+                        <th class="topic">Offre</th>
+                        <th class="topic">Date</th>
+                        <th class="topic">Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${applications.map(app => `
+                        <tr>
+                            <td>${app.applicant_name} ${app.applicant_surname}</td>
+                            <td>${app.position_name}</td>
+                            <td>${new Date(app.application_date).toLocaleDateString()}</td>
+                            <td>${app.application_status || 'Non spécifié'}</td>
+                        </tr>`).join('')}
+                </tbody>
+            </table>`;
     } catch (error) {
         console.error('Erreur lors du chargement des candidatures récentes :', error);
     }
 }
 
 
-
 async function loadRecentOffers() {
-    
     const offersDetails = document.querySelector('.offres_recentes .actions_details');
     showLoading('.offres_recentes .actions_details');
     try {
@@ -382,18 +383,23 @@ async function loadRecentOffers() {
             offersDetails.innerHTML = '<p>No recent offers available.</p>';
         } else {
             offersDetails.innerHTML = `
-                <ul class="details">
-                    <li class="topic">Date</li>
-                    ${offers.map(offer => `<li>${new Date(offer.publish_date).toLocaleDateString()}</li>`).join('')}
-                </ul>
-                <ul class="details">
-                    <li class="topic">Titre</li>
-                    ${offers.map(offer => `<li>${offer.position_name}</li>`).join('')}
-                </ul>
-                <ul class="details">
-                    <li class="topic">Entreprise</li>
-                    ${offers.map(offer => `<li>${offer.entreprise_name || 'Non spécifiée'}</li>`).join('')}
-                </ul>`;
+                <table class="details">
+                    <thead>
+                        <tr>
+                            <th class="topic">Date</th>
+                            <th class="topic">Titre</th>
+                            <th class="topic">Entreprise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${offers.map(offer => `
+                            <tr>
+                                <td>${new Date(offer.publish_date).toLocaleDateString()}</td>
+                                <td>${offer.position_name}</td>
+                                <td>${offer.entreprise_name || 'Non spécifiée'}</td>
+                            </tr>`).join('')}
+                    </tbody>
+                </table>`;
         }
     } catch (error) {
         console.error('Error loading recent offers:', error);

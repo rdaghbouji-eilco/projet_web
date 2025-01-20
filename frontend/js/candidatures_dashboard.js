@@ -23,7 +23,6 @@ export async function loadApplications() {
                     </td>
                     <td class="actions">
                         <button class="view-btn" onclick="viewProfile(${application.application_id})">Voir le Profil</button>
-        
                     </td>
                 `;
                 applicationsTableBody.appendChild(row);

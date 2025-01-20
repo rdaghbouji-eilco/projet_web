@@ -158,7 +158,7 @@ body {
 .overview-boxes .box-topic {
     font-size: 16px;
     font-weight: 500;
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
 }
 .home-content .box .number {
     display: inline-block;
@@ -223,56 +223,64 @@ body {
 /* left box */
 .home-content .actions_recentes .offres_recentes {
     background: #fff;
-    padding: 20px 25px;
+    padding: 10px 5px 15px 15px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     width: 550px;
     height: auto;
     max-height: 301px;
-    min-height: 310px;
 }
 .home-content .actions_recentes .candidatures_recentes {
     background: #fff;
-    padding: 20px 25px;
+    padding: 10px 5px 15px 15px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     width: 550px;
-    height: auto;
-    max-height: 301px;
-    min-height: 310px;
+    max-height: 450px;
+    overflow-y: auto;
 }
+
 .actions_recentes .box .title {
     font-size: 18px;
     font-weight: 500;
 }
 
 .actions_details {
-    display: flex; 
-    justify-content:space-around; 
-    width: 100%; 
-    margin-top: 13px;
-}
-.home-content .actions_recentes .actions_details ul.details {
     display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-.actions_recentes .actions_details li.topic {
     font-size: 15px;
-    color: #277ab1;
-    font-weight: 600;
-    list-style: none;
-    margin-bottom: 10px;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
 }
 
-.actions_details ul.details li:not(.topic) {
+.home-content .actions_recentes .actions_details table.details {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.actions_details .details td {
+    padding: 10px 0px 10px 1px;
+    text-align: left;
+}
+
+.actions_details .details th {
+    font-size: 16px;
+    color: #277ab1;
+    font-weight: 600;
+    text-align:left;
+}
+
+.actions_details .details td {
     font-size: 14px;
     color: #555;
-    text-align: left;
-    margin-bottom: 7px;
+    border-bottom: 1px solid #eee;
 }
+
+.actions_details .details td:hover {
+    background-color: #f1f1f1;
+}
+
+
 .actions_recentes .box .button {
     width: 100%;
     display: flex;
