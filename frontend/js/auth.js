@@ -1,25 +1,26 @@
 let apiPaths = {};
 
-// Load API paths
+// Charger les chemins de l'API
 async function loadApiPaths() {
     try {
         const response = await fetch('../../config/api_paths.json');
         if (!response.ok) {
-            throw new Error('Failed to load API paths');
+            throw new Error('Échec du chargement des chemins de l\'API');
         }
         apiPaths = await response.json();
-        console.log('API paths loaded successfully:', apiPaths);
+        console.log('Chemins de l\'API chargés avec succès:', apiPaths);
     } catch (error) {
-        console.error('Error loading API paths:', error);
+        console.error('Erreur lors du chargement des chemins de l\'API:', error);
     }
 }
 
+// Afficher une section spécifique
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => section.style.display = 'none');
     document.getElementById(sectionId).style.display = 'block';
 }
 
-// Handle Sign-Up Form Submission
+// Gérer la soumission du formulaire d'inscription
 document.getElementById('signUpForm').addEventListener('submit', async function(event) {
     event.preventDefault();
     
@@ -30,7 +31,6 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
         password: document.getElementById('signUpPassword').value
     };
     
-
     try {
         const response = await fetch(apiPaths.register, {
             method: 'POST',
@@ -41,17 +41,17 @@ document.getElementById('signUpForm').addEventListener('submit', async function(
 
         if (response.ok) {
             alert(result.message || 'Inscription réussie !');
-            showSection('formulaire_connexion'); // Switch to the login section
+            showSection('formulaire_connexion'); // Passer à la section de connexion
         } else {
             document.getElementById('signUpErrorMsg').textContent = result.message || 'Échec de l\'inscription.';
         }
     } catch (error) {
         document.getElementById('signUpErrorMsg').textContent = 'Erreur lors de l\'inscription.';
-        console.error('Sign-up error:', error);
+        console.error('Erreur d\'inscription:', error);
     }
 });
 
-// Handle Login Form Submission
+// Gérer la soumission du formulaire de connexion
 document.getElementById('loginForm').addEventListener('submit', async function(event) {
     event.preventDefault();
 
@@ -67,24 +67,23 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             credentials: 'include',
             body: JSON.stringify(loginData)
         });
-        console.log('Response status:', response.status);
+        console.log('Statut de la réponse:', response.status);
         const result = await response.json();
-        console.log('Response JSON:', result);
+        console.log('Réponse JSON:', result);
     
-
         if (response.ok) {
-            window.location.href = 'menu_principal.php';
+            window.location.href = 'menu_principal.php'; // Rediriger vers le menu principal
         } else {
             document.getElementById('loginErrorMsg').textContent = result.message || 'Échec de la connexion.';
         }
     } catch (error) {
         document.getElementById('loginErrorMsg').textContent = 'Erreur lors de la connexion.';
-        console.error('Login error:', error);
+        console.error('Erreur de connexion:', error);
     }
 });
 
-// Initialize API paths and set the default view
+// Initialiser les chemins de l'API et définir la vue par défaut
 window.onload = async function() {
     await loadApiPaths();
-    showSection('formulaire_inscription'); // Show Inscription as the default view
+    showSection('formulaire_inscription'); // Afficher l'inscription comme vue par défaut
 };

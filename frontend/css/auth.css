@@ -1,4 +1,4 @@
-/* Header Styling */
+/* Style de l'en-tête */
 header {
     background-color:#ffffff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -44,15 +44,14 @@ header ul li a:hover {
     transform: scale(1.02);
 }
 
-/* Body and Main Styling */
+/* Style du corps et de la section principale */
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
-main{
+main {
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -60,7 +59,7 @@ main{
     justify-content: center; 
     align-items: center;
     padding: 6%;
-    padding-top: 65px;
+    padding-top: 65px; /* Pour éviter que le contenu soit caché derrière l'en-tête */
 }
 
 .container {
@@ -70,10 +69,10 @@ main{
     max-width: 700px;
     min-width: 280px;
     height: auto;
-    min-height:630px;
+    min-height: 630px;
     max-height: 80vh;
     padding: 0%;
-    margin :auto ;
+    margin: auto;
     margin-top: 1%;
     box-sizing: border-box;
     display: flex;
@@ -83,7 +82,7 @@ main{
     border-radius: 4%;
 }
 
-.selection{
+.selection {
     display: flex;
     justify-content: space-evenly;
     width: 70%; 
@@ -92,7 +91,7 @@ main{
     min-width: 290px;
 }
 
-.selection button{
+.selection button {
     font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
     font-size: 1rem;
     font-weight: 600;
@@ -102,10 +101,10 @@ main{
     border: none;
     background: none;
     color: #0c2942;
-    /*box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);*/
     transition: border-bottom 0.1s ease, transform 0.1s ease;
 }
-.selection button:hover,.selection button:focus{
+
+.selection button:hover, .selection button:focus {
     transform: scale(1.02);
     border-bottom: 2px solid #134169;
 }
@@ -120,8 +119,9 @@ main{
     text-align: center;
     align-items: center;
 }
+
 .section.active {
-    display:block;
+    display: block;
 }
 
 .titre_form1 h2 {
@@ -136,8 +136,6 @@ main{
     justify-content: center;
     text-align: center;
 }
-
-
 
 .titre_form2 h2 {
     font-family: "PolySans", "Poppins", helvetica, arial, "sans-serif";
@@ -167,20 +165,19 @@ main{
 
 .section label {
     margin-bottom: 0.8%; 
-    font-family: "Poppins",Arial, Helvetica, "sans-serif";
+    font-family: "Poppins", Arial, Helvetica, "sans-serif";
     font-weight: 600;
     font-style: normal;
     color: rgb(0, 0, 0);
-    font-size:0.9rem;
+    font-size: 0.9rem;
     display: block;
     text-align: left;
     margin-bottom: 1%;
 }
 
-
 .section input[type="text"],
 .section input[type="email"],
-.section input[type="password"]{
+.section input[type="password"] {
     width: 100%;
     padding: 10px;
     border-radius: 20px;
@@ -223,21 +220,20 @@ main{
     color: #ffffff;
 }
 
-/* Error Message Styling */
+/* Style des messages d'erreur */
 .error {
     color: red;
     font-family: "Poppins", Helvetica, Arial, sans-serif;
     font-size: 0.9em;
     margin-top: 1em;
 }
-.mdp_oublie{
+
+.mdp_oublie {
     font-family: "Poppins", Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
 
-
-
-/* Footer Styling */
+/* Style du pied de page */
 footer {
     background-color: #0f3455;
     padding: 1%;
@@ -280,4 +276,3 @@ footer ul {
     text-align: center;
     padding: 2%;
 }
-

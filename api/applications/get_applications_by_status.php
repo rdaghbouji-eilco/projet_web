@@ -6,19 +6,16 @@ header("Content-Type: application/json"); // Assurer le type de réponse JSON
 
 include_once '../../config/db.php';
 
-// Add an index to the application_status column to improve query performance
-$db->exec("CREATE INDEX idx_application_status ON applications(application_status);");
-
 // Initialiser la connexion à la base de données
 $database = new Database();
 $db = $database->getConnection();
 
 try {
     // Requête SQL pour récupérer les statuts et compter les offres associées
-    $sql = "
+    $stmt = $db->prepare("
          SELECT 
-            application_status.Application_status AS status_name, // Nom du statut de l'application
-            COUNT(applications.id) AS application_count // Nombre total d'applications pour chaque statut
+            application_status.Application_status AS status_name,
+            COUNT(applications.id) AS application_count
         FROM 
             applications
         JOIN 
@@ -27,10 +24,8 @@ try {
             applications.application_status = application_status.id
         GROUP BY 
             application_status.Application_status; // Grouper par nom du statut de l'application
-    ";
+    ");
 
-    // Préparer et exécuter la requête
-    $stmt = $db->prepare($sql); // Préparer la requête SQL
     $stmt->execute(); // Exécuter la requête
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC); // Récupérer tous les résultats
 
