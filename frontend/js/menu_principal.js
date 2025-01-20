@@ -257,6 +257,10 @@ function showOfferDetails(offerId) {
                             <span>Niveau d'études</span>
                             <p id="offer-education-level"> ${offer.education_level}</p>
                         </div>
+                        <div id="startDate">
+                            <span>Date de début</span>
+                            <p id="offer-start-dtae"> ${offer.start_date}</p>
+                        </div>
                     </div>
                     <p id="offer-description"><strong>Description | </strong> ${offer.description}</p>
                     <button class="btn-apply" onclick="submitApplication(${offer.id})">Postuler</button>
