@@ -1,28 +1,33 @@
 <?php
-// Headers for allowing CORS and JSON response
+// En-têtes pour autoriser les requêtes CORS et la réponse JSON
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 include_once '../../config/db.php';
 
-// Connect to the database
+// Connexion à la base de données
 $database = new Database();
 $db = $database->getConnection();
 
 try {
-    // SQL query to count applications by status
+    // Requête SQL pour compter les applications par statut
     $stmt = $db->prepare("
+        // Statut de l'application
         SELECT 
-            application_status,
-            COUNT(*) AS total
+            application_status, 
+            // Nombre total d'applications pour chaque statut
+            COUNT(*) AS total 
         FROM 
             applications
+        // Grouper par statut de l'application
         GROUP BY 
-            application_status
+            application_status 
+        // Trier par nombre total décroissant
         ORDER BY 
             total DESC
+            total DESC
     ");
-    $stmt->execute();
+    $stmt->execute(); // Exécuter la requête
     
     // Fetch all results
     $application_statuses = $stmt->fetchAll(PDO::FETCH_ASSOC);

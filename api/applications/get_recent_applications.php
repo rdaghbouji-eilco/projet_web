@@ -1,18 +1,17 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allowed methods
-header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allowed headers
-header("Content-Type: application/json"); // Ensure JSON response type
-
+header("Access-Control-Allow-Origin: *"); // Autoriser les requêtes provenant de n'importe quelle origine
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Méthodes autorisées
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // En-têtes autorisés
+header("Content-Type: application/json"); // Assurer le type de réponse JSON
 
 include_once '../../config/db.php';
 
-// Connect to the database
+// Connexion à la base de données
 $database = new Database();
 $db = $database->getConnection();
 
 try {
-    // SQL query to fetch the 5 most recent applications with offer and user details
+    // Requête SQL pour récupérer les 5 applications les plus récentes avec les détails de l'offre et de l'utilisateur
     $stmt = $db->prepare("
         SELECT 
             a.ID AS application_id,
@@ -37,13 +36,15 @@ try {
     ");
     $stmt->execute();
     
-    // Fetch all results
+    // Récupérer tous les résultats
     $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    // Return the response in JSON format
+    // Retourner la réponse au format JSON
     echo json_encode(['status' => 'success', 'recent_applications' => $applications]);
 } catch (PDOException $e) {
-    // Handle errors
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    // Gérer les erreurs
+    error_log($e->getMessage(), 0); // Enregistrer le message d'erreur
+    http_response_code(500); // Répondre avec un code d'erreur 500
+    echo json_encode(['status' => 'error', 'message' => 'Une erreur est survenue lors du traitement de votre demande.']);
 }
 ?>

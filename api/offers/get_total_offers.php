@@ -22,7 +22,9 @@ try {
     // Retourner la réponse en JSON
     echo json_encode(['status' => 'success', 'total_offers' => $result['total_offers']]);
 } catch (PDOException $e) {
-    // En cas d'erreur, retourner un message d'erreur en JSON
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    // Gérer les erreurs
+    error_log($e->getMessage(), 0); // Enregistrer le message d'erreur
+    http_response_code(500); // Répondre avec un code d'erreur 500
+    echo json_encode(['status' => 'error', 'message' => 'Une erreur est survenue lors du traitement de votre demande.']);
 }
 ?>

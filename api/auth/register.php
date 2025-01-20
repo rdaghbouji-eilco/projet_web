@@ -1,5 +1,5 @@
 <?php
-// Start session
+// Démarrer la session
 session_start();
 
 header("Access-Control-Allow-Origin: *");
@@ -12,7 +12,7 @@ $db = $database->getConnection();
 $data = json_decode(file_get_contents("php://input"));
 
 if (empty($data->name) || empty($data->email) || empty($data->password)) {
-    http_response_code(400); // Bad Request
+    http_response_code(400); // Mauvaise requête
     echo json_encode(['message' => 'name, surname, email, and password are required']);
     exit();
 }
@@ -21,7 +21,7 @@ $query = "INSERT INTO users (name, surname, email, password, role) VALUES (:name
 $stmt = $db->prepare($query);
 
 $hashed_password = password_hash($data->password, PASSWORD_DEFAULT);
-$role = 2; // Default role is 2 (user)
+$role = 2; // Le rôle par défaut est 2 (utilisateur)
 
 $stmt->bindParam(':name', $data->name);
 $stmt->bindParam(':surname', $data->surname);
@@ -30,13 +30,13 @@ $stmt->bindParam(':role', $role);
 $stmt->bindParam(':password', $hashed_password);
 
 if ($stmt->execute()) {
-    // Get the ID of the newly created user
+    // Obtenir l'ID du nouvel utilisateur créé
     $userId = $db->lastInsertId();
 
-    // Automatically create an empty profile for the user
+    // Créer automatiquement un profil vide pour l'utilisateur
     createEmptyProfile($db, $userId);
 
-    http_response_code(201); // Created
+    http_response_code(201); // Créé
     echo json_encode(['message' => 'User created successfully']);
 } else {
     http_response_code(500);
@@ -44,27 +44,27 @@ if ($stmt->execute()) {
 }
 
 function createEmptyProfile($db, $userId) {
-    // Insert an empty profile for the new user
+    // Insérer un profil vide pour le nouvel utilisateur
     $query = "INSERT INTO profile_pro (user_ID, education_level, field, current_situation, experience_level, handicap, current_degree, expected_graduation_year)
               VALUES (:user_id, NULL, NULL, NULL, NULL, 0, NULL, NULL)";
 
     $stmt = $db->prepare($query);
     $stmt->bindParam(':user_id', $userId);
 
-    // Execute query
+    // Exécuter la requête
     if (!$stmt->execute()) {
         echo json_encode(["message" => "Error creating empty profile"]);
     }
 
-     // Insert an empty row into personal_info for the new user
-     $query2 = "INSERT INTO personal_info (user_ID, phone, birthdate, country) VALUES (:user_id, NULL, NULL, NULL)";
+    // Insérer une ligne vide dans personal_info pour le nouvel utilisateur
+    $query2 = "INSERT INTO personal_info (user_ID, phone, birthdate, country) VALUES (:user_id, NULL, NULL, NULL)";
     
-     $stmt2 = $db->prepare($query2);
-     $stmt2->bindParam(':user_id', $userId);
+    $stmt2 = $db->prepare($query2);
+    $stmt2->bindParam(':user_id', $userId);
  
-     // Execute second query
-     if (!$stmt2->execute()) {
-         echo json_encode(["message" => "Error creating empty personal info"]);
-     }
+    // Exécuter la deuxième requête
+    if (!$stmt2->execute()) {
+        echo json_encode(["message" => "Error creating empty personal info"]);
+    }
 }
 ?>
