@@ -24,6 +24,7 @@ $query = "
         jt.job_type AS job_type, 
         d.Duration AS duration, 
         jo.publish_date AS publish_date, 
+        jo.start_date AS start_date,
         exp.experience_level AS experience_level, 
         el.education_level AS education_level
     FROM job_offers jo 
@@ -55,6 +56,7 @@ if ($stmt->rowCount() > 0) {
             "job_type" => $row['job_type'],
             "duration" => $row['duration'],
             "publish_date" => $row['publish_date'],
+            "start_date" => $row['start_date'],
             "experience_level" => $row['experience_level'],
             "education_level" => $row['education_level']
         );
