@@ -36,7 +36,9 @@ try {
     // Return the response in JSON format
     echo json_encode(['status' => 'success', 'applications_per_offer' => $applications_per_offer]);
 } catch (PDOException $e) {
-    // Handle errors
-    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+    // Gérer les erreurs
+    error_log($e->getMessage(), 0); // Enregistrer le message d'erreur
+    http_response_code(500); // Répondre avec un code d'erreur 500
+    echo json_encode(['status' => 'error', 'message' => 'Une erreur est survenue lors du traitement de votre demande.']);
 }
 ?>

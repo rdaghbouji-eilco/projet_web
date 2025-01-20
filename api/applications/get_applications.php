@@ -1,30 +1,29 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allowed methods
-header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Allowed headers
-header("Content-Type: application/json"); // Ensure JSON response type
-
+header("Access-Control-Allow-Origin: *"); // Autoriser les requêtes provenant de n'importe quelle origine
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Méthodes autorisées
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // En-têtes autorisés
+header("Content-Type: application/json"); // Assurer le type de réponse JSON
 
 include_once '../../config/db.php';
 
-// Connect to the database
+// Connexion à la base de données
 $database = new Database();
 $db = $database->getConnection();
 
-// SQL query to retrieve job offers with related foreign key data
+// Requête SQL pour récupérer les candidatures avec les données de clé étrangère associées
 $query = "
     SELECT * from applications;
 ";
 
-// Prepare and execute the query
+// Préparer et exécuter la requête
 $stmt = $db->prepare($query);
 $stmt->execute();
 
-// Check if any offers are found
+// Vérifier si des candidatures sont trouvées
 if ($stmt->rowCount() > 0) {
     $offersArr = array();
 
-    // Loop through the results
+    // Boucler à travers les résultats
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $offerItem = array(
             "ID" => $row['ID'],
@@ -34,15 +33,15 @@ if ($stmt->rowCount() > 0) {
             "application_status" => $row['application_status']
         );
 
-        array_push($offersArr, $offerItem);
+        array_push($offersArr, $offerItem); // Ajouter l'élément de l'offre au tableau des offres
     }
 
-    // HTTP 200 OK response
+    // Réponse HTTP 200 OK
     http_response_code(200);
-    echo json_encode($offersArr);
+    echo json_encode($offersArr); // Retourner les offres au format JSON
 } else {
-    // No results found
+    // Aucun résultat trouvé
     http_response_code(404);
-    echo json_encode(array("message" => "No job offers found."));
+    echo json_encode(array("message" => "Aucune offre d'emploi trouvée.")); // Message indiquant qu'aucune offre n'a été trouvée
 }
 ?>
