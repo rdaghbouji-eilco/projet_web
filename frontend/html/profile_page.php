@@ -186,7 +186,6 @@ if (file_exists($navigationPath)) {
 
 
                     <!-- CV Section -->
-                    <h2>CV</h2>
                     <div class="box">
                         <form id="cvSection">
                             
