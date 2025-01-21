@@ -35,7 +35,7 @@ if (!empty($data->email)) {
         $stmtInsert->execute();
 
         // Étape 4 : Envoyer l'e-mail de réinitialisation
-        $resetLink = "http://localhost/projet_web/frontend/html/reset_password.html?token=" . $resetToken;
+        $resetLink = "http://localhost/repo-projet_web/frontend/html/reset_password.html?token=" . $resetToken;
         $subject = "Demande de réinitialisation de mot de passe";
         $body = "Bonjour, \n\nNous avons reçu une demande de réinitialisation de votre mot de passe. Vous pouvez le réinitialiser en cliquant sur le lien suivant :\n" . $resetLink . "\n\nSi vous n'avez pas demandé cela, veuillez ignorer cet e-mail.\n\nCordialement,\nVotre équipe du site web";
         
