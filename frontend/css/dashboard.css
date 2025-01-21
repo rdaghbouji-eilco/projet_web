@@ -240,26 +240,27 @@ body {
     display: flex;
     flex: 3;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     min-height: 85vh;
 }
 
 /* left box */
 .home-content .actions_recentes .offres_recentes {
     background: #fff;
-    padding: 10px 5px 15px 15px;
+    padding: 15px 5px 15px 15px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     width: 550px;
-    height: auto;
-    max-height: 301px;
+    height:305px;
+    max-height: 450px;
 }
 .home-content .actions_recentes .candidatures_recentes {
     background: #fff;
-    padding: 10px 5px 15px 15px;
+    padding: 15px 5px 15px 15px;
     border-radius: 12px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     width: 550px;
+    height:305px;
     max-height: 450px;
     overflow-y: auto;
 }
@@ -267,6 +268,7 @@ body {
 .actions_recentes .box .title {
     font-size: 18px;
     font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .actions_details {
