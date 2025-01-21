@@ -51,6 +51,27 @@ header ul li a {
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
     transition: transform 0.2s ease;
     display: inline-block;
+    padding: 5px 0px;
+}
+header ul li.voir_profil a {
+    display: flex;
+    align-items: center; /* Aligner l'icône et le texte verticalement */
+    gap: 8px; /* Ajouter de l'espace entre l'icône et le texte */
+    
+}
+/* Cible uniquement l'icône dans l'élément .voir_profil */
+header ul li.voir_profil i {
+    font-size: 20px; /* Augmente la taille de l'icône */
+    line-height: 1; /* Assure un bon alignement vertical */
+}
+
+header ul li.deconnexion a {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: rgb(210, 36, 36);
+    color: white;
+
 }
 
 header ul li a:hover {
@@ -584,14 +605,14 @@ main {
     display: flex;
     flex-direction: column;
     flex:1;
-    margin-left: 50px;
+    margin-left: 70px;
     margin-right: 50px;
 }
 #startDate1{
     display: flex;
     flex-direction: column;
     flex:1;
-    margin-left: 50px;
+    margin-left: 60px;
 }
 
 .btn-apply {

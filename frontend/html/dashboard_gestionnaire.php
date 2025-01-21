@@ -67,11 +67,11 @@ if ($_SESSION['user']['role'] != 3) {
         <ul>
                 <li><a href="menu_principal.php">Offres</a>
                 </li>
-                <li><a href="profile_page.php">Profil</a>
-                </li>
                 <li><a href="dashboard_gestionnaire.php">Espace de Gestion</a>
                 </li>
-                <li><a href="logout.php">Se déconnecter</a>
+                <li class ="voir_profil"><a href="profile_page.php"><i class='bx bx-user-circle'></i> <span>Profil</span></a>
+                </li>
+                <li class="deconnexion"><a href="logout.php">Se déconnecter</a>
                 </li>
         </ul>
       </nav>

@@ -11,16 +11,17 @@ function generateNavigation($userRole)
 
     // Liens visibles par tous
     $html .= '<li><a href="menu_principal.php">Offres</a></li>';
-    $html .= '<li><a href="profile_page.php">Profil</a></li>';
 
     // Lien spécifique pour les gestionnaires
     if ($userRole == 3) {
         $html .= '<li><a href="dashboard_gestionnaire.php">Tableau de bord Gestionnaire</a></li>';
     }
 
+    $html .= '<li class="voir_profil"><a href="profile_page.php"><i class="bx bx-user-circle"></i><span>Profil</span></a></li>';
+
     // Gestion de l'état de connexion
     if ($userRole !== null) {
-        $html .= '<li><a href="logout.php">Se déconnecter</a></li>';
+        $html .= '<li class="deconnexion"><a href="logout.php">Se déconnecter</a></li>';
     } else {
         $html .= '<li><a href="auth.html">Connexion</a></li>';
     }

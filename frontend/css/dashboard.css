@@ -84,14 +84,14 @@ body {
 
 .section nav ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     margin: 0;
-    padding: 2% 4%;
+    padding: 2% 0% 2% 4% ;
     list-style: none;
 }
 
 .section nav ul li {
-    margin: 0 50px;
+    margin: 0 40px;
 }
 
 .section nav ul li a {
@@ -101,7 +101,31 @@ body {
     color: rgb(0, 0, 0);
     font-family: "Poppins", Arial, Helvetica, "sans-serif";
     transition: transform 0.2s ease;
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    padding: 5px 0px;
+}
+
+/* Styles spécifiques à la classe .voir_profil */
+.section nav ul li.voir_profil a {
+    display: flex;
+    align-items: center; /* Aligner l'icône et le texte verticalement */
+    gap: 8px; /* Ajouter de l'espace entre l'icône et le texte */
+    
+}
+/* Cible uniquement l'icône dans l'élément .voir_profil */
+.section nav ul li.voir_profil i {
+    font-size: 20px; /* Augmente la taille de l'icône */
+    line-height: 1; /* Assure un bon alignement vertical */
+}
+
+.section nav ul li.deconnexion a {
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: rgb(210, 36, 36);
+    color: white;
+
 }
 
 .section nav ul li a:hover {
