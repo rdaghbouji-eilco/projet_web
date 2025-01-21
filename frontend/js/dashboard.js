@@ -233,7 +233,7 @@ async function initializeCharts() {
                 y: {
                     title: {
                         display: true,
-                        text: 'Candidatures', // Nom de l'axe Y
+                        text: 'Offres', // Nom de l'axe Y
                         font: {
                             size: 10,
                             weight: 'bold'
